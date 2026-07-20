@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مرجع جامع JavaScript — کتاب فارسی رایگان | JavaScript ES2025</title>
+<meta name="description" content="کامل‌ترین مرجع فارسی JavaScript ES2025: ۳۸ فصل، از مبانی تا معماری Production-Level، Event Loop، Proxy، Performance، Security، تست، ۵۰ پرسش مصاحبه FAANG. دانلود رایگان PDF.">
+<meta property="og:title" content="مرجع جامع JavaScript — کتاب فارسی رایگان">
+<meta property="og:description" content="۳۸ فصل · ۴۰۰+ صفحه · از مبانی تا معماری Production-Level · دانلود رایگان PDF">
+<meta property="og:image" content="./assets/social-card.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:url" content="https://rezaian-dev.github.io/javascript-persian-guide/">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="مرجع جامع JavaScript — کتاب فارسی رایگان">
+<meta name="twitter:description" content="۳۸ فصل · از مبانی تا معماری Production-Level · دانلود رایگان PDF و EPUB">
+<meta name="twitter:image" content="./assets/social-card.jpg">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://rezaian-dev.github.io/javascript-persian-guide/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f7df1e'/%3E%3Cpath d='M19.2 25.2c-.3.5-.8 1-1.7 1.4-.9.4-1.9.6-3 .6-1.6 0-2.9-.4-3.8-1.1-.9-.7-1.4-1.8-1.6-3.2l2.7-.4c.1.8.4 1.4.8 1.8.4.4 1 .6 1.7.6.8 0 1.4-.2 1.8-.5.4-.3.6-.7.6-1.2 0-.3-.1-.5-.2-.7-.2-.2-.4-.4-.8-.5-.4-.2-1-.3-1.9-.5-1.2-.3-2-.6-2.6-1-.5-.4-.9-.9-1.2-1.5-.3-.6-.4-1.3-.4-2 0-1 .3-1.8.8-2.5.6-.7 1.4-1.1 2.4-1.4.7-.2 1.5-.3 2.4-.3 1.2 0 2.1.2 2.8.5.7.3 1.2.8 1.6 1.4l-2.5.8c-.2-.4-.4-.7-.7-.9-.3-.2-.7-.3-1.2-.3-.6 0-1.1.1-1.4.4-.2.2-.3.4-.3.7 0 .2.1.4.2.6.2.2.6.4 1.1.5l1.6.4c1.2.3 2.1.6 2.7 1 .6.4 1 .9 1.3 1.5.3.6.4 1.3.4 2 0 .9-.2 1.7-.6 2.4zm7.2 0c-.3.5-.8 1-1.7 1.4-.9.4-1.9.6-3 .6-1.6 0-2.9-.4-3.8-1.1-.9-.7-1.4-1.8-1.6-3.2l2.7-.4c.1.8.4 1.4.8 1.8.4.4 1 .6 1.7.6.8 0 1.4-.2 1.8-.5.4-.3.6-.7.6-1.2 0-.3-.1-.5-.2-.7-.2-.2-.4-.4-.8-.5-.4-.2-1-.3-1.9-.5-1.2-.3-2-.6-2.6-1-.5-.4-.9-.9-1.2-1.5-.3-.6-.4-1.3-.4-2 0-1 .3-1.8.8-2.5.6-.7 1.4-1.1 2.4-1.4.7-.2 1.5-.3 2.4-.3 1.2 0 2.1.2 2.8.5.7.3 1.2.8 1.6 1.4l-2.5.8c-.2-.4-.4-.7-.7-.9-.3-.2-.7-.3-1.2-.3-.6 0-1.1.1-1.4.4-.2.2-.3.4-.3.7 0 .2.1.4.2.6.2.2.6.4 1.1.5l1.6.4c1.2.3 2.1.6 2.7 1 .6.4 1 .9 1.3 1.5.3.6.4 1.3.4 2 0 .9-.2 1.7-.6 2.4z' fill='%23000'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a; --bg2: #111111; --card: rgba(23,23,23,.8); --line: rgba(161,161,170,.18);
+    --ink: #e4e4e7; --muted: #a1a1aa; --accent: #f7df1e; --accent2: #eab308; --accent-dark: #a16207;
+    --js: #f7df1e;
+    --sans: "Vazirmatn", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  .skip { position: absolute; top: -100px; right: 16px; z-index: 20; padding: 8px 14px; border-radius: 8px; background: var(--js); color: #000; font-weight: 700; text-decoration: none; }
+  .skip:focus { top: 12px; }
+  :focus-visible { outline: 2px solid var(--js); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } .book img { transform: none; } }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--bg); line-height: 1.9; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .ltr { direction: ltr; unicode-bidi: isolate; font-family: var(--mono); }
+  .wrap { width: 92%; max-width: 1120px; margin: 0 auto; }
+
+  /* background */
+  .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden;
+    background: radial-gradient(ellipse 60% 50% at 15% 15%, rgba(247,223,30,.18), transparent 70%),
+                radial-gradient(ellipse 50% 40% at 85% 10%, rgba(234,179,8,.18), transparent 70%),
+                radial-gradient(ellipse 70% 30% at 50% 100%, rgba(202,138,4,.10), transparent 70%),
+                linear-gradient(180deg, #0a0a0a, #141414 50%, #0a0a0a); }
+  .sky::after { content: ""; position: absolute; left: -20%; right: -20%; bottom: -10%; height: 55%; opacity: .35;
+    background-image: linear-gradient(rgba(247,223,30,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(247,223,30,.12) 1px, transparent 1px);
+    background-size: 56px 56px; transform: perspective(700px) rotateX(62deg); transform-origin: 50% 100%;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 60%); mask-image: linear-gradient(180deg, transparent, #000 60%); }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); background: rgba(10,10,10,.75); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; text-decoration: none; }
+  .brand .logo { width: 36px; height: 36px; border-radius: 6px; display: block; object-fit: contain; background: var(--js); padding: 2px; box-shadow: 0 0 0 1px rgba(247,223,30,.3); }
+  .brand .logo-official { width: 36px; height: 36px; border-radius: 6px; background: #f7df1e; display: grid; place-items: center; font-family: sans-serif; font-weight: 900; color: #000; font-size: 18px; letter-spacing: -1px; line-height: 1; }
+  .brand .v { font-family: var(--mono); color: var(--js); font-weight: 700; }
+  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14.5px; color: var(--muted); }
+  nav ul a { text-decoration: none; } nav ul a:hover { color: #fff; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 15px; border: 1px solid transparent; transition: transform .15s, box-shadow .15s; white-space: nowrap; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--js); color: #000; box-shadow: 0 10px 30px rgba(247,223,30,.25); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: rgba(23,23,23,.8); }
+  .btn svg { width: 18px; height: 18px; }
+  nav .btn { padding: 8px 14px; font-size: 14px; }
+  @media (max-width: 760px) { nav ul { display: none; } }
+  .brand > span { white-space: nowrap; }
+  @media (max-width: 400px) { .brand-t { display: none; } .brand { gap: 8px; } .sub { font-size: 18px; } .sub b { font-size: 16px; } }
+
+  /* hero */
+  .hero { padding: 88px 0 72px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; border-bottom: 1px solid var(--line); margin-bottom: 8px; position: relative; }
+  .hero::after { content:""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: linear-gradient(90deg, transparent, rgba(247,223,30,.25), transparent); }
+  .kicker { font-family: var(--mono); font-size: 12.5px; letter-spacing: 4px; color: var(--js); direction: ltr; text-align: right; }
+  h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1.3; margin: 10px 0 12px; font-weight: 800; letter-spacing: -.5px; }
+  h1 .en { font-family: var(--mono); direction: ltr; unicode-bidi: isolate; }
+  h1 .en b { color: var(--js); background: #000; padding: 2px 10px; border-radius: 8px; border: 1px solid rgba(247,223,30,.3); }
+  .sub { font-size: 20px; color: #d4d4d8; margin: 0 0 20px; font-weight: 500; line-height: 1.6; }
+  .sub b { font-family: var(--mono); color: var(--js); font-weight: 700; font-size: 18px; white-space: nowrap; direction: ltr; unicode-bidi: isolate; background: rgba(247,223,30,.12); padding: 3px 10px; border-radius: 8px; border: 1px solid rgba(247,223,30,.15); }
+  .lead { color: var(--muted); font-size: 16.5px; max-width: 560px; margin: 0 0 28px; line-height: 1.9; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+  .cta small { color: var(--muted); font-size: 13px; }
+  .stats { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(161,161,170,.12); }
+  .stat { padding: 10px 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); font-size: 14px; color: #d4d4d8; backdrop-filter: blur(8px); }
+  .stat b { font-family: var(--mono); color: var(--js); font-size: 17px; margin-left: 6px; }
+
+  .book { position: relative; perspective: 1400px; padding: 20px 0; }
+  .book::before { content:""; position: absolute; inset: 10% 10% 10% 10%; background: radial-gradient(ellipse at center, rgba(247,223,30,.15), transparent 70%); filter: blur(20px); z-index: -1; }
+  .book img { width: 100%; max-width: 380px; height: auto; display: block; margin: 0 auto; border-radius: 12px 16px 16px 12px;
+    box-shadow: -24px 32px 64px rgba(0,0,0,.85), 0 0 0 1px rgba(247,223,30,.25), 0 0 100px rgba(247,223,30,.18);
+    transform: rotateY(-14deg) rotateX(4deg); transition: transform .5s ease; }
+  .book:hover img { transform: rotateY(-6deg) rotateX(2deg) scale(1.02); }
+  @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-top: 48px; padding-bottom: 48px; gap: 32px; } .book img { max-width: 320px; transform: none; } .book::before { display: none; } }
+
+  /* sections — clear separation */
+  section { padding: 72px 0; position: relative; }
+  section + section { border-top: 1px solid rgba(161,161,170,.08); }
+  section::before { content:""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(161,161,170,.06), transparent); opacity: 0; }
+  section:hover::before { opacity: 1; }
+  h2 { font-size: clamp(24px, 3vw, 32px); margin: 0 0 8px; font-weight: 800; }
+  h2::before { content: ""; display: inline-block; width: 5px; height: 26px; border-radius: 3px; background: var(--js); margin-left: 12px; vertical-align: -4px; }
+  .desc { color: var(--muted); margin: 0 0 28px; font-size: 16px; max-width: 720px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 20px 16px; transition: border-color .2s; }
+  .card:hover { border-color: rgba(247,223,30,.3); }
+  .card .ic { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: rgba(247,223,30,.12); color: var(--js); margin-bottom: 12px; }
+  .card .ic svg { width: 22px; height: 22px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  /* parts */
+  .parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+  .part { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 14px; }
+  .part .n { font-family: var(--mono); color: var(--js); font-size: 12px; letter-spacing: 2px; }
+  .part h3 { margin: 4px 0 2px; font-size: 18px; }
+  .part .ch { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .part ol { margin: 0; padding: 0 18px 0 0; color: #d4d4d8; font-size: 14px; line-height: 1.85; }
+  .part ol li::marker { color: var(--js); font-family: var(--mono); font-size: 12px; }
+
+  /* preview */
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  .shot { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,.4); transition: transform .2s; }
+  .shot:hover { transform: translateY(-4px); border-color: var(--js); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot span { position: absolute; right: 0; left: 0; bottom: 0; padding: 6px 10px; font-size: 12.5px; background: rgba(10,10,10,.85); color: #e4e4e7; }
+
+  html, body { overflow-x: hidden; max-width: 100%; }
+  pre, code, table { max-width: 100%; }
+
+  /* code teaser */
+  .teaser { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+  .win { direction: ltr; text-align: left; border-radius: 14px; overflow: hidden; background: #0d1117; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+  .win-head { display: flex; align-items: center; gap: 7px; padding: 10px 14px; background: #161b22; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 12px; color: #8b949e; }
+  .d { width: 10px; height: 10px; border-radius: 50%; } .d.r{background:#f87171} .d.y{background:#fbbf24} .d.g{background:#34d399}
+  .win pre { margin: 0; padding: 16px 18px; font-family: var(--mono); font-size: 13px; line-height: 1.65; color: #e6edf3; overflow-x: hidden; font-variant-ligatures: none; white-space: pre-wrap; overflow-wrap: anywhere; tab-size: 2; }
+  .k{color:#ff7b72} .s{color:#a5d6ff} .f{color:#d2a8ff} .t{color:#ffa657} .tag{color:#7ee787} .a{color:#79c0ff} .cm{color:#8b949e;font-style:italic}
+  .teaser ul { list-style: none; padding: 0; margin: 14px 0 0; color: #d4d4d8; font-size: 15px; }
+  .teaser li { padding: 6px 0; padding-right: 26px; position: relative; }
+  .teaser li::before { content: "◆"; position: absolute; right: 4px; color: var(--js); font-size: 10px; top: 10px; }
+  @media (max-width: 900px) { .teaser { grid-template-columns: 1fr; } }
+
+  /* author */
+  .author { display: flex; gap: 22px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px 26px; flex-wrap: wrap; }
+  .author img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--js); box-shadow: 0 0 0 6px rgba(247,223,30,.15); }
+  .author h3 { margin: 0; font-size: 22px; }
+  .author p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+  .links { display: flex; gap: 10px; margin-right: auto; flex-wrap: wrap; }
+
+  footer { padding: 36px 0 44px; color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--line); margin-top: 30px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tags span { font-family: var(--mono); font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: #d4d4d8; direction: ltr; }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Book","name":"مرجع جامع و حرفه‌ای JavaScript ES2025","inLanguage":"fa","bookFormat":"EBook","isAccessibleForFree":true,
+ "author":{"@type":"Person","name":"محمدرضا رضائیان","url":"https://github.com/rezaian-dev"},"datePublished":"2026-09","license":"https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "url":"https://rezaian-dev.github.io/javascript-persian-guide/","image":"./assets/page-cover.jpg","about":["JavaScript","TypeScript","Node.js"]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">پرش به محتوا</a>
+<div class="sky"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img class="logo" src="assets/js-logo-64.png" alt="JavaScript Official Logo" width="36" height="36">
+      <span><span class="brand-t">مرجع جامع </span><span class="v">JavaScript</span></span>
+    </a>
+    <ul>
+      <li><a href="#why">چرا این کتاب</a></li>
+      <li><a href="#parts">فهرست</a></li>
+      <li><a href="#preview">پیش‌نمایش</a></li>
+      <li><a href="#author">نویسنده</a></li>
+    </ul>
+    <a class="btn btn-primary" href="pdf/JavaScript-Persian-Guide.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+      دانلود PDF
+    </a>
+  </div>
+</nav>
+
+<main id="main">
+<header class="wrap hero" id="top">
+  <div>
+    <div class="kicker" style="display:flex;align-items:center;gap:10px;justify-content:flex-start;flex-direction:row-reverse;">
+      <span>PERSIAN DEVELOPER HANDBOOK</span>
+      <img src="assets/js-logo-32.png" alt="JS" width="24" height="24" style="border-radius:4px;background:#f7df1e;padding:2px;">
+    </div>
+    <h1>مرجع جامع و حرفه‌ای<br><span class="en" style="display:inline-flex;align-items:center;gap:12px;"><img src="assets/js-logo-64.png" alt="JavaScript" width="48" height="48" style="border-radius:8px;background:#f7df1e;padding:4px;box-shadow:0 4px 12px rgba(247,223,30,.25);"> JavaScript <b>ES2025</b></span></h1>
+    <p class="sub">از مبانی تا معماری <b>Production-Level</b></p>
+    <p class="lead">کتابی رایگان و پروژه‌محور برای توسعه‌دهندگان فارسی‌زبان؛ با تمرکز بر مدل ذهنی درست، موتور V8، Event Loop، Closure، Proxy، Performance، Security و استانداردهای واقعی صنعت — به‌همراه کارگاه ۸ پروژه و ۵۰ پرسش مصاحبه FAANG.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="pdf/JavaScript-Persian-Guide.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        دانلود رایگان PDF
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/rezaian-dev/react-19-persian-guide" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+        گیت‌هاب
+      </a>
+      <small>PDF رنگی · نسخه چاپی · EPUB به‌زودی</small>
+    </div>
+    <div class="stats">
+      <span class="stat"><b>۳۸</b> فصل</span>
+      <span class="stat"><b>۴۰۰+</b> صفحه</span>
+      <span class="stat"><b>۸</b> مینی‌پروژه</span>
+      <span class="stat"><b>۵۰</b> پرسش مصاحبه</span>
+      <span class="stat"><b>۱۴۰+</b> اصطلاح در واژه‌نامه</span>
+    </div>
+  </div>
+  <div class="book"><img src="assets/page-cover.jpg" alt="جلد کتاب مرجع جامع JavaScript" width="800" height="1130" fetchpriority="high" decoding="async"></div>
+</header>
+
+<section id="why" class="wrap">
+  <h2>چرا این کتاب؟</h2>
+  <p class="desc">جاوااسکریپت را نمی‌توان با حفظ‌کردن متد یاد گرفت. این کتاب به‌جای فهرست‌کردن APIها، مدل ذهنی می‌سازد و هر مفهوم را با کد واقعی، اشتباه رایج و سؤال مصاحبه‌اش تثبیت می‌کند.</p>
+  <div class="grid">
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H12l-1 8.5 8.5-11.5H12z"/></svg></div><h3>به‌روز با ES2025</h3><p>Object.groupBy، Promise.withResolvers، Array.fromAsync، Import Attributes، Decorator، using، Set Methods — با تفکیک دقیق مدرن از Legacy.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div><h3>معماری و Clean Code</h3><p>ساختار ماژولار، الگوهای GoF، Clean Architecture، FP، Observer، Factory، Strategy — با مثال‌های واقعی Production.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 4l-4 16"/></svg></div><h3>پروژه‌محور</h3><p>۸ مینی‌پروژه واقعی: Debounce Search، EventEmitter، Promise Pool، Virtual List، Undo/Redo با Proxy، Fetch با Retry/Cache، Kanban Drag&Drop.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Production Ready</h3><p>تست با Vitest/Playwright، امنیت و CSP، XSS، Prototype Pollution، Performance و V8 Internals، Memory Leak، Bundlerها.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div><h3>آمادگی مصاحبه FAANG</h3><p>در پایان هر فصل جعبه‌ی سؤالات مصاحبه با پاسخ در سه سطح Junior / Mid / Senior، به‌علاوه ۵۰ پرسش جمع‌بندی و جدول تمرین‌های Live Coding.</p></div>
+    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg></div><h3>فارسی روان و حرفه‌ای</h3><p>صفحه‌آرایی راست‌به‌چپ، فونت وزیرمتن، کدهای خوانا با JetBrains Mono، جعبه‌های رنگی نکته/هشدار/پروژه و واژه‌نامه ۱۴۰ مدخلی فارسی–انگلیسی.</p></div>
+  </div>
+</section>
+
+<section id="parts" class="wrap">
+  <h2>فهرست کتاب در یک نگاه</h2>
+  <p class="desc">۳۸ فصل در چهار بخش — از اولین متغیر تا معماری Production.</p>
+  <div class="parts">
+    <div class="part"><div class="n">PART 01</div><h3>بنیادها و مدل ذهنی</h3><div class="ch">فصل‌های ۱ تا ۱۲</div>
+      <ol><li>معرفی جاوااسکریپت و نقشه راه ۲۰۲۶</li><li>محیط توسعه مدرن</li><li>انواع داده و سیستم نوع</li><li>متغیرها، Scope و Hoisting</li><li>عملگرها و کنترل جریان</li><li>توابع — قلب JS</li><li>کلژر و زنجیره Scope</li><li>اشیا و پروتوتایپ</li><li>آرایه‌ها — فراتر از لیست</li><li>رشته‌ها و Regex</li><li>this — راز بزرگ</li><li>مقدمه Async — Callback تا Promise</li></ol></div>
+    <div class="part"><div class="n">PART 02</div><h3>جاوااسکریپت مدرن و عمیق</h3><div class="ch">فصل‌های ۱۳ تا ۲۴</div>
+      <ol start="13"><li>Destructuring، Spread و Rest</li><li>Iterator و Generator</li><li>Promise پیشرفته و Async/Await</li><li>Event Loop و مدل همزمانی</li><li>ماژول‌ها — ESM و CJS عمیق</li><li>کلاس‌ها و OOP در JS</li><li>مدیریت خطا — حرفه‌ای</li><li>کالکشن‌های پیشرفته — Map, Set</li><li>Proxy و Reflect — متاپروگرامینگ</li><li>برنامه‌نویسی فانکشنال</li><li>DOM و BOM</li><li>Fetch، Storage و APIهای مرورگر</li></ol></div>
+    <div class="part"><div class="n">PART 03</div><h3>پیشرفته، معماری و Production</h3><div class="ch">فصل‌های ۲۵ تا ۳۲</div>
+      <ol start="25"><li>پرفورمنس و بهینه‌سازی — V8</li><li>حافظه و Garbage Collection</li><li>امنیت در جاوااسکریپت</li><li>تست‌نویسی مدرن — Vitest</li><li>ابزارها و باندلرها — Vite</li><li>TypeScript و تعامل با JS</li><li>الگوها و معماری تمیز</li><li>متاپروگرامینگ پیشرفته</li></ol></div>
+    <div class="part"><div class="n">PART 04</div><h3>کارگاه، نکات طلایی و مصاحبه</h3><div class="ch">فصل‌های ۳۳ تا ۳۸</div>
+      <ol start="33"><li>۳۰ نکته و ترفند طلایی</li><li>کارگاه ۸ مینی‌پروژه</li><li>۲۰ اشتباه رایج و راه‌حل</li><li>۵۰ پرسش مصاحبه — Junior تا Senior</li><li>واژه‌نامه فارسی–انگلیسی ۱۴۰ اصطلاح</li><li>نقشه راه بعد از کتاب</li></ol></div>
+  </div>
+</section>
+
+<section id="preview" class="wrap">
+  <h2>پیش‌نمایش صفحات</h2>
+  <p class="desc">نمونه‌هایی از صفحه‌آرایی کتاب — فهرست، Event Loop، Proxy، کارگاه و مصاحبه.</p>
+  <div class="shots">
+    <a class="shot" href="assets/page-toc.jpg" target="_blank"><img src="assets/page-toc.jpg" width="800" height="1130" alt="فهرست مطالب" loading="lazy"><span>فهرست مطالب</span></a>
+    <a class="shot" href="assets/page-chapter.jpg" target="_blank"><img src="assets/page-chapter.jpg" width="800" height="1130" alt="Event Loop" loading="lazy"><span>Event Loop و همزمانی</span></a>
+    <a class="shot" href="assets/page-code.jpg" target="_blank"><img src="assets/page-code.jpg" width="800" height="1130" alt="Proxy" loading="lazy"><span>Proxy و متاپروگرامینگ</span></a>
+    <a class="shot" href="assets/page-workshop.jpg" target="_blank"><img src="assets/page-workshop.jpg" width="800" height="1130" alt="کارگاه" loading="lazy"><span>کارگاه مینی‌پروژه‌ها</span></a>
+    <a class="shot" href="assets/page-interview.jpg" target="_blank"><img src="assets/page-interview.jpg" width="800" height="1130" alt="مصاحبه" loading="lazy"><span>پرسش‌های مصاحبه FAANG</span></a>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="teaser">
+    <div>
+      <h2>کدی که در کتاب می‌خوانید</h2>
+      <p class="desc">هر مثال، کد واقعی و قابل‌اجرا با TypeScript است؛ نه شبه‌کد. الگوی مدرن ۲۰۲۵:</p>
+      <ul>
+        <li><b>Closure & Memo</b> — کش هوشمند با Map و WeakMap</li>
+        <li><b>Event Loop</b> — درک Microtask vs Macrotask</li>
+        <li><b>Proxy Reactive</b> — پایه Vue 3 Reactivity در ۱۰ خط</li>
+        <li><b>Performance</b> — Monomorphic، Hidden Classes، Deopt</li>
+      </ul>
+    </div>
+    <div class="win">
+      <div class="win-head"><span class="d r"></span><span class="d y"></span><span class="d g"></span>&nbsp; src/core/reactive.js</div>
+<pre tabindex="0" aria-label="نمونه کد reactive"><span class="k">function</span> <span class="f">reactive</span>(obj) {
+  <span class="k">return new</span> <span class="f">Proxy</span>(obj, {
+    <span class="f">get</span>(t, p, r) {
+      <span class="f">track</span>(t, p); <span class="cm">// ثبت وابستگی</span>
+      <span class="k">return</span> Reflect.<span class="f">get</span>(t, p, r);
+    },
+    <span class="f">set</span>(t, p, v, r) {
+      <span class="k">const</span> res = Reflect.<span class="f">set</span>(t, p, v, r);
+      <span class="f">trigger</span>(t, p); <span class="cm">// اجرای افکت</span>
+      <span class="k">return</span> res;
+    }
+  });
+}
+
+<span class="k">const</span> state = <span class="f">reactive</span>({ count: <span class="t">0</span> });
+<span class="f">effect</span>(() => console.<span class="f">log</span>(state.count));
+state.count++; <span class="cm">// → 1 — خودکار!</span></pre>
+    </div>
+  </div>
+</section>
+
+<section id="author" class="wrap">
+  <h2>نویسنده</h2>
+  <div class="author">
+    <div style="position: relative; flex: none;">
+      <img src="assets/avatar.png" width="120" height="120" alt="نویسنده مرجع JavaScript" style="width:120px;height:120px;border-radius:50%;border:3px solid var(--js);box-shadow:0 0 0 8px rgba(247,223,30,.12), 0 8px 24px rgba(0,0,0,.4);object-fit:cover;display:block;">
+      <span style="position:absolute;bottom:2px;right:2px;width:28px;height:28px;background:var(--js);border-radius:50%;display:grid;place-items:center;font-size:14px;border:2px solid #000;">✓</span>
+    </div>
+    <div style="flex:1; min-width:240px;">
+      <h3>مرجع جاوااسکریپت فارسی — نسخه حرفه‌ای</h3>
+      <p style="font-weight:600;color:#e4e4e7;">JavaScript Developer · ES2025 · TypeScript · Node.js · V8 · Performance · Architecture</p>
+      <p>گردآوری و تدوین این مرجع با هدف ارتقای سطح دانش عمیق JavaScript در جامعه فارسی‌زبان انجام شده است — با الگوبرداری از بهترین مراجع جهانی و تمرکز بر مدل ذهنی درست، یادگیری فعال، و آمادگی کامل برای بازار کار.</p>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:999px;background:rgba(247,223,30,.12);border:1px solid rgba(247,223,30,.25);color:var(--js);">ES2025 Expert</span>
+        <span style="font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:999px;background:rgba(161,161,170,.08);border:1px solid var(--line);color:#d4d4d8;">V8 Internals</span>
+        <span style="font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:999px;background:rgba(161,161,170,.08);border:1px solid var(--line);color:#d4d4d8;">Performance</span>
+      </div>
+    </div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/rezaian-dev" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://github.com/rezaian-dev/react-19-persian-guide" target="_blank" rel="noopener">مرجع React 19</a>
+      <a class="btn btn-primary" href="pdf/JavaScript-Persian-Guide.pdf" download style="padding:10px 16px;">دانلود رزومه کتاب</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© ۲۰۲۶ مرجع جامع JavaScript · منتشرشده تحت مجوز CC BY-NC-SA 4.0 · ⭐ اگر مفید بود، با دوستان به اشتراک بگذار</div>
+    <div class="tags"><span>JavaScript ES2025</span><span>TypeScript 6</span><span>Node.js 22</span><span>V8 Engine</span></div>
+  </div>
+</footer>
+</body>
+</html>

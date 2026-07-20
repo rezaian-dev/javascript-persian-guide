@@ -1,0 +1,38 @@
+# Build artifacts
+src/build/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+Thumbs.db
+
+# Node / dependencies
+node_modules/
+dist/
+out/
+.next/
+.nuxt/
+.turbo/
+.cache/
+.parcel-cache/
+
+# Env
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+ehthumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# WeasyPrint temp
+*.pdf.tmp
