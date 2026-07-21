@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="./docs/assets/page-cover.jpg" alt="مرجع جامع JavaScript — از مبانی تا معماری Production-Level" width="660" />
+<img src="./src/banner/banner.png" alt="مرجع جامع JavaScript ES2025 — از مبانی تا معماری Production-Level" width="100%" />
 
 </div>
 
@@ -12,7 +12,7 @@
 
 **از مبانی تا معماری Production-Level** — کامل‌ترین مرجع فارسی JavaScript مدرن، پروژه‌محور و بر پایه مدل ذهنی درست.
 
-<sub>ویرایش ۱.۰.۰ · ۲۰۲۶</sub>
+<sub>ویرایش ۱.۰.۰ · ۲۰۲۶ · نویسنده: محمدرضا رضائیان</sub>
 
 </div>
 
@@ -21,19 +21,38 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES2025-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-22-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![V8](https://img.shields.io/badge/V8_Engine-Performance-FFCA28?style=for-the-badge&logo=v8&logoColor=black)
 ![Chapters](https://img.shields.io/badge/38_chapters-4_parts-0f172a?style=for-the-badge)
+![Pages](https://img.shields.io/badge/400+_pages-A4-1e293b?style=for-the-badge)
 ![License](https://img.shields.io/badge/CC--BY--NC--SA-4.0-888888?style=for-the-badge)
 
 <br>
 
 [![📘 دانلود PDF](https://img.shields.io/badge/📘_Download_PDF-ES2025-2563eb?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](./docs/pdf/JavaScript-Persian-Guide.pdf)
-[![🌐 صفحه معرفی](https://img.shields.io/badge/🌐_Live_site-preview_%26_downloads-eab308?style=for-the-badge&logo=githubpages&logoColor=black)](./docs/index.html)
+[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_site-preview_%26_downloads-eab308?style=for-the-badge&logo=githubpages&logoColor=black)](https://rezaian-dev.github.io/javascript-persian-guide/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rezaian-dev/javascript-persian-guide)
 
 </div>
 
 ---
 
 <div dir="rtl">
+
+| | |
+|:--|:--|
+| [📖 چرا این مرجع؟](#why) | [📚 فصل‌ها](#parts) |
+| [📌 کتاب در یک نگاه](#amar) | [📥 دانلود](#download) |
+| [🎯 برای چه کسی است؟](#for-whom) | [🛠️ ساخت از سورس](#build) |
+| [🗺️ مسیرهای خواندن](#paths) | [👀 پیش‌نمایش](#preview) |
+| [👤 نویسنده](#author) | [📄 مجوز](#license) |
+
+</div>
+
+---
+
+<div dir="rtl">
+
+<a id="why"></a>
 
 ## ✨ چرا این مرجع؟
 
@@ -43,7 +62,7 @@
 
 ### ⚡ به‌روز با ES2025 و V8
 
-همه قابلیت‌های مدرن پوشش داده شده: `Object.groupBy`، `Promise.withResolvers`، `Array.fromAsync`، Decorators، `using`، Set Methods، `structuredClone`، `AbortSignal.timeout` — هرچه پایدار است آموزش داده می‌شود.
+همه قابلیت‌های مدرن پوشش داده شده: `Object.groupBy`، `Promise.withResolvers`، `Array.fromAsync`، Import Attributes، Decorators، `using`، Set Methods، `structuredClone`، `AbortSignal.timeout` — هرچه پایدار است آموزش داده می‌شود و Legacy با برچسب مشخص شده.
 
 ### 🔬 ۲۰ اشتباه رایج، کالبدشکافی‌شده
 
@@ -59,19 +78,24 @@
 
 <div dir="rtl">
 
+<a id="amar"></a>
+
 ## 📌 کتاب در یک نگاه
 
 | شاخص | مقدار | شاخص | مقدار |
 |:--|:--:|:--|:--:|
 | فصل در ۴ بخش | ۳۸ | نکته طلایی | ۳۰ |
-| مینی‌پروژه در کارگاه | ۸ | اشتباه رایج با راه‌حل | ۲۰ |
-| پرسش مصاحبه | ۵۰ | مدخل واژه‌نامه | ۱۴۰ |
+| صفحه A4 رنگی | ۴۰۰+ | اشتباه رایج با راه‌حل | ۲۰ |
+| مینی‌پروژه در کارگاه | ۸ | مدخل واژه‌نامه | ۱۴۰+ |
+| پرسش مصاحبه | ۵۰ | نسخه منتشرشده | ۱.۰.۰ |
 
 </div>
 
 ---
 
 <div dir="rtl">
+
+<a id="for-whom"></a>
 
 ## 🎯 برای چه کسی است؟
 
@@ -88,6 +112,30 @@
 
 <div dir="rtl">
 
+<a id="parts"></a>
+
+## 📚 فهرست کتاب — ۳۸ فصل در ۴ بخش
+
+### بخش ۱: بنیادها و مدل ذهنی (۱ تا ۱۲)
+معرفی، محیط توسعه، انواع داده، متغیرها و Scope، عملگرها، توابع، Closure، اشیا و Prototype، آرایه‌ها، رشته و Regex، this، مقدمه Async
+
+### بخش ۲: جاوااسکریپت مدرن و عمیق (۱۳ تا ۲۴)
+Destructuring، Iterator و Generator، Promise پیشرفته، Event Loop، ماژول‌ها ESM/CJS، کلاس‌ها و OOP، مدیریت خطا، Map/Set، Proxy و Reflect، Functional Programming، DOM و BOM، Fetch و Storage
+
+### بخش ۳: پیشرفته، معماری و Production (۲۵ تا ۳۲)
+Performance و V8، Memory و GC، امنیت، تست‌نویسی Vitest، ابزارها و Bundlerها، TypeScript، الگوها و معماری تمیز، متاپروگرامینگ
+
+### بخش ۴: کارگاه، نکات طلایی و مصاحبه (۳۳ تا ۳۸)
+۳۰ نکته طلایی، کارگاه ۸ پروژه، ۲۰ اشتباه رایج، ۵۰ پرسش مصاحبه، واژه‌نامه ۱۴۰ اصطلاح، نقشه راه
+
+</div>
+
+---
+
+<div dir="rtl">
+
+<a id="paths"></a>
+
 ## 🗺️ مسیرهای خواندن
 
 | مسیر | فصل‌ها | چه چیزی می‌گیرید |
@@ -103,17 +151,23 @@
 
 <div dir="rtl">
 
-## 🛠️ ساخت از سورس
+<a id="preview"></a>
 
-```bash
-cd src
-pip install -r requirements.txt
-python build.py --html   # فقط HTML
-python build.py          # PDF رنگی
-python build.py --print  # PDF سیاه‌سفید
-```
+## 👀 پیش‌نمایش صفحات
 
-خروجی در `docs/pdf/` و `src/build/` تولید می‌شود.
+</div>
+
+<div align="center">
+
+<img src="./docs/assets/page-cover.jpg" alt="جلد کتاب" width="360" style="border-radius:12px; box-shadow: 0 20px 40px rgba(0,0,0,.3);" />
+
+<br><br>
+
+<img src="./docs/assets/page-toc.jpg" width="180" style="border-radius:8px; margin:4px; border:1px solid #e2e8f0;" />
+<img src="./docs/assets/page-chapter.jpg" width="180" style="border-radius:8px; margin:4px; border:1px solid #e2e8f0;" />
+<img src="./docs/assets/page-code.jpg" width="180" style="border-radius:8px; margin:4px; border:1px solid #e2e8f0;" />
+<img src="./docs/assets/page-workshop.jpg" width="180" style="border-radius:8px; margin:4px; border:1px solid #e2e8f0;" />
+<img src="./docs/assets/page-interview.jpg" width="180" style="border-radius:8px; margin:4px; border:1px solid #e2e8f0;" />
 
 </div>
 
@@ -121,11 +175,95 @@ python build.py --print  # PDF سیاه‌سفید
 
 <div dir="rtl">
 
-## 👤 نویسنده و مجوز
+<a id="download"></a>
 
-گردآوری و تدوین با هدف کمک به جامعه توسعه‌دهندگان فارسی‌زبان — با الگوبرداری از مرجع حرفه‌ای React 19.
+## 📥 دانلود
 
-مجوز: CC BY-NC-SA 4.0 — استفاده غیرتجاری با ذکر منبع آزاد است.
+| نسخه | لینک | توضیح |
+|:--|:--|:--|
+| **PDF رنگی** | [JavaScript-Persian-Guide.pdf](./docs/pdf/JavaScript-Persian-Guide.pdf) | ۴۰۰+ صفحه، کامل، رنگی، مناسب مطالعه دیجیتال |
+| **وب‌سایت معرفی** | [Live Site](https://rezaian-dev.github.io/javascript-persian-guide/) | پیش‌نمایش صفحات، دانلود مستقیم، معرفی فصل‌ها |
+
+</div>
+
+---
+
+<div dir="rtl">
+
+<a id="build"></a>
+
+## 🛠️ ساخت از سورس
+
+```bash
+cd src
+pip install -r requirements.txt
+python build.py --html   # فقط HTML برای پیش‌نمایش سریع
+python build.py          # PDF رنگی اصلی
+python build.py --print  # نسخه سیاه‌سفید برای چاپ
+```
+
+خروجی:
+- `docs/pdf/JavaScript-Persian-Guide.pdf`
+- `src/build/book.html` (موقت، gitignore)
+
+نیازمندی‌ها: Python 3.10+، WeasyPrint، Vazirmatn و JetBrains Mono (در `src/fonts/` موجود است)
+
+</div>
+
+---
+
+<div dir="rtl">
+
+<a id="author"></a>
+
+## 👤 نویسنده
+
+</div>
+
+<div dir="rtl" style="display:flex; gap:20px; align-items:center; background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:20px; flex-wrap:wrap;">
+
+<img src="./docs/assets/avatar.png" alt="محمدرضا رضائیان" width="96" height="96" style="border-radius:50%; border:3px solid #f7df1e; box-shadow: 0 0 0 6px rgba(247,223,30,.15);" />
+
+<div style="flex:1; min-width:240px;">
+
+### محمدرضا رضائیان — Mohammadreza Rezaian
+
+**Front-End Developer · JavaScript ES2025 · TypeScript · Node.js · V8 · Performance · Architecture**
+
+گردآوری و تدوین این مرجع با هدف ارتقای سطح دانش عمیق JavaScript در جامعه فارسی‌زبان انجام شده — با الگوبرداری از بهترین مراجع جهانی و تمرکز بر مدل ذهنی درست، یادگیری فعال و آمادگی کامل برای بازار کار Production-Level.
+
+<div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+<span style="font-family:monospace; font-size:11px; padding:4px 10px; border-radius:999px; background:#fefce8; border:1px solid #fde68a; color:#854d0e;">ES2025 Expert</span>
+<span style="font-family:monospace; font-size:11px; padding:4px 10px; border-radius:999px; background:#f0f9ff; border:1px solid #bae6fd; color:#0c4a6e;">V8 Internals</span>
+<span style="font-family:monospace; font-size:11px; padding:4px 10px; border-radius:999px; background:#f0fdf4; border:1px solid #bbf7d0; color:#14532d;">Performance</span>
+<span style="font-family:monospace; font-size:11px; padding:4px 10px; border-radius:999px; background:#faf5ff; border:1px solid #e9d5ff; color:#581c87;">Clean Architecture</span>
+</div>
+
+</div>
+
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+[![GitHub](https://img.shields.io/badge/GitHub-rezaian--dev-181717?style=flat&logo=github)](https://github.com/rezaian-dev)
+[![React Guide](https://img.shields.io/badge/React_19_Guide-View-61DAFB?style=flat&logo=react&logoColor=black)](https://github.com/rezaian-dev/react-19-persian-guide)
+[![Live Site](https://img.shields.io/badge/Live_Site-Visit-eab308?style=flat&logo=githubpages&logoColor=black)](https://rezaian-dev.github.io/javascript-persian-guide/)
+
+</div>
+
+</div>
+
+---
+
+<div dir="rtl">
+
+<a id="license"></a>
+
+## 📄 مجوز
+
+این اثر تحت مجوز **CC BY-NC-SA 4.0** منتشر شده — استفاده غیرتجاری با ذکر منبع آزاد است.
+
+- ✅ اشتراک‌گذاری و اقتباس با ذکر نویسنده
+- ❌ استفاده تجاری بدون اجازه
+- 🔁 انتشار اقتباس با همین مجوز
 
 </div>
 
@@ -138,5 +276,7 @@ python build.py --print  # PDF سیاه‌سفید
 ```js
 console.log("JavaScript is love — when you understand it deeply");
 ```
+
+[⬆️ بازگشت به بالا](#top)
 
 </div>
