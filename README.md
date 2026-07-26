@@ -23,13 +23,14 @@
 ![Node.js](https://img.shields.io/badge/Node.js-22-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![V8](https://img.shields.io/badge/V8_Engine-Performance-FFCA28?style=for-the-badge&logo=v8&logoColor=black)
 ![Chapters](https://img.shields.io/badge/38_chapters-4_parts-0f172a?style=for-the-badge)
-![Pages](https://img.shields.io/badge/400+_pages-A4-1e293b?style=for-the-badge)
+![Pages](https://img.shields.io/badge/156_pages-A4-1e293b?style=for-the-badge)
 ![License](https://img.shields.io/badge/CC--BY--NC--SA-4.0-888888?style=for-the-badge)
 
 <br>
 
-[![📘 دانلود PDF](https://img.shields.io/badge/📘_Download_PDF-ES2025-2563eb?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](./docs/pdf/JavaScript-Persian-Guide.pdf)
-[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_site-preview_%26_downloads-eab308?style=for-the-badge&logo=githubpages&logoColor=black)](https://rezaian-dev.github.io/javascript-persian-guide/)
+[![📘 دانلود PDF](https://img.shields.io/badge/📘_Download_PDF-156_pages-2563eb?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](./docs/pdf/JavaScript-Persian-Guide.pdf)
+[![📱 دانلود EPUB](https://img.shields.io/badge/📱_Download_EPUB-204KB-7c3aed?style=for-the-badge&logo=applebooks&logoColor=white)](./docs/pdf/JavaScript-Persian-Guide.epub)
+[![🌐 Live Demo](https://img.shields.io/badge/🌐_Live_site-responsive_320px+-eab308?style=for-the-badge&logo=githubpages&logoColor=black)](https://rezaian-dev.github.io/javascript-persian-guide/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rezaian-dev/javascript-persian-guide)
 
 </div>
@@ -80,14 +81,15 @@
 
 <a id="amar"></a>
 
-## 📌 کتاب در یک نگاه
+## 📌 کتاب در یک نگاه — آمار واقعی
 
-| شاخص | مقدار | شاخص | مقدار |
+| شاخص | مقدار واقعی | شاخص | مقدار واقعی |
 |:--|:--:|:--|:--:|
 | فصل در ۴ بخش | ۳۸ | نکته طلایی | ۳۰ |
-| صفحه A4 رنگی | ۴۰۰+ | اشتباه رایج با راه‌حل | ۲۰ |
+| صفحه A4 رنگی | ۱۵۶ | اشتباه رایج با راه‌حل | ۲۰ |
 | مینی‌پروژه در کارگاه | ۸ | مدخل واژه‌نامه | ۱۴۰+ |
 | پرسش مصاحبه | ۵۰ | نسخه منتشرشده | ۱.۰.۰ |
+| حجم PDF | ۲.۲MB | حجم EPUB | ۲۰۴KB |
 
 </div>
 
@@ -177,12 +179,13 @@ Performance و V8، Memory و GC، امنیت، تست‌نویسی Vitest، ا�
 
 <a id="download"></a>
 
-## 📥 دانلود
+## 📥 دانلود — نسخه‌های واقعی
 
-| نسخه | لینک | توضیح |
+| نسخه | لینک | توضیح واقعی |
 |:--|:--|:--|
-| **PDF رنگی** | [JavaScript-Persian-Guide.pdf](./docs/pdf/JavaScript-Persian-Guide.pdf) | ۴۰۰+ صفحه، کامل، رنگی، مناسب مطالعه دیجیتال |
-| **وب‌سایت معرفی** | [Live Site](https://rezaian-dev.github.io/javascript-persian-guide/) | پیش‌نمایش صفحات، دانلود مستقیم، معرفی فصل‌ها |
+| **PDF رنگی** | [JavaScript-Persian-Guide.pdf](./docs/pdf/JavaScript-Persian-Guide.pdf) | ۱۵۶ صفحه، ۲.۲MB، کامل، رنگی، مناسب مطالعه دیجیتال |
+| **EPUB** | [JavaScript-Persian-Guide.epub](./docs/pdf/JavaScript-Persian-Guide.epub) | ۳۸ فصل، ۲۰۴KB، مناسب موبایل و کتابخوان |
+| **وب‌سایت معرفی** | [Live Site](https://rezaian-dev.github.io/javascript-persian-guide/) | پیش‌نمایش صفحات با کیفیت بالا، دانلود مستقیم، کاملاً ریسپانسیو از 320px |
 
 </div>
 
