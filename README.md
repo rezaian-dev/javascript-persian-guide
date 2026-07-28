@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="./src/banner/banner.png" alt="مرجع جامع JavaScript ES2025 — از مبانی تا معماری Production-Level" width="100%" />
+<img src="./src/banner/hero-banner.png" alt="مرجع جامع JavaScript ES2025 — از مبانی تا معماری Production-Level" width="100%" />
 
 </div>
 
@@ -225,7 +225,7 @@ python build.py --print  # نسخه سیاه‌سفید برای چاپ
 
 <div dir="rtl" style="display:flex; gap:20px; align-items:center; background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:20px; flex-wrap:wrap;">
 
-<img src="./docs/assets/avatar.png" alt="محمدرضا رضائیان" width="96" height="96" style="border-radius:50%; border:3px solid #f7df1e; box-shadow: 0 0 0 6px rgba(247,223,30,.15);" />
+<img src="./docs/assets/author-avatar.png" alt="محمدرضا رضائیان" width="120" height="120" style="border-radius:50%; object-fit:cover; object-position:center 20%; border:3px solid #f7df1e; box-shadow: 0 0 0 6px rgba(247,223,30,.15);" />
 
 <div style="flex:1; min-width:240px;">
 
