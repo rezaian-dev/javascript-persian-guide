@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="./src/banner/hero-banner.png" alt="مرجع جامع JavaScript ES2025 — از مبانی تا معماری Production-Level" width="100%" />
+<img src="./src/banner/hero-banner-clean.png" alt="مرجع جامع JavaScript ES2025 — از مبانی تا معماری Production-Level" width="100%" />
 
 </div>
 
