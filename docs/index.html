@@ -1,407 +1,350 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مرجع جامع JavaScript — کتاب فارسی رایگان | JavaScript ES2025</title>
-<meta name="description" content="کامل‌ترین مرجع فارسی JavaScript ES2025: ۳۸ فصل، ۱۵۶ صفحه، از مبانی تا معماری Production-Level، Event Loop، Proxy، Performance، Security، تست، ۵۰ پرسش مصاحبه FAANG. دانلود رایگان PDF و EPUB.">
-<meta property="og:title" content="مرجع جامع JavaScript — کتاب فارسی رایگان">
-<meta property="og:description" content="۳۸ فصل · ۱۵۶ صفحه · از مبانی تا معماری Production-Level · دانلود رایگان PDF">
-<meta property="og:image" content="./assets/social-card.jpg">
-<meta property="og:image:width" content="1280">
-<meta property="og:image:height" content="640">
-<meta property="og:url" content="https://rezaian-dev.github.io/javascript-persian-guide/">
-<meta property="og:locale" content="fa_IR">
-<meta property="og:type" content="book">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="مرجع جامع JavaScript — کتاب فارسی رایگان">
-<meta name="twitter:description" content="۳۸ فصل · از مبانی تا معماری Production-Level · دانلود رایگان PDF">
-<meta name="twitter:image" content="./assets/social-card.jpg">
-<meta name="theme-color" content="#0a0a0a">
-<link rel="canonical" href="https://rezaian-dev.github.io/javascript-persian-guide/">
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/js-logo-32.png">
-<link rel="icon" type="image/png" sizes="64x64" href="./assets/js-logo-64.png">
-<link rel="icon" type="image/png" sizes="128x128" href="./assets/js-logo-128.png">
-<link rel="apple-touch-icon" href="./assets/js-logo-official.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0a0a; --bg2: #111111; --card: rgba(23,23,23,.88); --line: rgba(161,161,170,.18);
-    --ink: #e4e4e7; --muted: #a1a1aa; --accent: #f7df1e; --accent2: #eab308;
-    --js: #f7df1e;
-    --sans: "Vazirmatn", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--bg); line-height: 1.9; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  a { color: inherit; }
-  img { max-width: 100%; height: auto; }
-  .skip { position: absolute; top: -100px; right: 16px; z-index: 20; padding: 8px 14px; border-radius: 8px; background: var(--js); color: #000; font-weight: 700; text-decoration: none; }
-  .skip:focus { top: 12px; }
-  :focus-visible { outline: 2px solid var(--js); outline-offset: 3px; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } .book img { transform: none !important; } }
-  .wrap { width: 92%; max-width: 1120px; margin: 0 auto; }
-  @media (max-width: 480px) { .wrap { width: 94%; } }
-  @media (max-width: 360px) { .wrap { width: 96%; } }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>مرجع فارسی JavaScript ES2025 | دانلود رایگان PDF</title>
+  <meta name="description" content="مرجع فارسی JavaScript ES2025 در ۳۸ فصل؛ از مبانی و مدل ذهنی تا Event Loop، V8، امنیت، تست، TypeScript و معماری. دانلود رایگان PDF و EPUB.">
+  <link rel="canonical" href="https://rezaian-dev.github.io/javascript-persian-guide/">
+  <meta name="theme-color" content="#050816">
 
-  /* background */
-  .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden;
-    background: radial-gradient(ellipse 60% 50% at 15% 15%, rgba(247,223,30,.18), transparent 70%),
-                radial-gradient(ellipse 50% 40% at 85% 10%, rgba(234,179,8,.18), transparent 70%),
-                radial-gradient(ellipse 70% 30% at 50% 100%, rgba(202,138,4,.10), transparent 70%),
-                linear-gradient(180deg, #0a0a0a, #141414 50%, #0a0a0a); }
-  .sky::after { content: ""; position: absolute; left: -20%; right: -20%; bottom: -10%; height: 55%; opacity: .35;
-    background-image: linear-gradient(rgba(247,223,30,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(247,223,30,.12) 1px, transparent 1px);
-    background-size: 56px 56px; transform: perspective(700px) rotateX(62deg); transform-origin: 50% 100%;
-    -webkit-mask-image: linear-gradient(180deg, transparent, #000 60%); mask-image: linear-gradient(180deg, transparent, #000 60%); }
+  <meta property="og:type" content="book">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:site_name" content="Persian Developer Handbook">
+  <meta property="og:title" content="مرجع فارسی JavaScript ES2025">
+  <meta property="og:description" content="مرجع فارسی JavaScript ES2025 در ۳۸ فصل؛ از مبانی و مدل ذهنی تا Event Loop، V8، امنیت، تست، TypeScript و معماری. دانلود رایگان PDF و EPUB.">
+  <meta property="og:url" content="https://rezaian-dev.github.io/javascript-persian-guide/">
+  <meta property="og:image" content="https://rezaian-dev.github.io/javascript-persian-guide/assets/social-card.jpg">
+  <meta property="og:image:width" content="1456">
+  <meta property="og:image:height" content="720">
+  <meta property="og:image:alt" content="مرجع فارسی JavaScript ES2025">
 
-  /* nav - fully responsive from 320px */
-  nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); background: rgba(10,10,10,.85); border-bottom: 1px solid var(--line); }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; text-decoration: none; flex-shrink: 0; }
-  .brand .logo { width: 36px; height: 36px; border-radius: 6px; display: block; object-fit: contain; background: var(--js); padding: 2px; box-shadow: 0 0 0 1px rgba(247,223,30,.3); flex-shrink: 0; }
-  .brand .v { font-family: var(--mono); color: var(--js); font-weight: 700; }
-  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14.5px; color: var(--muted); }
-  nav ul a { text-decoration: none; } nav ul a:hover { color: #fff; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 15px; border: 1px solid transparent; transition: transform .15s, box-shadow .15s; white-space: nowrap; cursor: pointer; }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--js); color: #000; box-shadow: 0 10px 30px rgba(247,223,30,.25); }
-  .btn-ghost { border-color: var(--line); color: var(--ink); background: rgba(23,23,23,.9); }
-  .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-  nav .btn { padding: 8px 14px; font-size: 14px; }
-  @media (max-width: 760px) { nav ul { display: none; } }
-  @media (max-width: 480px) { nav .wrap { height: 56px; gap: 8px; } .brand { font-size: 15px; gap: 8px; } .brand .logo { width: 32px; height: 32px; } nav .btn { padding: 7px 12px; font-size: 13px; } }
-  @media (max-width: 360px) { .brand-t { display: none; } nav .btn span { display: none; } nav .btn { padding: 8px 10px; } }
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="مرجع فارسی JavaScript ES2025">
+  <meta name="twitter:description" content="مرجع فارسی JavaScript ES2025 در ۳۸ فصل؛ از مبانی و مدل ذهنی تا Event Loop، V8، امنیت، تست، TypeScript و معماری. دانلود رایگان PDF و EPUB.">
+  <meta name="twitter:image" content="https://rezaian-dev.github.io/javascript-persian-guide/assets/social-card.jpg">
 
-  /* hero - responsive from 320px */
-  .hero { padding: 48px 0 48px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; border-bottom: 1px solid var(--line); position: relative; }
-  .hero::after { content:""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: linear-gradient(90deg, transparent, rgba(247,223,30,.25), transparent); }
-  .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; color: var(--js); direction: ltr; display: flex; align-items: center; gap: 8px; justify-content: flex-start; flex-direction: row-reverse; }
-  h1 { font-size: clamp(26px, 5vw, 52px); line-height: 1.25; margin: 10px 0 12px; font-weight: 800; letter-spacing: -.5px; word-wrap: break-word; }
-  h1 .en { font-family: var(--mono); direction: ltr; unicode-bidi: isolate; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  h1 .en b { color: var(--js); background: #000; padding: 2px 10px; border-radius: 8px; border: 1px solid rgba(247,223,30,.3); }
-  .sub { font-size: clamp(16px, 2.5vw, 20px); color: #d4d4d8; margin: 0 0 16px; font-weight: 500; line-height: 1.5; }
-  .sub b { font-family: var(--mono); color: var(--js); font-weight: 700; font-size: .9em; white-space: nowrap; direction: ltr; background: rgba(247,223,30,.12); padding: 3px 10px; border-radius: 8px; border: 1px solid rgba(247,223,30,.15); }
-  .lead { color: var(--muted); font-size: clamp(14px, 2vw, 16.5px); max-width: 560px; margin: 0 0 24px; line-height: 1.85; }
-  .cta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
-  .cta small { color: var(--muted); font-size: 12.5px; flex-basis: 100%; margin-top: 4px; }
-  .stats { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(161,161,170,.12); }
-  .stat { padding: 8px 14px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); font-size: 13px; color: #d4d4d8; backdrop-filter: blur(8px); }
-  .stat b { font-family: var(--mono); color: var(--js); font-size: 15px; margin-left: 5px; }
-
-  .book { position: relative; perspective: 1200px; padding: 16px 0; display: flex; justify-content: center; align-items: center; }
-  .book::before { content:""; position: absolute; inset: 10%; background: radial-gradient(ellipse at center, rgba(247,223,30,.18), transparent 70%); filter: blur(24px); z-index: -1; }
-  .book img { width: 100%; max-width: 420px; height: auto; display: block; border-radius: 12px 16px 16px 12px;
-    box-shadow: -20px 28px 56px rgba(0,0,0,.85), 0 0 0 1px rgba(247,223,30,.25), 0 0 80px rgba(247,223,30,.18);
-    transform: rotateY(-12deg) rotateX(3deg); transition: transform .5s ease; }
-  .book:hover img { transform: rotateY(-6deg) rotateX(2deg) scale(1.02); }
-
-  /* Responsive breakpoints for hero */
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; gap: 28px; padding: 32px 0 36px; }
-    .book { order: -1; padding: 0 0 8px; }
-    .book img { max-width: 340px; transform: none; }
-    .book::before { display: none; }
-  }
-  @media (max-width: 600px) {
-    .hero { padding: 24px 0 28px; gap: 20px; }
-    .book img { max-width: 88%; }
-    .kicker { font-size: 10px; letter-spacing: 2px; }
-    .cta { gap: 8px; }
-    .cta .btn { flex: 1 1 auto; min-width: 140px; }
-  }
-  @media (max-width: 400px) {
-    .book img { max-width: 92%; }
-    .stats { gap: 6px; }
-    .stat { padding: 6px 10px; font-size: 12px; }
-    .stat b { font-size: 13px; }
-  }
-  @media (max-width: 360px) {
-    .hero { padding: 20px 0 24px; }
-    .book img { max-width: 94%; }
-  }
-
-  /* sections */
-  section { padding: 56px 0; position: relative; }
-  @media (max-width: 600px) { section { padding: 36px 0; } }
-  section + section { border-top: 1px solid rgba(161,161,170,.08); }
-  h2 { font-size: clamp(20px, 3.5vw, 30px); margin: 0 0 8px; font-weight: 800; line-height: 1.3; }
-  h2::before { content: ""; display: inline-block; width: 4px; height: 22px; border-radius: 3px; background: var(--js); margin-left: 10px; vertical-align: -3px; }
-  .desc { color: var(--muted); margin: 0 0 24px; font-size: clamp(13px, 2vw, 15.5px); max-width: 720px; line-height: 1.8; }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-  @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 14px; transition: border-color .2s; }
-  .card:hover { border-color: rgba(247,223,30,.3); }
-  .card .ic { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; background: rgba(247,223,30,.12); color: var(--js); margin-bottom: 10px; }
-  .card .ic svg { width: 20px; height: 20px; }
-  .card h3 { margin: 0 0 6px; font-size: 16px; }
-  .card p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.7; }
-
-  .parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
-  @media (max-width: 480px) { .parts { grid-template-columns: 1fr; } }
-  .part { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 12px; }
-  .part .n { font-family: var(--mono); color: var(--js); font-size: 11px; letter-spacing: 2px; }
-  .part h3 { margin: 4px 0 2px; font-size: 17px; }
-  .part .ch { color: var(--muted); font-size: 12.5px; margin-bottom: 8px; }
-  .part ol { margin: 0; padding: 0 18px 0 0; color: #d4d4d8; font-size: 13.5px; line-height: 1.8; }
-  .part ol li::marker { color: var(--js); font-family: var(--mono); font-size: 11px; }
-
-  /* preview - fully responsive */
-  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
-  @media (max-width: 480px) { .shots { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
-  @media (max-width: 360px) { .shots { grid-template-columns: 1fr 1fr; gap: 8px; } }
-  @media (min-width: 900px) { .shots { grid-template-columns: repeat(5, 1fr); } }
-  .shot { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: 0 12px 32px rgba(0,0,0,.35); transition: transform .2s, border-color .2s; display: block; text-decoration: none; }
-  .shot:hover { transform: translateY(-4px); border-color: var(--js); box-shadow: 0 20px 40px rgba(0,0,0,.5); }
-  .shot img { display: block; width: 100%; height: auto; aspect-ratio: 800/1130; object-fit: cover; background: #f8fafc; }
-  .shot span { position: absolute; right: 0; left: 0; bottom: 0; padding: 6px 8px; font-size: 11.5px; background: rgba(10,10,10,.88); color: #e4e4e7; text-align: center; backdrop-filter: blur(4px); }
-
-  /* code teaser */
-  .teaser { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
-  .win { direction: ltr; text-align: left; border-radius: 12px; overflow: hidden; background: #0d1117; border: 1px solid var(--line); box-shadow: 0 24px 64px rgba(0,0,0,.5); }
-  .win-head { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #161b22; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 11px; color: #8b949e; }
-  .d { width: 9px; height: 9px; border-radius: 50%; } .d.r{background:#f87171} .d.y{background:#fbbf24} .d.g{background:#34d399}
-  .win pre { margin: 0; padding: 14px 16px; font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: #e6edf3; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .k{color:#ff7b72} .s{color:#a5d6ff} .f{color:#d2a8ff} .t{color:#ffa657} .a{color:#79c0ff} .cm{color:#8b949e;font-style:italic}
-  .teaser ul { list-style: none; padding: 0; margin: 12px 0 0; color: #d4d4d8; font-size: 14px; }
-  .teaser li { padding: 5px 0; padding-right: 22px; position: relative; line-height: 1.7; }
-  .teaser li::before { content: "◆"; position: absolute; right: 4px; color: var(--js); font-size: 9px; top: 9px; }
-  @media (max-width: 900px) { .teaser { grid-template-columns: 1fr; gap: 20px; } }
-
-  /* author - fully responsive from 320px, professional like React */
-  .author { display: flex; gap: 24px; align-items: flex-start; background: linear-gradient(135deg, rgba(23,23,23,.95), rgba(17,17,17,.9)); border: 1px solid var(--line); border-radius: 20px; padding: 24px 28px; position: relative; overflow: hidden; }
-  .author::before { content: ""; position: absolute; top: 0; right: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(247,223,30,.3), transparent); }
-  .author-avatar { position: relative; flex: none; width: 140px; height: 140px; }
-  .author-avatar img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; object-position: 50% 50%; aspect-ratio: 1/1; border: 3px solid var(--js); box-shadow: 0 0 0 8px rgba(247,223,30,.12), 0 8px 24px rgba(0,0,0,.4); display: block; }
-  .author-avatar .verified { position: absolute; bottom: 2px; right: 2px; width: 28px; height: 28px; background: var(--js); border-radius: 50%; display: grid; place-items: center; font-size: 14px; border: 2px solid #000; color: #000; font-weight: 700; }
-  .author-content { flex: 1 1 280px; min-width: 0; }
-  .author-content h3 { margin: 0; font-size: 22px; font-weight: 800; line-height: 1.3; color: #fff; }
-  .author-content .en-name { font-family: var(--mono); font-size: 13px; color: var(--muted); font-weight: 400; margin-top: 2px; direction: ltr; text-align: right; }
-  .author-content .role { margin: 8px 0 0; font-size: 13.5px; font-weight: 600; color: var(--js); line-height: 1.5; }
-  .author-content .bio { margin: 12px 0 0; color: #d4d4d8; font-size: 14px; line-height: 1.85; text-align: justify; }
-  .author-tags { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
-  .author-tags span { font-family: var(--mono); font-size: 11px; padding: 5px 12px; border-radius: 999px; background: rgba(247,223,30,.12); border: 1px solid rgba(247,223,30,.25); color: var(--js); font-weight: 500; }
-  .author-tags span:nth-child(2) { background: rgba(161,161,170,.08); border-color: var(--line); color: #d4d4d8; }
-  .author-tags span:nth-child(3) { background: rgba(161,161,170,.08); border-color: var(--line); color: #d4d4d8; }
-  .author .links { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; flex-direction: column; margin-right: auto; }
-  .author .links .btn { width: 100%; justify-content: center; }
-
-  @media (max-width: 900px) {
-    .author { flex-wrap: wrap; gap: 20px; padding: 20px 22px; }
-    .author .links { flex-direction: row; width: 100%; margin-right: 0; }
-    .author .links .btn { flex: 1 1 auto; min-width: 120px; }
-  }
-  @media (max-width: 600px) {
-    .author { flex-direction: column; align-items: center; text-align: center; padding: 20px 18px; gap: 16px; }
-    .author-avatar { width: 112px; height: 112px; }
-    .author-avatar img { width: 112px; height: 112px; }
-    .author-content { text-align: center; }
-    .author-content .en-name { text-align: center; }
-    .author-content .bio { text-align: center; }
-    .author-content h3 { font-size: 20px; }
-    .author-tags { justify-content: center; }
-    .author .links { justify-content: center; width: 100%; }
-  }
-  @media (max-width: 400px) {
-    .author { padding: 16px 14px; border-radius: 16px; }
-    .author-avatar { width: 96px; height: 96px; }
-    .author-avatar img { width: 96px; height: 96px; }
-    .author-content h3 { font-size: 18px; }
-    .author-content .role { font-size: 12.5px; }
-    .author-content .bio { font-size: 13px; }
-    .author .links .btn { padding: 8px 12px; font-size: 13px; }
-  }
-  @media (max-width: 360px) {
-    .author { gap: 12px; }
-    .author-content h3 { font-size: 17px; }
-  }
-
-  footer { padding: 32px 0 40px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); margin-top: 24px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
-  .tags span { font-family: var(--mono); font-size: 11px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: #d4d4d8; direction: ltr; }
-  @media (max-width: 600px) { footer .wrap { flex-direction: column; text-align: center; } footer { padding: 24px 0 28px; } }
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Book","name":"مرجع جامع و حرفه‌ای JavaScript ES2025","inLanguage":"fa","bookFormat":"EBook","isAccessibleForFree":true,
- "author":{"@type":"Person","name":"محمدرضا رضائیان","url":"https://github.com/rezaian-dev"},"datePublished":"2026-09","license":"https://creativecommons.org/licenses/by-nc-sa/4.0/",
- "url":"https://rezaian-dev.github.io/javascript-persian-guide/","image":"./assets/page-cover.jpg","about":["JavaScript","TypeScript","Node.js"]}
-</script>
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/js-logo-64.png">
+  <link rel="preload" href="assets/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"مرجع فارسی JavaScript ES2025","inLanguage":"fa","numberOfPages":156,"bookFormat":"EBook","isAccessibleForFree":true,"author":{"@type":"Person","name":"محمدرضا رضائیان","url":"https://github.com/rezaian-dev"},"datePublished":"2026","license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","url":"https://rezaian-dev.github.io/javascript-persian-guide/","sameAs":"https://github.com/rezaian-dev/javascript-persian-guide","image":"https://rezaian-dev.github.io/javascript-persian-guide/assets/social-card.jpg","description":"مرجع فارسی JavaScript ES2025 در ۳۸ فصل؛ از مبانی و مدل ذهنی تا Event Loop، V8، امنیت، تست، TypeScript و معماری. دانلود رایگان PDF و EPUB."}</script>
 </head>
-<body>
-<a class="skip" href="#main">پرش به محتوا</a>
-<div class="sky"></div>
+<body data-theme="javascript">
+  <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+  <div class="page-glow" aria-hidden="true"></div>
 
-<nav>
-  <div class="wrap">
-    <a class="brand" href="#top">
-      <img class="logo" src="assets/js-logo-64.png" alt="JavaScript Official Logo" width="36" height="36">
-      <span><span class="brand-t">مرجع جامع </span><span class="v">JavaScript</span></span>
-    </a>
-    <ul>
-      <li><a href="#why">چرا این کتاب</a></li>
-      <li><a href="#parts">فهرست</a></li>
-      <li><a href="#preview">پیش‌نمایش</a></li>
-      <li><a href="#author">نویسنده</a></li>
-    </ul>
-    <a class="btn btn-primary" href="pdf/JavaScript-Persian-Guide.pdf" download>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-      <span>دانلود PDF</span>
-    </a>
-  </div>
-</nav>
-
-<main id="main">
-<header class="wrap hero" id="top">
-  <div>
-    <div class="kicker">
-      <span>PERSIAN DEVELOPER HANDBOOK</span>
-      <img src="assets/js-logo-32.png" alt="JS" width="20" height="20" style="border-radius:4px;background:#f7df1e;padding:2px;">
-    </div>
-    <h1>مرجع جامع و حرفه‌ای<br><span class="en"><img src="assets/js-logo-64.png" alt="JavaScript" width="44" height="44" style="border-radius:8px;background:#f7df1e;padding:4px;box-shadow:0 4px 12px rgba(247,223,30,.25);"> JavaScript <b>ES2025</b></span></h1>
-    <p class="sub">از مبانی تا معماری <b>Production-Level</b></p>
-    <p class="lead">کتابی رایگان و پروژه‌محور برای توسعه‌دهندگان فارسی‌زبان؛ با تمرکز بر مدل ذهنی درست، موتور V8، Event Loop، Closure، Proxy، Performance، Security و استانداردهای واقعی صنعت — به‌همراه کارگاه ۸ پروژه و ۵۰ پرسش مصاحبه FAANG.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="pdf/JavaScript-Persian-Guide.pdf" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-        دانلود رایگان PDF
+  <header class="site-header">
+    <nav class="container navbar" aria-label="ناوبری اصلی">
+      <a class="brand" href="#top" aria-label="مجموعه راهنماهای فارسی — JavaScript ES2025؛ بازگشت به ابتدای صفحه">
+        <span class="brand__mark"><img src="assets/js-logo-64.png" width="64" height="64" alt=""></span>
+        <span class="brand__text">
+          <span class="brand__collection">مجموعه راهنماهای فارسی</span>
+          <span class="brand__product">JavaScript ES2025</span>
+        </span>
       </a>
-      <a class="btn btn-ghost" href="pdf/JavaScript-Persian-Guide.epub" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg>
-        دانلود EPUB
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/rezaian-dev/javascript-persian-guide" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
-        گیت‌هاب
-      </a>
-      <small>PDF ۱۵۶ صفحه · EPUB ۲۰۴KB · کاملاً رایگان — آمار واقعی</small>
-    </div>
-    <div class="stats">
-      <span class="stat"><b>۳۸</b> فصل</span>
-      <span class="stat"><b>۱۵۶</b> صفحه</span>
-      <span class="stat"><b>۸</b> مینی‌پروژه</span>
-      <span class="stat"><b>۵۰</b> پرسش مصاحبه</span>
-      <span class="stat"><b>۱۴۰+</b> اصطلاح</span>
-    </div>
-  </div>
-  <div class="book"><img src="assets/page-cover.jpg" alt="جلد کتاب مرجع جامع JavaScript" width="800" height="1130" fetchpriority="high" decoding="async"></div>
-</header>
 
-<section id="why" class="wrap">
-  <h2>چرا این کتاب؟</h2>
-  <p class="desc">جاوااسکریپت را نمی‌توان با حفظ‌کردن متد یاد گرفت. این کتاب به‌جای فهرست‌کردن APIها، مدل ذهنی می‌سازد و هر مفهوم را با کد واقعی، اشتباه رایج و سؤال مصاحبه‌اش تثبیت می‌کند.</p>
-  <div class="grid">
-    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13.5H12l-1 8.5 8.5-11.5H12z"/></svg></div><h3>به‌روز با ES2025</h3><p>Object.groupBy، Promise.withResolvers، Array.fromAsync، Import Attributes، Decorator، using، Set Methods — با تفکیک دقیق مدرن از Legacy.</p></div>
-    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div><h3>معماری و Clean Code</h3><p>ساختار ماژولار، الگوهای GoF، Clean Architecture، FP، Observer، Factory، Strategy — با مثال‌های واقعی Production.</p></div>
-    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 4l-4 16"/></svg></div><h3>پروژه‌محور</h3><p>۸ مینی‌پروژه واقعی: Debounce Search، EventEmitter، Promise Pool، Virtual List، Undo/Redo با Proxy، Fetch با Retry/Cache، Kanban Drag&Drop.</p></div>
-    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Production Ready</h3><p>تست با Vitest/Playwright، امنیت و CSP، XSS، Prototype Pollution، Performance و V8 Internals، Memory Leak، Bundlerها.</p></div>
-    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div><h3>آمادگی مصاحبه FAANG</h3><p>در پایان هر فصل جعبه‌ی سؤالات مصاحبه با پاسخ در سه سطح Junior / Mid / Senior، به‌علاوه ۵۰ پرسش جمع‌بندی و جدول تمرین‌های Live Coding.</p></div>
-    <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg></div><h3>فارسی روان و حرفه‌ای</h3><p>صفحه‌آرایی راست‌به‌چپ، فونت وزیرمتن، کدهای خوانا با JetBrains Mono، جعبه‌های رنگی نکته/هشدار/پروژه و واژه‌نامه ۱۴۰ مدخلی فارسی–انگلیسی.</p></div>
-  </div>
-</section>
-
-<section id="parts" class="wrap">
-  <h2>فهرست کتاب در یک نگاه</h2>
-  <p class="desc">۳۸ فصل در چهار بخش — از اولین متغیر تا معماری Production.</p>
-  <div class="parts">
-    <div class="part"><div class="n">PART 01</div><h3>بنیادها و مدل ذهنی</h3><div class="ch">فصل‌های ۱ تا ۱۲</div>
-      <ol><li>معرفی جاوااسکریپت و نقشه راه ۲۰۲۶</li><li>محیط توسعه مدرن</li><li>انواع داده و سیستم نوع</li><li>متغیرها، Scope و Hoisting</li><li>عملگرها و کنترل جریان</li><li>توابع — قلب JS</li><li>کلژر و زنجیره Scope</li><li>اشیا و پروتوتایپ</li><li>آرایه‌ها — فراتر از لیست</li><li>رشته‌ها و Regex</li><li>this — راز بزرگ</li><li>مقدمه Async — Callback تا Promise</li></ol></div>
-    <div class="part"><div class="n">PART 02</div><h3>جاوااسکریپت مدرن و عمیق</h3><div class="ch">فصل‌های ۱۳ تا ۲۴</div>
-      <ol start="13"><li>Destructuring، Spread و Rest</li><li>Iterator و Generator</li><li>Promise پیشرفته و Async/Await</li><li>Event Loop و مدل همزمانی</li><li>ماژول‌ها — ESM و CJS عمیق</li><li>کلاس‌ها و OOP در JS</li><li>مدیریت خطا — حرفه‌ای</li><li>کالکشن‌های پیشرفته — Map, Set</li><li>Proxy و Reflect — متاپروگرامینگ</li><li>برنامه‌نویسی فانکشنال</li><li>DOM و BOM</li><li>Fetch، Storage و APIهای مرورگر</li></ol></div>
-    <div class="part"><div class="n">PART 03</div><h3>پیشرفته، معماری و Production</h3><div class="ch">فصل‌های ۲۵ تا ۳۲</div>
-      <ol start="25"><li>پرفورمنس و بهینه‌سازی — V8</li><li>حافظه و Garbage Collection</li><li>امنیت در جاوااسکریپت</li><li>تست‌نویسی مدرن — Vitest</li><li>ابزارها و باندلرها — Vite</li><li>TypeScript و تعامل با JS</li><li>الگوها و معماری تمیز</li><li>متاپروگرامینگ پیشرفته</li></ol></div>
-    <div class="part"><div class="n">PART 04</div><h3>کارگاه، نکات طلایی و مصاحبه</h3><div class="ch">فصل‌های ۳۳ تا ۳۸</div>
-      <ol start="33"><li>۳۰ نکته و ترفند طلایی</li><li>کارگاه ۸ مینی‌پروژه</li><li>۲۰ اشتباه رایج و راه‌حل</li><li>۵۰ پرسش مصاحبه — Junior تا Senior</li><li>واژه‌نامه فارسی–انگلیسی ۱۴۰ اصطلاح</li><li>نقشه راه بعد از کتاب</li></ol></div>
-  </div>
-</section>
-
-<section id="preview" class="wrap">
-  <h2>پیش‌نمایش صفحات</h2>
-  <p class="desc">نمونه‌هایی از صفحه‌آرایی کتاب — فهرست، Event Loop، Proxy، کارگاه و مصاحبه. نسخه شفاف و باکیفیت بالا.</p>
-  <div class="shots">
-    <a class="shot" href="assets/page-toc.jpg" target="_blank"><img src="assets/page-toc.jpg" width="800" height="1130" alt="فهرست مطالب" loading="lazy"><span>فهرست مطالب</span></a>
-    <a class="shot" href="assets/page-chapter.jpg" target="_blank"><img src="assets/page-chapter.jpg" width="800" height="1130" alt="Event Loop" loading="lazy"><span>Event Loop و همزمانی</span></a>
-    <a class="shot" href="assets/page-code.jpg" target="_blank"><img src="assets/page-code.jpg" width="800" height="1130" alt="Proxy" loading="lazy"><span>Proxy و متاپروگرامینگ</span></a>
-    <a class="shot" href="assets/page-workshop.jpg" target="_blank"><img src="assets/page-workshop.jpg" width="800" height="1130" alt="کارگاه" loading="lazy"><span>کارگاه مینی‌پروژه‌ها</span></a>
-    <a class="shot" href="assets/page-interview.jpg" target="_blank"><img src="assets/page-interview.jpg" width="800" height="1130" alt="مصاحبه" loading="lazy"><span>پرسش‌های مصاحبه FAANG</span></a>
-  </div>
-</section>
-
-<section class="wrap">
-  <div class="teaser">
-    <div>
-      <h2>کدی که در کتاب می‌خوانید</h2>
-      <p class="desc">هر مثال، کد واقعی و قابل‌اجرا با TypeScript است؛ نه شبه‌کد. الگوی مدرن ۲۰۲۵:</p>
-      <ul>
-        <li><b>Closure & Memo</b> — کش هوشمند با Map و WeakMap</li>
-        <li><b>Event Loop</b> — درک Microtask vs Macrotask</li>
-        <li><b>Proxy Reactive</b> — پایه Vue 3 Reactivity در ۱۰ خط</li>
-        <li><b>Performance</b> — Monomorphic، Hidden Classes، Deopt</li>
+      <ul class="nav-links" id="primary-menu">
+        <li><a href="#why">ویژگی‌ها</a></li>
+        <li><a href="#path">مسیر کتاب</a></li>
+        <li><a href="#preview">پیش‌نمایش</a></li>
+        <li><a href="#download">دانلود</a></li>
+        <li><a href="#series">مجموعه</a></li>
+        <li><a href="#author">نویسنده</a></li>
       </ul>
-    </div>
-    <div class="win">
-      <div class="win-head"><span class="d r"></span><span class="d y"></span><span class="d g"></span>&nbsp; src/core/reactive.js</div>
-<pre><span class="k">function</span> <span class="f">reactive</span>(obj) {
-  <span class="k">return new</span> <span class="f">Proxy</span>(obj, {
-    <span class="f">get</span>(t, p, r) {
-      <span class="f">track</span>(t, p); <span class="cm">// ثبت وابستگی</span>
-      <span class="k">return</span> Reflect.<span class="f">get</span>(t, p, r);
-    },
-    <span class="f">set</span>(t, p, v, r) {
-      <span class="k">const</span> res = Reflect.<span class="f">set</span>(t, p, v, r);
-      <span class="f">trigger</span>(t, p); <span class="cm">// اجرای افکت</span>
-      <span class="k">return</span> res;
-    }
-  });
-}
 
-<span class="k">const</span> state = <span class="f">reactive</span>({ count: <span class="t">0</span> });
-<span class="f">effect</span>(() => console.<span class="f">log</span>(state.count));
-state.count++; <span class="cm">// → 1 — خودکار!</span></pre>
-    </div>
-  </div>
-</section>
+      <div class="nav-actions">
+        <a class="btn btn--primary btn--small nav-download" href="pdf/JavaScript-Persian-Guide.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دانلود PDF</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false" aria-label="بازکردن منو">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-<section id="author" class="wrap">
-  <h2>نویسنده</h2>
-  <div class="author">
-    <div class="author-avatar">
-      <img src="assets/author-avatar.png" width="140" height="140" alt="محمدرضا رضائیان — نویسنده مرجع JavaScript">
-      <span class="verified">✓</span>
-    </div>
-    <div class="author-content">
-      <h3>محمدرضا رضائیان</h3>
-      <div class="en-name">Mohammadreza Rezaian — Front-End Developer</div>
-      <div class="role">JavaScript ES2025 · TypeScript · Node.js · V8 · Performance · Architecture</div>
-      <p class="bio">
-        توسعه‌دهنده فرانت‌اند با تمرکز عمیق بر JavaScript مدرن، معماری تمیز و پرفورمنس. گردآوری و تدوین این مرجع با هدف ارتقای سطح دانش عمیق JavaScript در جامعه فارسی‌زبان انجام شده — با الگوبرداری از بهترین مراجع جهانی، تجربه پروژه‌های Production و تمرکز بر مدل ذهنی درست، یادگیری فعال و آمادگی کامل برای بازار کار.
-        این کتاب پلی است از مبانی تا معماری Production-Level — با ۸ مینی‌پروژه واقعی، ۵۰ پرسش مصاحبه FAANG و ۱۴۰ اصطلاح تخصصی.
-      </p>
-      <div class="author-tags">
-        <span>ES2025 Expert</span>
-        <span>V8 Internals</span>
-        <span>Performance</span>
-        <span>Clean Architecture</span>
+  <main id="main">
+    <section class="container hero" id="top">
+      <div class="hero__content">
+        <span class="hero__eyebrow">PERSIAN DEVELOPER HANDBOOK</span>
+        <h1>مرجع جامع و حرفه‌ای<br><span class="hero__product">JavaScript <strong>ES2025</strong></span></h1>
+        <p class="hero__subtitle">از مدل ذهنی زبان تا معماری و کد آمادهٔ محیط Production</p>
+        <p class="hero__lead">مسیر فارسی و پروژه‌محور برای فهم رفتار JavaScript؛ از Scope، Closure و Event Loop تا V8، امنیت، تست و معماری تمیز.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="pdf/JavaScript-Persian-Guide.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg> دانلود رایگان PDF</a>
+          <a class="btn btn--secondary" href="pdf/JavaScript-Persian-Guide.epub" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/></svg> دانلود EPUB
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/rezaian-dev/javascript-persian-guide" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .8A11.2 11.2 0 0 0 .8 12c0 4.95 3.2 9.14 7.66 10.62.56.1.77-.24.77-.54v-1.92c-3.12.68-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.68.08-.68 1.12.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.49-.28-5.11-1.25-5.11-5.55 0-1.23.44-2.23 1.16-3.01-.12-.28-.5-1.43.11-2.97 0 0 .95-.3 3.1 1.15a10.7 10.7 0 0 1 5.64 0c2.15-1.46 3.09-1.15 3.09-1.15.62 1.54.23 2.69.11 2.97.72.78 1.16 1.78 1.16 3.01 0 4.31-2.63 5.26-5.14 5.54.4.35.76 1.03.76 2.08v3.09c0 .3.21.65.78.54A11.2 11.2 0 0 0 23.2 12 11.2 11.2 0 0 0 12 .8Z"/></svg> مخزن گیت‌هاب
+          </a>
+        </div>
+        <div class="hero__note">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> ویرایش ۱.۰.۰</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> صفحه‌آرایی کامل راست‌به‌چپ</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> انتشار با مجوز CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+
+      <figure class="hero__visual">
+        <div class="cover-shell">
+          <img src="assets/web/cover-hero.webp" srcset="assets/web/cover-hero-480.webp 480w, assets/web/cover-hero-720.webp 720w, assets/web/cover-hero.webp 864w" sizes="(max-width: 620px) calc(100vw - 68px), 400px" width="864" height="1232" alt="جلد مرجع فارسی JavaScript ES2025" fetchpriority="high" decoding="async">
+        </div>
+        <figcaption class="cover-caption">نسخهٔ ۲۰۲۶ · ویرایش ۱.۰.۰</figcaption>
+      </figure>
+    </section>
+
+    <div class="metrics-band" aria-label="آمار کتاب">
+      <div class="container metrics">
+        <div class="metric">
+          <strong class="metric__value">۳۸</strong>
+          <span class="metric__label">فصل ساختاریافته</span>
+        </div>
+        <div class="metric">
+          <strong class="metric__value">۱۵۶</strong>
+          <span class="metric__label">صفحهٔ رنگی</span>
+        </div>
+        <div class="metric">
+          <strong class="metric__value">۸</strong>
+          <span class="metric__label">مینی‌پروژه</span>
+        </div>
+        <div class="metric">
+          <strong class="metric__value">۵۰</strong>
+          <span class="metric__label">پرسش مصاحبه</span>
+        </div>
+        <div class="metric">
+          <strong class="metric__value">۱۴۰+</strong>
+          <span class="metric__label">اصطلاح تخصصی</span>
+        </div>
       </div>
     </div>
-    <div class="links">
-      <a class="btn btn-ghost" href="https://github.com/rezaian-dev" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn-ghost" href="https://github.com/rezaian-dev/react-19-persian-guide" target="_blank" rel="noopener">مرجع React 19</a>
-      <a class="btn btn-ghost" href="https://github.com/rezaian-dev/javascript-persian-guide" target="_blank" rel="noopener">سورس JS</a>
-      <a class="btn btn-primary" href="pdf/JavaScript-Persian-Guide.pdf" download>دانلود رزومه کتاب</a>
-    </div>
-  </div>
-</section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <div>© ۲۰۲۶ مرجع جامع JavaScript · منتشرشده تحت مجوز CC BY-NC-SA 4.0 · ⭐ اگر مفید بود، با دوستان به اشتراک بگذار</div>
-    <div class="tags"><span>JavaScript ES2025</span><span>TypeScript 6</span><span>Node.js 22</span><span>V8 Engine</span></div>
-  </div>
-</footer>
+    <section class="section container" id="why">
+      <header class="section-head">
+        <span class="section-eyebrow">WHY THIS GUIDE</span>
+        <h2>برای یادگیری عمیق، نه مرور سطحی</h2>
+        <p class="section-copy">محتوا از مفهوم به تصمیم فنی و از تصمیم به پیاده‌سازی می‌رسد؛ با توضیح‌های متمرکز، مثال‌های واقعی و یک مسیر روشن برای ادامهٔ یادگیری.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/><path d="m16 8-2.7 5.3L8 16l2.7-5.3L16 8Z"/></svg></div>
+          <h3>مدل ذهنی، نه حفظ API</h3>
+          <p>Scope، Closure، this، Prototype و Event Loop با تمرکز بر چرایی رفتار زبان توضیح داده می‌شوند.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-2 7H4l5.5 4L7 22l6-6 5 4-2-7h5l-6-4-2-7Z"/></svg></div>
+          <h3>همگام با ES2025</h3>
+          <p>قابلیت‌های مدرن زبان در کنار مرزبندی روشن میان APIهای پایدار، الگوهای جدید و کد Legacy.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div>
+          <h3>کد قابل اجرا و پروژه‌محور</h3>
+          <p>مثال‌های مرحله‌ای و ۸ مینی‌پروژه برای تبدیل مفهوم به مهارت حل مسئله و طراحی کد.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15a9 9 0 1 0-16.8 0"/><path d="M12 12 8.5 8.5M5 19h14"/></svg></div>
+          <h3>V8، حافظه و Performance</h3>
+          <p>Hidden Class، بهینه‌سازی اجرا، Garbage Collection و Memory Leak با نگاه عملی.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>کیفیت در Production</h3>
+          <p>تست، امنیت، مدیریت خطا، ابزارهای ساخت و اصول نگهداری‌پذیری در پروژه‌های واقعی.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/></svg></div>
+          <h3>مرجع سریع و آمادگی مصاحبه</h3>
+          <p>نکات کلیدی، خطاهای رایج، واژه‌نامه و پرسش‌های سطح‌بندی‌شده برای مرور هدفمند.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="path">
+      <header class="section-head">
+        <span class="section-eyebrow">LEARNING PATH</span>
+        <h2>مسیر کتاب در چهار مرحله</h2>
+        <p class="section-copy">ساختار فصل‌ها از پایه به Production حرکت می‌کند؛ می‌توانید کتاب را پیوسته بخوانید یا از بخش متناسب با نیاز فعلی خود شروع کنید.</p>
+      </header>
+      <div class="parts">
+        <article class="part">
+          <span class="part__number">PART 01</span>
+          <h3>بنیادها و مدل ذهنی</h3>
+          <span class="part__range">فصل‌های ۱ تا ۱۲</span>
+          <p>انواع داده، Scope، توابع، Closure، اشیا، Prototype، this و مقدمهٔ برنامه‌نویسی ناهمگام.</p>
+        </article>
+        <article class="part">
+          <span class="part__number">PART 02</span>
+          <h3>JavaScript مدرن و عمیق</h3>
+          <span class="part__range">فصل‌های ۱۳ تا ۲۴</span>
+          <p>Iterator، Generator، Promise، Event Loop، ESM، Proxy، برنامه‌نویسی تابعی و APIهای مرورگر.</p>
+        </article>
+        <article class="part">
+          <span class="part__number">PART 03</span>
+          <h3>مهندسی و Production</h3>
+          <span class="part__range">فصل‌های ۲۵ تا ۳۲</span>
+          <p>Performance، V8، حافظه، امنیت، تست، Tooling، TypeScript و معماری تمیز.</p>
+        </article>
+        <article class="part">
+          <span class="part__number">PART 04</span>
+          <h3>کارگاه و آمادگی شغلی</h3>
+          <span class="part__range">فصل‌های ۳۳ تا ۳۸</span>
+          <p>ترفندهای کاربردی، مینی‌پروژه‌ها، اشتباهات رایج، پرسش‌های مصاحبه، واژه‌نامه و نقشه راه.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="preview">
+      <header class="section-head">
+        <span class="section-eyebrow">BOOK PREVIEW</span>
+        <h2>داخل کتاب را ببینید</h2>
+        <p class="section-copy">نمونه‌هایی واقعی از جلد، ساختار فصل، کد، کارگاه و بخش مصاحبه. برای مشاهدهٔ نسخهٔ کامل هر صفحه، روی تصویر کلیک کنید.</p>
+      </header>
+      <div class="gallery">
+        <a class="gallery-card" href="assets/page-toc.jpg" target="_blank" rel="noopener">
+          <img src="assets/web/preview-toc.webp" width="420" height="599" alt="" loading="lazy" decoding="async">
+          <span class="gallery-card__label">فهرست مطالب</span>
+        </a>
+        <a class="gallery-card" href="assets/page-chapter.jpg" target="_blank" rel="noopener">
+          <img src="assets/web/preview-chapter.webp" width="420" height="599" alt="" loading="lazy" decoding="async">
+          <span class="gallery-card__label">ساختار فصل</span>
+        </a>
+        <a class="gallery-card" href="assets/page-code.jpg" target="_blank" rel="noopener">
+          <img src="assets/web/preview-code.webp" width="420" height="599" alt="" loading="lazy" decoding="async">
+          <span class="gallery-card__label">نمونهٔ کد</span>
+        </a>
+        <a class="gallery-card" href="assets/page-workshop.jpg" target="_blank" rel="noopener">
+          <img src="assets/web/preview-workshop.webp" width="420" height="599" alt="" loading="lazy" decoding="async">
+          <span class="gallery-card__label">کارگاه پروژه</span>
+        </a>
+        <a class="gallery-card" href="assets/page-interview.jpg" target="_blank" rel="noopener">
+          <img src="assets/web/preview-interview.webp" width="420" height="599" alt="" loading="lazy" decoding="async">
+          <span class="gallery-card__label">پرسش‌های مصاحبه</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section section--compact container">
+      <div class="showcase">
+        <div>
+          <span class="section-eyebrow">CODE FIRST</span>
+          <h2>از رفتار زبان تا طراحی راه‌حل</h2>
+          <p class="section-copy">مثال‌ها فقط سینتکس را نمایش نمی‌دهند؛ هر قطعه کد برای توضیح یک مدل ذهنی، یک تصمیم طراحی یا یک هزینهٔ اجرایی انتخاب شده است.</p>
+          <div class="tags"><span class="tag">Closures</span><span class="tag">Event Loop</span><span class="tag">Proxy</span><span class="tag">V8</span><span class="tag">Testing</span><span class="tag">Architecture</span></div>
+        </div>
+        <div class="code-window">
+          <div class="code-window__bar"><span class="dot dot--red"></span><span class="dot dot--yellow"></span><span class="dot dot--green"></span><span class="file-name">src/core/memoize.js</span></div>
+          <pre tabindex="0" aria-label="نمونه کد کتاب"><span class="kw">export function</span> <span class="fn">memoize</span>(fn) {
+  <span class="kw">const</span> cache = <span class="kw">new</span> WeakMap();
+
+  <span class="kw">return function</span> <span class="fn">cached</span>(input) {
+    <span class="kw">if</span> (cache.has(input)) <span class="kw">return</span> cache.get(input);
+
+    <span class="kw">const</span> result = fn(input);
+    cache.set(input, result);
+    <span class="kw">return</span> result;
+  };
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="download">
+      <header class="section-head section-head--center">
+        <span class="section-eyebrow">DOWNLOAD</span>
+        <h2>نسخهٔ مناسب خود را انتخاب کنید</h2>
+        <p class="section-copy">همهٔ خروجی‌های رسمی از همین صفحه و مخزن پروژه در دسترس‌اند.</p>
+      </header>
+      <div class="files">
+        <article class="file-card">
+          <span class="file-card__type">PDF</span>
+          <h3>نسخهٔ اصلی</h3>
+          <p>نسخهٔ رنگی و قابل جست‌وجو برای مطالعه روی دسکتاپ و تبلت.</p>
+          <span class="file-card__meta">۱۵۶ صفحه · A4</span>
+          <a class="btn btn--primary" href="pdf/JavaScript-Persian-Guide.pdf" download>دانلود PDF</a>
+        </article>
+        <article class="file-card">
+          <span class="file-card__type">EPUB</span>
+          <h3>نسخهٔ کتاب‌خوان</h3>
+          <p>نسخهٔ بازچینش‌پذیر برای موبایل، تبلت و نرم‌افزارهای مطالعه EPUB.</p>
+          <span class="file-card__meta">راست‌به‌چپ · مناسب موبایل</span>
+          <a class="btn btn--secondary" href="pdf/JavaScript-Persian-Guide.epub" download>دانلود EPUB</a>
+        </article>
+        <article class="file-card">
+          <span class="file-card__type">GITHUB</span>
+          <h3>سورس و فصل‌ها</h3>
+          <p>متن فصل‌ها، ابزار ساخت PDF و دارایی‌های پروژه در مخزن عمومی نگهداری می‌شوند.</p>
+          <span class="file-card__meta">Markdown · Python</span>
+          <a class="btn btn--secondary" href="https://github.com/rezaian-dev/javascript-persian-guide" target="_blank" rel="noopener">مشاهده مخزن</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="series">
+      <header class="section-head">
+        <span class="section-eyebrow">THE COLLECTION</span>
+        <h2>سه مرجع، یک مسیر منسجم</h2>
+        <p class="section-copy">این سه راهنما با زبان بصری و ساختار آموزشی هماهنگ طراحی شده‌اند: ابتدا زبان، سپس کتابخانهٔ رابط کاربری و در پایان فریم‌ورک Production.</p>
+      </header>
+      <div class="series-grid">
+        <a class="series-card" href="https://rezaian-dev.github.io/javascript-persian-guide/" aria-current="page">
+          <span class="series-card__mark">JS</span>
+          <span class="series-card__content">
+            <h3>JavaScript ES2025</h3>
+            <p>زبان و مدل ذهنی؛ پایهٔ مشترک مسیر توسعه وب</p>
+            <span class="current-label">در حال مشاهده</span>
+          </span>
+        </a>
+        <a class="series-card" href="https://rezaian-dev.github.io/react-19-persian-guide/">
+          <span class="series-card__mark">RE</span>
+          <span class="series-card__content">
+            <h3>React 19.2</h3>
+            <p>رابط کاربری، مدیریت state و معماری کامپوننت</p>
+
+          </span>
+        </a>
+        <a class="series-card" href="https://rezaian-dev.github.io/nextjs-16-persian-guide/">
+          <span class="series-card__mark">NX</span>
+          <span class="series-card__content">
+            <h3>Next.js 16</h3>
+            <p>فریم‌ورک، رندر سرور، کشینگ و استقرار</p>
+
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section container" id="author">
+      <div class="author-card">
+        <img class="author-card__avatar" src="assets/web/author.webp" width="320" height="320" alt="محمدرضا رضائیان" loading="lazy" decoding="async">
+        <div class="author-card__content">
+          <h2>محمدرضا رضائیان</h2>
+          <p class="author-card__role">JavaScript · TypeScript · Performance · Software Architecture</p>
+          <p class="author-card__bio">توسعه‌دهندهٔ فرانت‌اند و نویسندهٔ مجموعه راهنماهای فارسی توسعه وب؛ با تمرکز بر مدل ذهنی، معماری قابل نگهداری و انتقال تجربهٔ فنی به زبان روشن.</p>
+        </div>
+        <div class="author-card__links">
+          <a class="btn btn--secondary btn--small" href="https://github.com/rezaian-dev" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 .8A11.2 11.2 0 0 0 .8 12c0 4.95 3.2 9.14 7.66 10.62.56.1.77-.24.77-.54v-1.92c-3.12.68-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.68.08-.68 1.12.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.49-.28-5.11-1.25-5.11-5.55 0-1.23.44-2.23 1.16-3.01-.12-.28-.5-1.43.11-2.97 0 0 .95-.3 3.1 1.15a10.7 10.7 0 0 1 5.64 0c2.15-1.46 3.09-1.15 3.09-1.15.62 1.54.23 2.69.11 2.97.72.78 1.16 1.78 1.16 3.01 0 4.31-2.63 5.26-5.14 5.54.4.35.76 1.03.76 2.08v3.09c0 .3.21.65.78.54A11.2 11.2 0 0 0 23.2 12 11.2 11.2 0 0 0 12 .8Z"/></svg> GitHub</a>
+          <a class="btn btn--secondary btn--small" href="https://github.com/rezaian-dev/javascript-persian-guide/issues" target="_blank" rel="noopener">گزارش خطا</a>
+          <a class="btn btn--primary btn--small" href="pdf/JavaScript-Persian-Guide.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg> دریافت کتاب</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer__copy">© ۲۰۲۶ محمدرضا رضائیان · مرجع فارسی JavaScript ES2025 · CC BY-NC-SA 4.0</div>
+      <nav class="footer-links" aria-label="پیوندهای پایین صفحه">
+        <a href="https://github.com/rezaian-dev/javascript-persian-guide" target="_blank" rel="noopener">مخزن</a>
+        <a href="https://github.com/rezaian-dev/javascript-persian-guide/issues" target="_blank" rel="noopener">گزارش خطا</a>
+        <a href="#top">بازگشت به بالا</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
 </body>
 </html>
