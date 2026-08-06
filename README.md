@@ -1,13 +1,13 @@
 <a id="top"></a>
 
 <p align="center">
-  <img src="./src/banner/hero-banner-clean.png" alt="مرجع جامع JavaScript ES2025؛ از مبانی تا معماری و تولید" width="100%">
+  <img src="./docs/assets/web/readme-hero.webp" alt="مرجع فارسی JavaScript ES2025" width="100%">
 </p>
 
 <p align="center" dir="rtl">
-  <strong>یک مسیر ساختاریافته برای فهم عمیق JavaScript مدرن</strong>
+  <strong>از مدل ذهنی زبان تا معماری و کد آمادهٔ محیط Production</strong>
   <br>
-  از مدل ذهنی زبان و قابلیت‌های ES2025 تا تست، امنیت، عملکرد و معماری نرم‌افزار
+  مسیر فارسی و پروژه‌محور برای فهم رفتار JavaScript؛ از Scope، Closure و Event Loop تا V8، امنیت، تست و معماری تمیز.
 </p>
 
 <p align="center">
@@ -25,12 +25,13 @@
 </p>
 
 <p align="center" dir="rtl">
-  <a href="#about">درباره راهنما</a> ·
-  <a href="#roadmap">مسیر یادگیری</a> ·
+  <a href="#about">درباره</a> ·
+  <a href="#path">مسیر یادگیری</a> ·
   <a href="#chapters">فهرست فصل‌ها</a> ·
   <a href="#preview">پیش‌نمایش</a> ·
+  <a href="#editions">نسخه‌ها</a> ·
   <a href="#build">ساخت از سورس</a> ·
-  <a href="#contributing">مشارکت</a>
+  <a href="#collection">مجموعه</a>
 </p>
 
 ---
@@ -41,93 +42,113 @@
 
 ## درباره راهنما
 
-این مخزن نسخه فارسی، پروژه‌محور و قابل ساختِ یک راهنمای جامع JavaScript است. محتوای آن در ۳۸ فصل از مبانی زبان آغاز می‌شود، به قابلیت‌های مدرن و سازوکارهای داخلی می‌رسد و با موضوعات موردنیاز توسعه نرم‌افزار در محیط Production کامل می‌شود.
+مرجع فارسی JavaScript ES2025 در ۳۸ فصل؛ از مبانی و مدل ذهنی تا Event Loop، V8، امنیت، تست، TypeScript و معماری. دانلود رایگان PDF و EPUB.
 
-تمرکز کتاب بر **درک رفتار زبان** است؛ یعنی به‌جای حفظ‌کردن APIها، یاد می‌گیرید چرا کد به شکل مشخصی اجرا می‌شود، چگونه خطاها را تحلیل کنید و برای تصمیم‌های فنی خود استدلال داشته باشید.
+این راهنما بر **مدل ذهنی، تحلیل رفتار و تصمیم‌گیری فنی** تمرکز دارد. هدف این نیست که مجموعه‌ای از APIها حفظ شود؛ هدف این است که بتوانید مسئله را بفهمید، راه‌حل را ارزیابی کنید و کدی بنویسید که در پروژهٔ واقعی قابل نگهداری باشد.
 
-### ویژگی‌های راهنما
+### ویژگی‌ها
 
-- **مفهوم‌محور:** هر موضوع با چرایی و مدل ذهنی آن توضیح داده می‌شود، نه صرفاً با فهرستی از APIها.
-- **مرحله‌بندی‌شده:** فصل‌ها از مبانی به مباحث پیشرفته می‌رسند و برای مطالعه پیوسته طراحی شده‌اند.
-- **کاربردی:** مثال‌های کد، تمرین‌ها و مینی‌پروژه‌ها، مفاهیم را به مسئله‌های واقعی متصل می‌کنند.
-- **قابل استفاده در پروژه:** امنیت، تست، عملکرد و نگهداری‌پذیری در کنار قابلیت‌های زبان بررسی می‌شوند.
-- **چندقالبی:** نسخه وب، PDF و EPUB برای شیوه‌های مختلف مطالعه در دسترس است.
+- **مدل ذهنی، نه حفظ API:** Scope، Closure، this، Prototype و Event Loop با تمرکز بر چرایی رفتار زبان توضیح داده می‌شوند.
+- **همگام با ES2025:** قابلیت‌های مدرن زبان در کنار مرزبندی روشن میان APIهای پایدار، الگوهای جدید و کد Legacy.
+- **کد قابل اجرا و پروژه‌محور:** مثال‌های مرحله‌ای و ۸ مینی‌پروژه برای تبدیل مفهوم به مهارت حل مسئله و طراحی کد.
+- **V8، حافظه و Performance:** Hidden Class، بهینه‌سازی اجرا، Garbage Collection و Memory Leak با نگاه عملی.
+- **کیفیت در Production:** تست، امنیت، مدیریت خطا، ابزارهای ساخت و اصول نگهداری‌پذیری در پروژه‌های واقعی.
+- **مرجع سریع و آمادگی مصاحبه:** نکات کلیدی، خطاهای رایج، واژه‌نامه و پرسش‌های سطح‌بندی‌شده برای مرور هدفمند.
 
-<a id="roadmap"></a>
+<a id="path"></a>
 
 ## مسیر یادگیری
 
-| مرحله | فصل‌ها | تمرکز | نتیجه |
-| --- | :---: | --- | --- |
-| بنیادها | ۱ تا ۱۲ | زبان، Scope، توابع، Closure، اشیا، Prototype و Async | توانایی پیش‌بینی و تحلیل رفتار کد |
-| JavaScript مدرن | ۱۳ تا ۲۴ | Promise، Event Loop، ESM، الگوهای تابعی، DOM و APIهای مرورگر | تسلط بر توسعه مدرن در مرورگر و Node.js |
-| سطح Production | ۲۵ تا ۳۲ | Performance، V8، حافظه، امنیت، تست، ابزارها و معماری | طراحی کد پایدار، امن و قابل نگهداری |
-| تمرین و آمادگی شغلی | ۳۳ تا ۳۸ | پروژه، خطاهای رایج، مصاحبه، واژه‌نامه و نقشه راه | تثبیت آموخته‌ها و آمادگی برای پروژه واقعی |
+### ۱. بنیادها و مدل ذهنی
 
-> اگر تازه شروع کرده‌اید، فصل‌ها را به‌ترتیب بخوانید. اگر تجربه عملی دارید، می‌توانید مستقیماً از مرحله متناسب با نیاز خود وارد شوید.
+**فصل‌های ۱ تا ۱۲** — انواع داده، Scope، توابع، Closure، اشیا، Prototype، this و مقدمهٔ برنامه‌نویسی ناهمگام.
+
+دستاورد: **ساخت مدل ذهنی و درک رفتار پایه**
+
+### ۲. JavaScript مدرن و عمیق
+
+**فصل‌های ۱۳ تا ۲۴** — Iterator، Generator، Promise، Event Loop، ESM، Proxy، برنامه‌نویسی تابعی و APIهای مرورگر.
+
+دستاورد: **تسلط بر الگوها و قابلیت‌های مدرن**
+
+### ۳. مهندسی و Production
+
+**فصل‌های ۲۵ تا ۳۲** — Performance، V8، حافظه، امنیت، تست، Tooling، TypeScript و معماری تمیز.
+
+دستاورد: **طراحی کد پایدار و قابل نگهداری**
+
+### ۴. کارگاه و آمادگی شغلی
+
+**فصل‌های ۳۳ تا ۳۸** — ترفندهای کاربردی، مینی‌پروژه‌ها، اشتباهات رایج، پرسش‌های مصاحبه، واژه‌نامه و نقشه راه.
+
+دستاورد: **تثبیت آموخته‌ها و آمادگی پروژه**
+
+> برای مطالعهٔ پیوسته از بخش اول شروع کنید. اگر تجربهٔ عملی دارید، می‌توانید مستقیماً به مرحلهٔ متناسب با نیاز فعلی خود بروید.
 
 <a id="chapters"></a>
 
 ## فهرست فصل‌ها
 
-<details>
-<summary><strong>بخش اول — بنیادها و مدل ذهنی (فصل‌های ۱ تا ۱۲)</strong></summary>
+فهرست کامل در چهار بخش جمع شده است تا صفحه خلوت بماند. برای مشاهدهٔ فصل‌ها، هر بخش را باز کنید.
 
-1. [معرفی JavaScript و نقشه راه](./src/chapters/01-intro.md)
-2. [محیط توسعه مدرن](./src/chapters/02-setup.md)
-3. [انواع داده و سیستم نوع](./src/chapters/03-types-values.md)
-4. [متغیرها، Scope و Hoisting](./src/chapters/04-variables-scope.md)
-5. [عملگرها و کنترل جریان](./src/chapters/05-operators-control.md)
-6. [توابع](./src/chapters/06-functions.md)
-7. [Closure و زنجیره Scope](./src/chapters/07-closures-scope-chain.md)
-8. [اشیا و Prototype](./src/chapters/08-objects-prototypes.md)
-9. [آرایه‌ها](./src/chapters/09-arrays.md)
-10. [رشته‌ها و Regular Expression](./src/chapters/10-strings-regex.md)
-11. [`this` و قواعد Binding](./src/chapters/11-this-binding.md)
-12. [مقدمه برنامه‌نویسی ناهمگام](./src/chapters/12-async-intro.md)
+<details>
+<summary><strong>بخش اول — بنیادها و مدل ذهنی</strong> · فصل‌های ۱ تا ۱۲</summary>
+
+1. [معرفی جاوااسکریپت و نقشه راه ۲۰۲۶ — از صفر تا بازار کار](./src/chapters/01-intro.md)
+2. [محیط توسعه مدرن — ستاپ حرفه‌ای ۲۰۲۶](./src/chapters/02-setup.md)
+3. [انواع داده و سیستم نوع — جایی که ۸۰٪ باگ‌ها متولد می‌شود](./src/chapters/03-types-values.md)
+4. [متغیرها، Scope و Hoisting — از صفر تا TDZ و Lexical](./src/chapters/04-variables-scope.md)
+5. [عملگرها و کنترل جریان — از if تا الگوهای مدرن ۲۰۲۵](./src/chapters/05-operators-control.md)
+6. [توابع — قلب جاوااسکریپت — ۴ چهره یک مفهوم](./src/chapters/06-functions.md)
+7. [کلژر و زنجیره Scope — مهم‌ترین مفهوم JS](./src/chapters/07-closures-scope-chain.md)
+8. [اشیا و پروتوتایپ — راز ارث‌بری JS](./src/chapters/08-objects-prototypes.md)
+9. [آرایه‌ها — فراتر از لیست — شیء خاص با ترفندها](./src/chapters/09-arrays.md)
+10. [رشته‌ها و Regex — از Template Literal تا Unicode](./src/chapters/10-strings-regex.md)
+11. [this — راز بزرگ — با ۴ قانون حل می‌شود](./src/chapters/11-this-binding.md)
+12. [مقدمه Async — از Callback Hell تا Promise — چرا JS بلاک نمی‌شود](./src/chapters/12-async-intro.md)
 
 </details>
 
 <details>
-<summary><strong>بخش دوم — JavaScript مدرن و عمیق (فصل‌های ۱۳ تا ۲۴)</strong></summary>
+<summary><strong>بخش دوم — JavaScript مدرن و عمیق</strong> · فصل‌های ۱۳ تا ۲۴</summary>
 
 13. [Destructuring، Spread و Rest](./src/chapters/13-destructuring-spread.md)
 14. [Iterator و Generator](./src/chapters/14-iterators-generators.md)
 15. [Promise پیشرفته و Async/Await](./src/chapters/15-promise-async-await.md)
-16. [Event Loop و مدل هم‌زمانی](./src/chapters/16-event-loop-concurrency.md)
-17. [ماژول‌های ESM و CommonJS](./src/chapters/17-modules-esm-cjs.md)
-18. [کلاس‌ها و OOP](./src/chapters/18-classes-oop.md)
-19. [مدیریت خطا](./src/chapters/19-error-handling.md)
-20. [Map، Set و کالکشن‌های پیشرفته](./src/chapters/20-collections-map-set.md)
-21. [Proxy و Reflect](./src/chapters/21-proxy-reflect.md)
-22. [برنامه‌نویسی تابعی](./src/chapters/22-functional-programming.md)
-23. [DOM و BOM](./src/chapters/23-dom-bom.md)
+16. [Event Loop و مدل همزمانی](./src/chapters/16-event-loop-concurrency.md)
+17. [ماژول‌ها — ESM و CJS عمیق](./src/chapters/17-modules-esm-cjs.md)
+18. [کلاس‌ها و OOP در JS](./src/chapters/18-classes-oop.md)
+19. [مدیریت خطا — حرفه‌ای](./src/chapters/19-error-handling.md)
+20. [کالکشن‌های پیشرفته](./src/chapters/20-collections-map-set.md)
+21. [Proxy و Reflect — متاپروگرامینگ](./src/chapters/21-proxy-reflect.md)
+22. [برنامه‌نویسی فانکشنال در JS](./src/chapters/22-functional-programming.md)
+23. [DOM و BOM — جاوااسکریپت در مرورگر](./src/chapters/23-dom-bom.md)
 24. [Fetch، Storage و APIهای مرورگر](./src/chapters/24-fetch-api-storage.md)
 
 </details>
 
 <details>
-<summary><strong>بخش سوم — مهندسی و Production (فصل‌های ۲۵ تا ۳۲)</strong></summary>
+<summary><strong>بخش سوم — مهندسی و Production</strong> · فصل‌های ۲۵ تا ۳۲</summary>
 
-25. [Performance و بهینه‌سازی](./src/chapters/25-performance-optimization.md)
+25. [پرفورمنس و بهینه‌سازی](./src/chapters/25-performance-optimization.md)
 26. [حافظه و Garbage Collection](./src/chapters/26-memory-gc.md)
-27. [امنیت در JavaScript](./src/chapters/27-security.md)
+27. [امنیت در جاوااسکریپت](./src/chapters/27-security.md)
 28. [تست‌نویسی مدرن](./src/chapters/28-testing.md)
-29. [ابزارها و Bundlerها](./src/chapters/29-tooling-bundlers.md)
-30. [TypeScript و تعامل با JavaScript](./src/chapters/30-typescript-interop.md)
+29. [ابزارها و باندلرها](./src/chapters/29-tooling-bundlers.md)
+30. [TypeScript و تعامل با JS](./src/chapters/30-typescript-interop.md)
 31. [الگوها و معماری تمیز](./src/chapters/31-patterns-architecture.md)
 32. [متاپروگرامینگ پیشرفته](./src/chapters/32-meta-programming.md)
 
 </details>
 
 <details>
-<summary><strong>بخش چهارم — تمرین و آمادگی شغلی (فصل‌های ۳۳ تا ۳۸)</strong></summary>
+<summary><strong>بخش چهارم — کارگاه و آمادگی شغلی</strong> · فصل‌های ۳۳ تا ۳۸</summary>
 
-33. [۳۰ نکته و ترفند کاربردی](./src/chapters/33-tips-tricks.md)
+33. [۳۰ نکته و ترفند طلایی](./src/chapters/33-tips-tricks.md)
 34. [کارگاه ۸ مینی‌پروژه](./src/chapters/34-workshop.md)
-35. [۲۰ اشتباه رایج و راه‌حل آن‌ها](./src/chapters/35-mistakes.md)
-36. [۵۰ پرسش مصاحبه از Junior تا Senior](./src/chapters/36-interview.md)
-37. [واژه‌نامه فارسی–انگلیسی](./src/chapters/37-glossary.md)
+35. [۲۰ اشتباه رایج و راه‌حل](./src/chapters/35-mistakes.md)
+36. [۵۰ پرسش مصاحبه — از Junior تا Senior](./src/chapters/36-interview.md)
+37. [واژه‌نامه فارسی-انگلیسی](./src/chapters/37-glossary.md)
 38. [نقشه راه بعد از کتاب](./src/chapters/38-roadmap-next.md)
 
 </details>
@@ -137,22 +158,35 @@
 ## پیش‌نمایش
 
 <p align="center">
-  <img src="./docs/assets/page-cover.jpg" alt="جلد کتاب" width="23%">
-  <img src="./docs/assets/page-toc.jpg" alt="فهرست کتاب" width="23%">
-  <img src="./docs/assets/page-code.jpg" alt="نمونه صفحه کد" width="23%">
-  <img src="./docs/assets/page-workshop.jpg" alt="نمونه صفحه کارگاه" width="23%">
+  <a href="./docs/assets/page-toc.jpg"><img src="./docs/assets/web/preview-toc.webp" alt="فهرست مطالب" width="220"></a>
+  <a href="./docs/assets/page-chapter.jpg"><img src="./docs/assets/web/preview-chapter.webp" alt="ساختار فصل" width="220"></a>
+  <a href="./docs/assets/page-code.jpg"><img src="./docs/assets/web/preview-code.webp" alt="نمونهٔ کد" width="220"></a>
+  <a href="./docs/assets/page-workshop.jpg"><img src="./docs/assets/web/preview-workshop.webp" alt="کارگاه پروژه" width="220"></a>
 </p>
+
+<a id="editions"></a>
+
+## نسخه‌های در دسترس
+
+### PDF — [نسخهٔ اصلی](./docs/pdf/JavaScript-Persian-Guide.pdf)
+
+**۱۵۶ صفحه · A4** — نسخهٔ رنگی و قابل جست‌وجو برای مطالعه روی دسکتاپ و تبلت.
+
+### EPUB — [نسخهٔ کتاب‌خوان](./docs/pdf/JavaScript-Persian-Guide.epub)
+
+**راست‌به‌چپ · مناسب موبایل** — نسخهٔ بازچینش‌پذیر برای موبایل، تبلت و نرم‌افزارهای مطالعه EPUB.
+
+### GITHUB — [سورس و فصل‌ها](https://github.com/rezaian-dev/javascript-persian-guide)
+
+**Markdown · Python** — متن فصل‌ها، ابزار ساخت PDF و دارایی‌های پروژه در مخزن عمومی نگهداری می‌شوند.
 
 <a id="build"></a>
 
 ## ساخت از سورس
 
-### پیش‌نیازها
+پیش‌نیاز اصلی Python 3.10 یا جدیدتر است. برای تولید PDF، وابستگی‌های سیستمی [WeasyPrint](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation) نیز باید نصب باشند.
 
-- Python 3.10 یا جدیدتر
-- وابستگی‌های سیستمی موردنیاز [WeasyPrint](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation)
-
-### راه‌اندازی محیط
+### راه‌اندازی
 
 ```bash
 git clone https://github.com/rezaian-dev/javascript-persian-guide.git
@@ -162,64 +196,57 @@ python -m venv .venv
 source .venv/bin/activate       # macOS / Linux
 # .venv\Scripts\Activate.ps1   # Windows PowerShell
 
-python -m pip install --upgrade pip
-pip install -r src/requirements.txt
-```
-
-### تولید خروجی
-
-```bash
-python src/build.py --html      # src/build/book.html
-python src/build.py             # docs/pdf/JavaScript-Persian-Guide.pdf
+python -m pip install -r src/requirements.txt
+python src/build.py --html      # پیش‌نمایش HTML
+python src/build.py             # PDF رنگی
 python src/build.py --print     # نسخه مناسب چاپ
 ```
 
-فونت‌های موردنیاز پروژه در `src/fonts` قرار دارند و هنگام ساخت خروجی به‌صورت محلی استفاده می‌شوند.
-
-## ساختار مخزن
+### ساختار اصلی
 
 ```text
 .
-├── README.md
-├── LICENSE
-├── docs/
-│   ├── assets/                 # تصاویر و پیش‌نمایش‌ها
-│   ├── pdf/                    # خروجی‌های PDF و EPUB
-│   └── index.html              # وب‌سایت پروژه
+├── docs/                       # سایت، تصاویر و خروجی‌ها
+│   ├── assets/
+│   ├── index.html
+│   └── pdf/
 └── src/
-    ├── banner/                 # تصاویر بنر
-    ├── chapters/               # متن فصل‌ها
+    ├── chapters/               # متن ۳۸ فصل
     ├── fonts/                  # فونت‌های محلی
     ├── build.py                # سازنده HTML و PDF
-    ├── build_epub.py           # سازنده EPUB
-    ├── style.css               # استایل نسخه دیجیتال
-    └── style-print.css         # استایل نسخه چاپی
+    ├── build_epub.py
+    └── style*.css
 ```
 
-<a id="contributing"></a>
+<a id="collection"></a>
+
+## مجموعه راهنماهای فارسی
+
+این سه مرجع یک مسیر هماهنگ می‌سازند: ابتدا زبان JavaScript، سپس معماری رابط کاربری با React و در پایان توسعهٔ کامل با Next.js.
+
+- **[JavaScript ES2025](https://github.com/rezaian-dev/javascript-persian-guide)** — زبان و مدل ذهنی؛ پایهٔ مشترک مسیر توسعه وب · [نسخه آنلاین](https://rezaian-dev.github.io/javascript-persian-guide/) — **راهنمای فعلی**
+- **[React 19.2](https://github.com/rezaian-dev/react-19-persian-guide)** — رابط کاربری، مدیریت state و معماری کامپوننت · [نسخه آنلاین](https://rezaian-dev.github.io/react-19-persian-guide/)
+- **[Next.js 16](https://github.com/rezaian-dev/nextjs-16-persian-guide)** — فریم‌ورک، رندر سرور، کشینگ و استقرار · [نسخه آنلاین](https://rezaian-dev.github.io/nextjs-16-persian-guide/)
 
 ## مشارکت
 
-گزارش خطا، اصلاح محتوا و پیشنهاد برای فصل‌های جدید از طریق [Issues](https://github.com/rezaian-dev/javascript-persian-guide/issues) و Pull Request پذیرفته می‌شود. برای ساده‌ترشدن بررسی، هر Pull Request را به یک تغییر مشخص محدود کنید و دلیل تغییر را شفاف بنویسید.
+برای گزارش خطا، پیشنهاد اصلاح یا بهبود محتوا از [Issues](https://github.com/rezaian-dev/javascript-persian-guide/issues) استفاده کنید. Pull Requestها بهتر است کوچک، متمرکز و همراه با توضیح روشن دربارهٔ دلیل تغییر باشند.
 
-## نویسنده و نگهدارنده
+- [گزارش یک مشکل](https://github.com/rezaian-dev/javascript-persian-guide/issues)
+- [مشاهده مخزن](https://github.com/rezaian-dev/javascript-persian-guide)
+
+## نویسنده و مجوز
 
 **محمدرضا رضائیان** — [@rezaian-dev](https://github.com/rezaian-dev)
 
-## مجوز
-
-این اثر با مجوز [Creative Commons BY-NC-SA 4.0](./LICENSE) منتشر شده است:
-
-- استفاده و بازنشر غیرتجاری با ذکر منبع مجاز است.
-- تغییر و اقتباس با حفظ همین مجوز مجاز است.
-- استفاده تجاری بدون دریافت اجازه مجاز نیست.
+این اثر با مجوز [Creative Commons BY-NC-SA 4.0](./LICENSE) منتشر شده است. استفاده و بازنشر غیرتجاری با ذکر منبع مجاز است و نسخهٔ اقتباسی باید با همین مجوز منتشر شود.
 
 </div>
 
 ---
 
 <p align="center" dir="rtl">
-  اگر این راهنما برایتان مفید بود، با ثبت یک ⭐ از ادامه توسعه آن حمایت کنید.
+  اگر این راهنما برایتان مفید بود، با ثبت یک ⭐ از ادامهٔ توسعهٔ مجموعه حمایت کنید.
   <br>
   <a href="#top">بازگشت به بالا</a>
 </p>
