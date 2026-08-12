@@ -5,16 +5,16 @@
   "dir": "rtl",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#050816",
-  "theme_color": "#050816",
+  "background_color": "#111a30",
+  "theme_color": "#111a30",
   "icons": [
     {
-      "src": "assets/js-logo-64.png",
+      "src": "js-logo-64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "assets/js-logo-128.png",
+      "src": "js-logo-128.png",
       "sizes": "128x128",
       "type": "image/png"
     }

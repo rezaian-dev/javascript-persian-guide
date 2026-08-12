@@ -1,0 +1,42 @@
+/**
+ * Central place for every outbound/asset URL.
+ *
+ * Why this exists: the site ships to two hosts.
+ *   - Vercel / local  → served from "/"
+ *   - GitHub Pages    → served from "/javascript-persian-guide"
+ *
+ * `next/link` and `next/image` prefix basePath automatically, but a plain
+ * <a href="/pdf/..."> or a raw <img> does NOT. Use `asset()` for those so a
+ * download link never 404s on Pages.
+ */
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+/** Prefix a public/ asset with the active basePath. */
+export function asset(path: string): string {
+  const clean = path.startsWith("/") ? path : `/${path}`;
+  return `${BASE}${clean}`;
+}
+
+/** Canonical origin of the published site. */
+export const SITE_URL = "https://rezaian-dev.github.io/javascript-persian-guide";
+
+export const REPO_URL = "https://github.com/rezaian-dev/javascript-persian-guide";
+export const ISSUES_URL = `${REPO_URL}/issues`;
+export const AUTHOR_URL = "https://github.com/rezaian-dev";
+
+/**
+ * The online reading hub: the /chapters page lists all 38 chapters, each
+ * deep-linking to its full Markdown source on GitHub.
+ */
+export const BOOK_URL = asset("/chapters/");
+
+/** Slug of the very first chapter, for "start reading" CTAs. */
+export const FIRST_CHAPTER_SLUG = "01-intro";
+
+/** Deep-link to a single chapter's full text on GitHub. */
+export function chapterUrl(slug: string): string {
+  return `${REPO_URL}/blob/main/src/chapters/${slug}.md`;
+}
+
+export const PDF_URL = asset("/pdf/JavaScript-Persian-Guide.pdf");
+export const EPUB_URL = asset("/pdf/JavaScript-Persian-Guide.epub");

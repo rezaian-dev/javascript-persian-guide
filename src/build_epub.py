@@ -7,7 +7,7 @@ from ebooklib import epub
 
 ROOT = pathlib.Path(__file__).parent
 CH_DIR = ROOT / "chapters"
-OUT_EPUB = ROOT.parent / "docs" / "pdf" / "JavaScript-Persian-Guide.epub"
+OUT_EPUB = ROOT.parent / "public" / "pdf" / "JavaScript-Persian-Guide.epub"
 
 md = MarkdownIt("commonmark", {"html": True}).enable("table")
 
