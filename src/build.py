@@ -12,7 +12,7 @@ from weasyprint import HTML
 
 ROOT = pathlib.Path(__file__).parent
 CH_DIR = ROOT / "chapters"
-OUT_PDF = ROOT.parent / "docs" / "pdf" / "JavaScript-Persian-Guide.pdf"
+OUT_PDF = ROOT.parent / "public" / "pdf" / "JavaScript-Persian-Guide.pdf"
 OUT_HTML = ROOT / "build" / "book.html"
 
 PARTS = {
