@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { BookOpen } from "lucide-react";
 
 import SectionHeader from "@/components/layout/SectionHeader";
@@ -49,7 +48,7 @@ export default function Chapters() {
                     {part.chapters.map((c) => (
                       <a
                         key={c.n}
-                        href={chapterUrl(c.slug)}
+                        href={chapterUrl(c.n)}
                         target="_blank"
                         rel="noopener"
                         className="flex items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 transition-colors hover:border-border hover:bg-secondary/40"
@@ -70,9 +69,9 @@ export default function Chapters() {
         <Reveal delay={0.1}>
           <div className="mt-10 flex justify-center">
             <Button asChild size="lg">
-              <Link href={BOOK_URL}>
-                <BookOpen /> فهرست کامل و مطالعه
-              </Link>
+              <a href={BOOK_URL} target="_blank" rel="noopener">
+                <BookOpen /> مطالعهٔ کامل کتاب
+              </a>
             </Button>
           </div>
         </Reveal>

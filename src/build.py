@@ -8,7 +8,8 @@ from markdown_it import MarkdownIt
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name, TextLexer
 from pygments.formatters import HtmlFormatter
-from weasyprint import HTML
+# NOTE: weasyprint is imported lazily inside build() so that importing this
+# module (e.g. from build_reader.py) never requires the PDF toolchain.
 
 ROOT = pathlib.Path(__file__).parent
 CH_DIR = ROOT / "chapters"
@@ -340,6 +341,8 @@ def build(pdf=True):
     OUT_HTML.write_text(doc, encoding="utf-8")
     print(f"HTML written ({len(doc)//1024} KB) in {time.time()-t0:.1f}s")
     if pdf:
+        from weasyprint import HTML
+
         t1 = time.time()
         OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
         out = ROOT / "JavaScript-Persian-Guide-Print.pdf" if PRINT_MODE else OUT_PDF
