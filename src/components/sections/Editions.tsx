@@ -11,7 +11,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { BOOK_URL, PDF_URL, EPUB_URL, REPO_URL } from "@/lib/links";
 
 const EDITIONS = [
-  { icon: BookOpen, title: "مطالعهٔ فصل‌ها", text: "فهرست کامل ۳۸ فصل با پیوند مستقیم به متن هر فصل روی گیت‌هاب؛ بدون نیاز به دانلود.", meta: "۳۸ فصل · Markdown", href: BOOK_URL, cta: "فهرست فصل‌ها", download: false, external: false },
+  { icon: BookOpen, title: "نسخهٔ آنلاین", text: "خواندن در مرورگر با فهرست فصل‌ها و پیمایش سریع؛ بدون دانلود.", meta: "۳۸ فصل · رایگان", href: BOOK_URL, cta: "مطالعه آنلاین", download: false, external: true },
   { icon: FileText, title: "PDF", text: "A4 رنگی، قابل جست‌وجو و آمادهٔ چاپ.", meta: "۱۵۶ صفحه · A4", href: PDF_URL, cta: "دانلود PDF", download: true, external: false },
   { icon: Smartphone, title: "EPUB", text: "متن بازچینش‌پذیر راست‌به‌چپ برای موبایل، تبلت و کتاب‌خوان.", meta: "EPUB · ریسپانسیو", href: EPUB_URL, cta: "دانلود EPUB", download: true, external: false },
   { icon: GitHubIcon, title: "مخزن پروژه", text: "متن فصل‌ها، کد سایت و ابزار ساخت نسخه‌ها.", meta: "Next.js · Python", href: REPO_URL, cta: "مشاهده مخزن", download: false, external: true },

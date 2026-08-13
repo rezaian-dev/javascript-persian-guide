@@ -79,7 +79,7 @@
 
 <table dir="rtl" align="center">
 <tr><th align="center">قالب</th><th align="center">مناسب برای</th><th align="center">لینک</th></tr>
-<tr><td align="center">🌐 <strong>آنلاین</strong></td><td>فهرست ۳۸ فصل با پیوند مستقیم به متن کامل هر فصل</td><td align="center"><a href="https://rezaian-dev.github.io/javascript-persian-guide/chapters/"><strong>شروع مطالعه</strong></a></td></tr>
+<tr><td align="center">🌐 <strong>آنلاین</strong></td><td>مطالعهٔ فوری در مرورگر با پیوند مستقیم به هر فصل</td><td align="center"><a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><strong>شروع مطالعه</strong></a></td></tr>
 <tr><td align="center">📕 <strong>PDF</strong></td><td>دانلود، جست‌وجو و چاپ — قطع A4 رنگی</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.pdf"><strong>دانلود</strong></a></td></tr>
 <tr><td align="center">📗 <strong>EPUB</strong></td><td>موبایل، تبلت و کتاب‌خوان — متن بازچینش‌پذیر</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.epub"><strong>دانلود</strong></a></td></tr>
 <tr><td align="center">🧰 <strong>سورس</strong></td><td>متن فصل‌ها، کد سایت و ابزارهای ساخت کتاب</td><td align="center"><a href="https://github.com/rezaian-dev/javascript-persian-guide"><strong>همین مخزن</strong></a></td></tr>
@@ -155,7 +155,7 @@
 
 ## 🚀 دو قدم تا شروع
 
-۱. **سریع‌ترین راه:** [فهرست فصل‌ها](https://rezaian-dev.github.io/javascript-persian-guide/chapters/) را باز کنید و مستقیم متن هر فصل را بخوانید — نصب لازم نیست. ⚡
+۱. **سریع‌ترین راه:** کتاب را همان [نسخهٔ آنلاین](https://rezaian-dev.github.io/javascript-persian-guide/book/) بخوانید — نصب لازم نیست. ⚡
 
 ۲. **اگر سورس را می‌خواهید:**
 
@@ -177,6 +177,7 @@ python -m pip install -r src/requirements.txt
 python src/build.py          # PDF در public/pdf/
 python src/build.py --print  # نسخه مناسب چاپ
 python src/build_epub.py     # EPUB در public/pdf/
+python src/build_reader.py    # نسخهٔ آنلاین در public/book/
 ```
 
 ```text

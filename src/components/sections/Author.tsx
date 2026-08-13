@@ -50,7 +50,7 @@ export default function Author() {
                 </Magnetic>
                 <Magnetic>
                   <Button asChild size="sm">
-                    <a href={BOOK_URL}>
+                    <a href={BOOK_URL} target="_blank" rel="noopener">
                       <BookOpen /> مطالعه آنلاین
                     </a>
                   </Button>

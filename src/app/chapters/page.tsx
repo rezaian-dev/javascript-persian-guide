@@ -9,7 +9,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PARTS, TOTAL_CHAPTERS } from "@/lib/chapters";
-import { FIRST_CHAPTER_SLUG, chapterUrl } from "@/lib/links";
+import { BOOK_URL, chapterUrl } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "فهرست فصل‌ها | مرجع فارسی JavaScript ES2025",
@@ -33,12 +33,12 @@ export default function ChaptersPage() {
             <span className="grad-text">۳۸ فصل</span> در چهار بخش
           </h1>
           <p className="mt-3.5 text-base leading-8 text-muted-foreground">
-            هر بخش یک مرحله از مسیر است: از مدل ذهنی زبان تا Production‏. روی هر فصل کلیک کنید تا متن کاملش روی گیت‌هاب باز شود.
+            هر بخش یک مرحله از مسیر است: از مدل ذهنی زبان تا Production‏. روی هر فصل کلیک کنید تا مستقیم در نسخهٔ آنلاین کتاب باز شود.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button asChild>
-              <a href={chapterUrl(FIRST_CHAPTER_SLUG)} target="_blank" rel="noopener">
-                <BookOpen /> شروع از فصل اول <ExternalLink />
+              <a href={BOOK_URL} target="_blank" rel="noopener">
+                <BookOpen /> مطالعهٔ کامل کتاب <ExternalLink />
               </a>
             </Button>
             <Button asChild variant="outline">
@@ -68,7 +68,7 @@ export default function ChaptersPage() {
                 {part.chapters.map((c) => (
                   <a
                     key={c.n}
-                    href={chapterUrl(c.slug)}
+                    href={chapterUrl(c.n)}
                     target="_blank"
                     rel="noopener"
                     className="flex items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 transition-colors hover:border-border hover:bg-secondary/40"

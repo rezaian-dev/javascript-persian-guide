@@ -118,9 +118,9 @@ export default function Navbar() {
 
           <div className="ms-auto flex items-center gap-2">
             <Button asChild size="sm" className="hidden sm:inline-flex">
-              <Link href={BOOK_URL} onClick={() => setOpen(false)}>
+              <a href={BOOK_URL} target="_blank" rel="noopener" onClick={() => setOpen(false)}>
                 <BookOpen /> مطالعه آنلاین
-              </Link>
+              </a>
             </Button>
             <button
               type="button"
@@ -226,9 +226,9 @@ export default function Navbar() {
 
               <m.footer variants={row} className="relative grid gap-2.5 border-t border-border px-4 py-4">
                 <Button asChild size="lg" className="w-full">
-                  <Link href={BOOK_URL} onClick={() => setOpen(false)}>
+                  <a href={BOOK_URL} target="_blank" rel="noopener" onClick={() => setOpen(false)}>
                     <BookOpen /> مطالعه آنلاین
-                  </Link>
+                  </a>
                 </Button>
                 <div className="grid grid-cols-2 gap-2.5">
                   <Button asChild variant="outline" size="sm">
