@@ -107,8 +107,8 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // A hash landing happens before webfonts shift the column; once it has
-  // settled, put the chapter head exactly under the bar.
+  // A hash landing happens before the lazy images above it have decoded; once the
+  // column has settled, put the chapter head exactly under the bar.
   const settle = (hash) => {
     const el = hash && document.querySelector(hash);
     if (!el) return;
@@ -126,7 +126,7 @@
   addEventListener('hashchange', () => settle(location.hash));
 
   // highlight the chapter currently on screen
-  const heads = [...document.querySelectorAll('.chapter[id]')];
+  const heads = [...document.querySelectorAll('.ch-head')];
   const links = new Map([...document.querySelectorAll('.toc-part a')].map((a) => [a.getAttribute('href').slice(1), a]));
   if ('IntersectionObserver' in window && heads.length) {
     let active = null;

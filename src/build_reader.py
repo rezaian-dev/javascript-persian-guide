@@ -1,39 +1,65 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""The online edition — all 38 chapters as readable HTML at public/book/.
+"""The online edition — every page of the PDF, readable in a browser at public/book/.
 
     python src/build_reader.py          # write public/book/
     python src/build_reader.py --check  # fail if the shipped reader is stale
 
-Unlike the typeset PDF (WeasyPrint, A4), the reader is *screen-first HTML*:
-each Markdown chapter is rendered through the very same pipeline as the book
-(`build.py`: MarkdownIt + pygments + the ::: callouts), then wrapped in a
-dark reading shell — sticky bar with a chapter select, a table-of-contents
-drawer, a scroll progress bar and prev/next navigation.
+Same design as the Next.js handbook's reader: the book is a typeset 156-page
+A4 PDF, so the reader is *photography of the edition* — each page is
+rasterised straight from the PDF's own vectors and shown in reading order.
+That keeps the online edition faithful to the printed layout — code windows,
+tables and figures included.
 
-Every chapter gets an `id="ch-NN"` anchor so the site can deep-link to
-`book/#ch-07`. All asset URLs are relative (../fonts, ../pdf, ../js-logo-*),
-so the reader works both on GitHub Pages (under a basePath) and locally.
+Chapter anchors come from two sources joined together: the Markdown
+frontmatter (num, part, title, subtitle) gives the structure, and the PDF's
+own outline (L1 bookmarks, written by WeasyPrint) gives the first page of
+each chapter. The build refuses to run unless all 38 chapters resolve.
+
+Three numbers make that honest rather than blurry:
+
+*  **Width.** A page is painted at most `PAINT` CSS px wide, so the file carries `RENDER` px
+   — 2x — and stays sharp on a Retina display without the browser ever upscaling.
+*  **Format.** WebP at q=82. The pages are type and flat colour over a white ground; at this
+   width WebP holds the glyph edges while landing far under PNG, which
+   matters when a reader loads 156 of them.
+*  **Loading.** Only the first two pages are eager; the rest carry `loading="lazy"` plus
+   intrinsic `width`/`height`, so the page costs one screen of images and never reflows.
 """
 from __future__ import annotations
 
 import argparse
-import html
+import io
 import pathlib
+import re
 import shutil
 import sys
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-import build as book  # noqa: E402  — reuse parse_chapter / render_chapter / PARTS
+import pymupdf
+from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+CH_DIR = ROOT / "src" / "chapters"
+PDF = ROOT / "public" / "pdf" / "JavaScript-Persian-Guide.pdf"
+EPUB_NAME = "JavaScript-Persian-Guide.epub"
 OUT = ROOT / "public" / "book"
+PAGES_DIR = OUT / "pages"
 FONTS_SRC = ROOT / "src" / "fonts"
 FONTS_DST = ROOT / "public" / "fonts"
 
 SITE = "https://rezaian-dev.github.io/javascript-persian-guide"
-REPO = "https://github.com/rezaian-dev/javascript-persian-guide"
 BOOK_TITLE = "مرجع فارسی JavaScript ES2025"
+
+PART_LABELS = {
+    "1": "بنیادها و مدل ذهنی",
+    "2": "JavaScript مدرن و عمیق",
+    "3": "مهندسی و Production",
+    "4": "کارگاه و آمادگی شغلی",
+}
+
+PAINT = 820        # CSS px a page is painted at, at most
+RENDER = PAINT * 2  # px actually stored, for 2x displays
+QUALITY = 82
 
 FA = "۰۱۲۳۴۵۶۷۸۹"
 
@@ -43,30 +69,251 @@ def fa(n: int | str) -> str:
 
 
 def esc(s: str) -> str:
-    return html.escape(s, quote=True)
+    return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+             .replace('"', "&quot;"))
 
 
-CSS = """@font-face{font-family:Vazirmatn;src:url(../fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+def frontmatter(path: pathlib.Path) -> dict:
+    m = re.match(r"^---\n(.*?)\n---\n", path.read_text(encoding="utf-8"), re.S)
+    assert m, path
+    d = {}
+    for line in m.group(1).splitlines():
+        k, _, v = line.partition(":")
+        d[k.strip()] = v.strip()
+    return d
+
+
+def load_chapters() -> list[dict]:
+    """Join Markdown frontmatter with the PDF outline's L1 chapter pages."""
+    outline = {t.strip(): p for lvl, t, p in pymupdf.open(PDF).get_toc() if lvl == 1}
+    chapters = []
+    for f in sorted(CH_DIR.glob("*.md")):
+        fm = frontmatter(f)
+        title = fm["title"]
+        if title not in outline:
+            raise SystemExit(f"chapter {f.stem} has no L1 bookmark in the PDF")
+        chapters.append({
+            "num": int(fm["num"]),
+            "page": outline[title],
+            "part": fm["part"],
+            "title": title,
+            "subtitle": fm.get("subtitle", ""),
+        })
+    chapters.sort(key=lambda c: c["num"])
+    assert [c["num"] for c in chapters] == list(range(1, 39)), "expected 38 chapters"
+    return chapters
+
+
+def render() -> tuple[list[tuple[int, int]], int]:
+    """Rasterise every page to WebP. Returns per-page (w, h) and total bytes."""
+    doc = pymupdf.open(PDF)
+    PAGES_DIR.mkdir(parents=True, exist_ok=True)
+    dims: list[tuple[int, int]] = []
+    total = 0
+    for i, page in enumerate(doc, 1):
+        zoom = RENDER / page.rect.width
+        pix = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), alpha=False)
+        img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+        buf = io.BytesIO()
+        img.save(buf, "WEBP", quality=QUALITY, method=6)
+        (PAGES_DIR / f"p{i:03d}.webp").write_bytes(buf.getvalue())
+        total += buf.getbuffer().nbytes
+        dims.append((pix.width, pix.height))
+    doc.close()
+    return dims, total
+
+
+def part_of(chapters: list[dict], num: int) -> str:
+    for c in chapters:
+        if c["num"] == num:
+            return PART_LABELS[c["part"]]
+    return ""
+
+
+def build_html(dims: list[tuple[int, int]], chapters: list[dict]) -> str:
+    n_pages = len(dims)
+    anchors = {c["page"]: c for c in chapters}
+
+    for c in chapters:
+        if c["page"] > n_pages:
+            raise SystemExit(f"chapter {c['num']} points at page {c['page']} of {n_pages}")
+
+    parts = sorted({c["part"] for c in chapters})
+
+    # ---- table of contents, grouped by part -------------------------------
+    toc: list[str] = []
+    for pid in parts:
+        rows = [c for c in chapters if c["part"] == pid]
+        toc.append(
+            f'<section class="toc-part"><h3>بخش {fa(pid)} · {esc(PART_LABELS[pid])}</h3><ol>'
+        )
+        for c in rows:
+            toc.append(
+                f'<li><a href="#ch-{c["num"]:02d}">'
+                f'<span class="n">{fa(f"{c["num"]:02d}")}</span>'
+                f'<span class="t">{esc(c["title"])}'
+                f'<em>{esc(c.get("subtitle", ""))}</em></span>'
+                f'<span class="p">ص&nbsp;{fa(c["page"])}</span></a></li>'
+            )
+        toc.append("</ol></section>")
+
+    # ---- the pages --------------------------------------------------------
+    pages: list[str] = []
+    for i, (w, h) in enumerate(dims, 1):
+        ch = anchors.get(i)
+        if ch:
+            pages.append(
+                f'<div class="ch-head" id="ch-{ch["num"]:02d}">'
+                f'<span class="kicker">{esc(part_of(chapters, ch["num"]))}</span>'
+                f'<h2>{fa(f"{ch["num"]:02d}")} · {esc(ch["title"])}</h2>'
+                + (f'<p>{esc(ch["subtitle"])}</p>' if ch.get("subtitle") else "")
+                + "</div>"
+            )
+        eager = i <= 2
+        pages.append(
+            f'<figure class="pg" id="p-{i:03d}">'
+            f'<img src="pages/p{i:03d}.webp" width="{w}" height="{h}" '
+            f'alt="صفحه {fa(i)}" decoding="async" '
+            f'{" " if eager else 'loading="lazy" '}/>'
+            f"<figcaption>{fa(i)}</figcaption></figure>"
+        )
+
+    # shadcn/ui-style Select: items grouped under their part label, each row
+    # carrying a check slot the controller lights up for the active chapter.
+    nav: list[str] = []
+    for pid in parts:
+        rows = [c for c in chapters if c["part"] == pid]
+        nav.append(f'<div class="select-label">بخش {fa(pid)} · {esc(PART_LABELS[pid])}</div>')
+        for c in rows:
+            n = fa(f"{c['num']:02d}")
+            nav.append(
+                f'<div class="select-item" role="option" id="jump-ch-{c["num"]:02d}" '
+                f'data-value="#ch-{c["num"]:02d}" aria-selected="false">'
+                f'<span class="n">{n}</span><span class="t">{esc(c["title"])}</span>'
+                f'<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                f'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                f'<path d="M20 6 9 17l-5-5"/></svg></div>'
+            )
+    nav_chapters = "".join(nav)
+
+    title = f"{esc(BOOK_TITLE)} — نسخهٔ آنلاین"
+    desc = (f"خواندن آنلاین {esc(BOOK_TITLE)}؛ "
+            f"{fa(n_pages)} صفحه، {fa(len(chapters))} فصل، رایگان و بدون دانلود.")
+
+    return f"""<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{SITE}/book/">
+<meta name="theme-color" content="#111a30">
+<meta property="og:type" content="book">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{SITE}/book/">
+<meta property="og:image" content="{SITE}/social-card.jpg">
+<link rel="icon" type="image/png" sizes="64x64" href="../js-logo-64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="../js-logo-128.png">
+<link rel="preload" href="../fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="pages/p001.webp" as="image">
+<link rel="stylesheet" href="reader.css">
+</head>
+<body>
+<a class="skip" href="#pages">پرش به متن کتاب</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="home" href="../" aria-label="بازگشت به صفحهٔ کتاب">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      <span>صفحهٔ کتاب</span>
+    </a>
+
+    <div class="ident">
+      <strong>{esc(BOOK_TITLE)}</strong>
+      <span>نسخهٔ آنلاین · {fa(n_pages)} صفحه</span>
+    </div>
+
+    <div class="tools">
+      <div class="select" id="jump">
+        <button type="button" class="select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="پرش به فصل">
+          <span class="select-value ph">فهرست فصل‌ها…</span>
+          <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="select-pop" role="listbox" aria-label="پرش به فصل" hidden>
+          {nav_chapters}
+        </div>
+      </div>
+      <button id="toc-btn" class="icon" type="button" aria-controls="toc" aria-expanded="false" aria-label="فهرست مطالب">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      </button>
+      <a class="dl" href="../pdf/{PDF.name}" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg>
+        <span>PDF</span>
+      </a>
+    </div>
+  </div>
+  <div class="progress"><i id="bar"></i></div>
+</header>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="toc" id="toc" hidden aria-label="فهرست مطالب">
+  <div class="toc-top">
+    <strong>فهرست مطالب</strong>
+    <button id="toc-x" class="icon" type="button" aria-label="بستن فهرست">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="toc-body">{"".join(toc)}</div>
+</aside>
+
+<main class="pages" id="pages">
+{"".join(pages)}
+</main>
+
+<footer class="end">
+  <p>پایان کتاب — {fa(n_pages)} صفحه، {fa(len(chapters))} فصل.</p>
+  <div class="end-cta">
+    <a class="btn primary" href="../pdf/{PDF.name}" download>دانلود PDF</a>
+    <a class="btn" href="../pdf/{EPUB_NAME}" download>دانلود EPUB</a>
+    <a class="btn" href="../">صفحهٔ کتاب</a>
+  </div>
+  <small>© ۲۰۲۶ محمدرضا رضائیان · CC BY-NC-SA 4.0</small>
+</footer>
+
+<button id="top" class="to-top" type="button" aria-label="بازگشت به ابتدا" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
+</button>
+
+<script src="reader.js" defer></script>
+</body>
+</html>
+"""
+
+
+CSS = r"""@font-face{font-family:Vazirmatn;src:url(../fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:Vazirmatn;src:url(../fonts/Vazirmatn-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:Vazirmatn;src:url(../fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:Vazirmatn;src:url(../fonts/Vazirmatn-ExtraBold.woff2) format("woff2");font-weight:800;font-display:swap}
 @font-face{font-family:"JetBrains Mono";src:url(../fonts/JetBrainsMono-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"JetBrains Mono";src:url(../fonts/JetBrainsMono-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
 
 :root{
   --bg:#111a30; --bg-2:#0e1729; --panel:#202b48; --panel-2:#182240;
   --line:hsla(0,0%,100%,.14); --line-2:hsla(0,0%,100%,.08);
   --ink:#f6f8fd; --sub:#b2bcd0; --faint:#8b95ad;
   --accent:247 223 30; --accent-2:34 211 238; --on-accent:#11130a;
-  --code-bg:#141d33; --bar-h:60px;
+  --bar-h:60px;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--bar-h) + 14px);-webkit-text-size-adjust:100%}
 body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color:var(--ink);
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(50rem 34rem at 88% -6%,rgb(var(--accent)/.13),transparent 62%),
-             radial-gradient(46rem 32rem at 8% 2%,rgb(var(--accent-2)/.13),transparent 64%),
+  background:radial-gradient(50rem 34rem at 88% -6%,rgb(var(--accent)/.16),transparent 62%),
+             radial-gradient(46rem 32rem at 8% 2%,rgb(var(--accent-2)/.16),transparent 64%),
              linear-gradient(180deg,#0e1729,#111a30 40%,#16203c 100%)}
 a{color:inherit}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -157,7 +404,7 @@ a{color:inherit}
 .toc-part h3{margin:0 0 8px;padding:0 6px;font-size:11.5px;font-weight:800;letter-spacing:.04em;
   color:rgb(var(--accent))}
 .toc-part ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.toc-part a{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;
+.toc-part a{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;
   padding:9px 10px;border-radius:10px;text-decoration:none;transition:background .14s}
 .toc-part a:hover{background:hsla(0,0%,100%,.06)}
 .toc-part a.on{background:rgb(var(--accent)/.14)}
@@ -167,141 +414,24 @@ a{color:inherit}
 .toc-part .t{font-size:13.5px;font-weight:700}
 .toc-part .t em{font-style:normal;font-size:11.5px;font-weight:500;color:var(--faint);
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toc-part .p{font-size:10.5px;color:var(--faint);white-space:nowrap}
 
-/* ---------- the book ---------- */
-.book{width:min(820px,calc(100% - 24px));margin:26px auto 0;display:grid;gap:22px;overflow-anchor:none}
-.part-div{text-align:center;margin:12px 0 -4px}
-.part-div span{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;
-  letter-spacing:.28em;color:rgb(var(--accent));margin-bottom:6px}
-.part-div strong{font-size:clamp(20px,3.4vw,28px);font-weight:800}
-
-.chapter{background:linear-gradient(165deg,rgba(32,43,72,.92),rgba(24,34,60,.78));
-  border:1px solid var(--line-2);border-radius:18px;
-  padding:clamp(20px,4vw,36px);box-shadow:0 18px 50px rgba(0,0,0,.28)}
-.chapter-head{display:grid;gap:10px;margin-bottom:6px}
-.chapter-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;
-  color:var(--on-accent);background:linear-gradient(135deg,rgb(var(--accent)),rgb(var(--accent-2)));
-  border-radius:8px;padding:4px 12px;width:max-content;letter-spacing:.12em}
-.chapter-title{margin:0;font-size:clamp(22px,4vw,30px);font-weight:800;line-height:1.5}
-.lead{margin:14px 0 4px;padding:12px 16px;border-radius:12px;font-size:14.5px;line-height:2.1;
-  color:var(--ink);background:rgb(var(--accent)/.08);border:1px solid rgb(var(--accent)/.22);
-  border-inline-start:3px solid rgb(var(--accent))}
-
-.chapter h1:not(.chapter-title){font-size:18px;font-weight:800;margin:30px 0 10px;line-height:1.8}
-.chapter h2{font-size:20px;font-weight:800;margin:34px 0 12px;line-height:1.8}
-.chapter h3{font-size:16.5px;font-weight:800;margin:26px 0 10px;line-height:1.8}
-.chapter h4{font-size:15px;font-weight:800;margin:20px 0 8px}
-.hx{display:flex;align-items:center;gap:10px}
-.hx::before{content:"";width:4px;align-self:stretch;border-radius:4px;flex-shrink:0;
-  background:linear-gradient(rgb(var(--accent)),rgb(var(--accent-2)))}
-h3 .hx::before{width:3px}
-.chapter p{margin:12px 0;line-height:2.15}
-.chapter a{color:rgb(var(--accent-2));text-decoration-thickness:1px;text-underline-offset:4px}
-.chapter a:hover{color:#a5f3fc}
-.chapter strong{color:#fff}
-.chapter hr{border:none;border-top:1px dashed var(--line);margin:26px 0}
-.chapter ul,.chapter ol{margin:12px 0;padding-inline-start:24px;line-height:2}
-.chapter li{margin:7px 0}
-.chapter li::marker{color:rgb(var(--accent));font-weight:800}
-.chapter blockquote{margin:14px 0;padding:10px 18px;border-radius:12px;color:var(--sub);
-  background:hsla(0,0%,100%,.04);border-inline-start:3px solid rgb(var(--accent-2)/.6)}
-.chapter blockquote p{margin:8px 0}
-.ltr{direction:ltr;unicode-bidi:isolate;font-family:"JetBrains Mono",Consolas,monospace}
-
-/* inline code */
-.chapter :not(pre)>code{font-family:"JetBrains Mono",Consolas,monospace;font-size:.84em;
-  direction:ltr;unicode-bidi:embed;white-space:nowrap;
-  background:rgb(var(--accent)/.12);color:#fde047;border:1px solid rgb(var(--accent)/.25);
-  padding:2px 8px;border-radius:7px}
-
-/* code windows (pygments monokai spans inherit their own colours) */
-.code{margin:16px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;
-  background:var(--code-bg);box-shadow:0 14px 36px rgba(0,0,0,.3)}
-.code-head{display:flex;align-items:center;gap:10px;padding:9px 14px;
-  background:hsla(0,0%,100%,.04);border-bottom:1px solid var(--line-2)}
-.dots{display:flex;gap:6px}
-.dots i{width:10px;height:10px;border-radius:50%}
-.dots i:nth-child(1){background:#ff5f57}
-.dots i:nth-child(2){background:#febc2e}
-.dots i:nth-child(3){background:#28c840}
-.fname{margin-inline-start:auto;font-family:"JetBrains Mono",monospace;font-size:12px;
-  color:var(--sub);direction:ltr}
-.code pre{margin:0;padding:16px;overflow-x:auto;direction:ltr;text-align:left;
-  font-family:"JetBrains Mono",Consolas,monospace;font-size:13px;line-height:1.95}
-.code pre::-webkit-scrollbar{height:8px}
-.code pre::-webkit-scrollbar-thumb{background:hsla(0,0%,100%,.16);border-radius:8px}
-
-/* tables */
-.tbl-wrap{margin:16px 0;overflow-x:auto;border:1px solid var(--line);border-radius:14px}
-.tbl-wrap table{width:100%;border-collapse:collapse;font-size:13.5px}
-.tbl-wrap th{background:rgb(var(--accent)/.12);color:#fde047;font-weight:800;
-  padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
-.tbl-wrap td{padding:10px 14px;border-bottom:1px solid var(--line-2);line-height:1.9}
-.tbl-wrap tr:last-child td{border-bottom:none}
-.tbl-wrap tbody tr:nth-child(even) td{background:hsla(0,0%,100%,.025)}
-
-/* callouts */
-.callout{margin:16px 0;padding:14px 16px;border-radius:14px;line-height:2;
-  border:1px solid;background:hsla(0,0%,100%,.03)}
-.callout p{margin:8px 0}
-.callout-title{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;margin-bottom:6px}
-.callout-title::before{content:"";width:9px;height:9px;border-radius:50%;
-  background:currentColor;box-shadow:0 0 10px currentColor;flex-shrink:0}
-.callout-note{border-color:rgb(var(--accent)/.4)}
-.callout-note .callout-title{color:#fde047}
-.callout-tip{border-color:rgb(52 211 153/.4)}
-.callout-tip .callout-title{color:#6ee7b7}
-.callout-warn{border-color:rgb(251 146 60/.45)}
-.callout-warn .callout-title{color:#fdba74}
-.callout-danger{border-color:rgb(248 113 113/.45)}
-.callout-danger .callout-title{color:#fca5a5}
-.callout-interview{border-color:rgb(196 181 253/.45)}
-.callout-interview .callout-title{color:#c4b5fd}
-.callout-project{border-color:rgb(var(--accent-2)/.45)}
-.callout-project .callout-title{color:#67e8f9}
-.callout-exercise{border-color:rgb(125 211 252/.45)}
-.callout-exercise .callout-title{color:#7dd3fc}
-.callout-summary{border-color:rgb(110 231 183/.4)}
-.callout-summary .callout-title{color:#6ee7b7}
-.callout-compare{border-color:rgb(249 168 212/.4)}
-.callout-compare .callout-title{color:#f9a8d4}
-
-/* side-by-side columns */
-.cols{display:grid;gap:12px;margin:16px 0}
-@media (min-width:640px){.cols{grid-template-columns:1fr 1fr}}
-.col{border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;
-  background:hsla(0,0%,100%,.02)}
-.col-title{font-weight:800;font-size:13.5px;margin-bottom:6px}
-.col.good{border-color:rgb(52 211 153/.4)}
-.col.good .col-title{color:#6ee7b7}
-.col.bad{border-color:rgb(248 113 113/.4)}
-.col.bad .col-title{color:#fca5a5}
-
-/* checklists */
-.checklist ul{list-style:none;padding-inline-start:4px}
-.checklist li{padding:9px 14px;border:1px solid var(--line-2);border-radius:10px;
-  background:hsla(0,0%,100%,.02)}
-.checklist li::marker{content:none}
-
-/* flow diagrams (raw HTML in the chapters) */
-.flow{display:flex;align-items:stretch;gap:8px;margin:16px 0;flex-wrap:wrap}
-.box{flex:1 1 180px;border:1px solid rgb(var(--accent-2)/.35);background:rgb(var(--accent-2)/.07);
-  border-radius:12px;padding:12px;font-size:13px;line-height:1.9;text-align:center}
-.box b{display:block;color:#a5f3fc;margin-bottom:4px}
-.box span{font-size:12px !important;color:var(--faint) !important}
-.arrow{align-self:center;color:rgb(var(--accent));font-weight:900;font-size:18px}
-
-/* prev / next / source */
-.ch-nav{display:flex;gap:10px;margin-top:26px;padding-top:18px;flex-wrap:wrap;
-  border-top:1px dashed var(--line)}
-.ch-nav a{flex:1 1 200px;display:flex;align-items:center;justify-content:space-between;
-  gap:8px;text-decoration:none;font-size:13px;font-weight:700;color:var(--sub);
-  border:1px solid var(--line);border-radius:12px;padding:11px 14px;
-  transition:border-color .16s,color .16s}
-.ch-nav a:hover{color:#fff;border-color:rgb(var(--accent)/.5)}
-.ch-nav a small{font-weight:500;color:var(--faint);font-size:11px}
-.ch-nav .src{flex:1 1 100%;justify-content:center;font-size:12px;color:var(--faint);
-  border-style:dashed}
+/* ---------- the pages ---------- */
+.pages{width:min(820px,calc(100% - 24px));margin:26px auto 0;display:grid;gap:16px;overflow-anchor:none}
+.ch-head{margin:26px 0 6px;padding:18px 20px;border-radius:16px;
+  border:1px solid var(--line);background:linear-gradient(145deg,rgba(32,43,72,.9),rgba(24,34,60,.72));
+  scroll-margin-top:0}
+.ch-head .kicker{display:block;font-size:11px;font-weight:800;letter-spacing:.05em;
+  color:rgb(var(--accent));margin-bottom:6px}
+.ch-head h2{margin:0;font-size:clamp(18px,2.6vw,23px);font-weight:800;line-height:1.4}
+.ch-head p{margin:6px 0 0;font-size:13.5px;color:var(--sub);line-height:1.6}
+.pg{margin:0;position:relative}
+.pg img{display:block;width:100%;height:auto;border-radius:12px;
+  border:1px solid var(--line-2);background:#fff;box-shadow:0 14px 40px rgba(0,0,0,.3)}
+.pg figcaption{position:absolute;inset-block-end:9px;inset-inline-start:9px;
+  font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;
+  padding:3px 7px;border-radius:6px;color:var(--sub);background:rgba(17,26,48,.8);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 
 /* ---------- end ---------- */
 .end{width:min(820px,calc(100% - 24px));margin:34px auto 0;padding:26px 0 40px;
@@ -330,9 +460,7 @@ h3 .hx::before{width:3px}
 }
 """
 
-# Same controller as the Next.js handbook's reader, except the scroll-spy
-# observes `.chapter` cards (this reader is HTML, not page images).
-JS = """(() => {
+JS = r"""(() => {
   const toc = document.getElementById('toc');
   const scrim = document.getElementById('scrim');
   const btn = document.getElementById('toc-btn');
@@ -441,8 +569,8 @@ JS = """(() => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // A hash landing happens before webfonts shift the column; once it has
-  // settled, put the chapter head exactly under the bar.
+  // A hash landing happens before the lazy images above it have decoded; once the
+  // column has settled, put the chapter head exactly under the bar.
   const settle = (hash) => {
     const el = hash && document.querySelector(hash);
     if (!el) return;
@@ -460,7 +588,7 @@ JS = """(() => {
   addEventListener('hashchange', () => settle(location.hash));
 
   // highlight the chapter currently on screen
-  const heads = [...document.querySelectorAll('.chapter[id]')];
+  const heads = [...document.querySelectorAll('.ch-head')];
   const links = new Map([...document.querySelectorAll('.toc-part a')].map((a) => [a.getAttribute('href').slice(1), a]));
   if ('IntersectionObserver' in window && heads.length) {
     let active = null;
@@ -481,182 +609,6 @@ JS = """(() => {
 """
 
 
-def load_chapters() -> list[tuple[pathlib.Path, dict, str]]:
-    """Parse every chapter. Returns (path, meta, rendered section HTML)."""
-    out = []
-    for f in sorted(book.CH_DIR.glob("*.md")):
-        meta, body = book.parse_chapter(f)
-        out.append((f, meta, book.render_chapter(meta, body)))
-    return out
-
-
-def build_html(chapters: list[tuple[pathlib.Path, dict, str]]) -> str:
-    by_part: dict[str, list[tuple[pathlib.Path, dict, str]]] = {}
-    for item in chapters:
-        by_part.setdefault(item[1].get("part", "1"), []).append(item)
-
-    # ---- table of contents, grouped by part -------------------------------
-    toc: list[str] = []
-    for pid in sorted(by_part):
-        pn, pt = book.PARTS[pid]
-        toc.append(f'<section class="toc-part"><h3>{esc(pn)} · {esc(pt)}</h3><ol>')
-        for _, meta, _ in by_part[pid]:
-            toc.append(
-                f'<li><a href="#ch-{meta["num"]}">'
-                f'<span class="n">{fa(meta["num"])}</span>'
-                f'<span class="t">{esc(meta["title"])}'
-                f'<em>{esc(meta.get("subtitle", ""))}</em></span></a></li>'
-            )
-        toc.append("</ol></section>")
-
-    # ---- chapter select (grouped, with check slot per row) ------------------
-    nav: list[str] = []
-    for pid in sorted(by_part):
-        pn, pt = book.PARTS[pid]
-        nav.append(f'<div class="select-label">{esc(pn)} · {esc(pt)}</div>')
-        for _, meta, _ in by_part[pid]:
-            label = esc(meta.get("short") or meta["title"])
-            nav.append(
-                f'<div class="select-item" role="option" id="jump-ch-{meta["num"]}" '
-                f'data-value="#ch-{meta["num"]}" aria-selected="false">'
-                f'<span class="n">{fa(meta["num"])}</span><span class="t">{label}</span>'
-                f'<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
-                f'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-                f'<path d="M20 6 9 17l-5-5"/></svg></div>'
-            )
-    nav_chapters = "".join(nav)
-
-    # ---- the chapters, with part dividers and prev/next --------------------
-    parts: list[str] = []
-    total = len(chapters)
-    for i, (path, meta, section) in enumerate(chapters):
-        if i == 0 or chapters[i - 1][1].get("part") != meta.get("part"):
-            pn, pt = book.PARTS[meta.get("part", "1")]
-            parts.append(
-                f'<div class="part-div"><span>{esc(pn)}</span>'
-                f"<strong>{esc(pt)}</strong></div>"
-            )
-        nav_links = []
-        if i > 0:
-            pm = chapters[i - 1][1]
-            nav_links.append(
-                f'<a href="#ch-{pm["num"]}"><span>→ فصل قبل</span>'
-                f"<small>{esc(pm.get('short') or pm['title'])}</small></a>"
-            )
-        if i < total - 1:
-            nm = chapters[i + 1][1]
-            nav_links.append(
-                f'<a href="#ch-{nm["num"]}"><span>فصل بعد ←</span>'
-                f"<small>{esc(nm.get('short') or nm['title'])}</small></a>"
-            )
-        nav_links.append(
-            f'<a class="src" href="{REPO}/blob/main/src/chapters/{path.name}" '
-            f'target="_blank" rel="noopener">مشاهدهٔ سورس این فصل در گیت‌هاب ↗</a>'
-        )
-        # render_chapter closes its <section>; inject the nav just before it.
-        assert section.rstrip().endswith("</section>")
-        section = section.rstrip()[: -len("</section>")]
-        parts.append(section + f'<nav class="ch-nav">{"".join(nav_links)}</nav>\n</section>\n')
-
-    title = f"{BOOK_TITLE} — نسخهٔ آنلاین"
-    desc = (
-        f"خواندن آنلاین {BOOK_TITLE}؛ "
-        f"{fa(total)} فصل، {fa(156)} صفحه، رایگان و بدون دانلود."
-    )
-
-    return f"""<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<title>{title}</title>
-<meta name="description" content="{desc}">
-<link rel="canonical" href="{SITE}/book/">
-<meta name="theme-color" content="#111a30">
-<meta property="og:type" content="book">
-<meta property="og:locale" content="fa_IR">
-<meta property="og:title" content="{title}">
-<meta property="og:description" content="{desc}">
-<meta property="og:url" content="{SITE}/book/">
-<meta property="og:image" content="{SITE}/social-card.jpg">
-<link rel="icon" type="image/png" sizes="64x64" href="../js-logo-64.png">
-<link rel="icon" type="image/png" sizes="128x128" href="../js-logo-128.png">
-<link rel="preload" href="../fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="reader.css">
-</head>
-<body>
-<a class="skip" href="#book">پرش به متن کتاب</a>
-
-<header class="bar">
-  <div class="bar-in">
-    <a class="home" href="../" aria-label="بازگشت به صفحهٔ کتاب">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
-      <span>صفحهٔ کتاب</span>
-    </a>
-
-    <div class="ident">
-      <strong>{BOOK_TITLE}</strong>
-      <span>نسخهٔ آنلاین · {fa(total)} فصل</span>
-    </div>
-
-    <div class="tools">
-      <div class="select" id="jump">
-        <button type="button" class="select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="پرش به فصل">
-          <span class="select-value ph">فهرست فصل‌ها…</span>
-          <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-        <div class="select-pop" role="listbox" aria-label="پرش به فصل" hidden>
-          {nav_chapters}
-        </div>
-      </div>
-      <button id="toc-btn" class="icon" type="button" aria-controls="toc" aria-expanded="false" aria-label="فهرست مطالب">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-      </button>
-      <a class="dl" href="../pdf/JavaScript-Persian-Guide.pdf" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg>
-        <span>PDF</span>
-      </a>
-    </div>
-  </div>
-  <div class="progress"><i id="bar"></i></div>
-</header>
-
-<div class="scrim" id="scrim" hidden></div>
-<aside class="toc" id="toc" hidden aria-label="فهرست مطالب">
-  <div class="toc-top">
-    <strong>فهرست مطالب</strong>
-    <button id="toc-x" class="icon" type="button" aria-label="بستن فهرست">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-    </button>
-  </div>
-  <div class="toc-body">{"".join(toc)}</div>
-</aside>
-
-<main class="book" id="book">
-{"".join(parts)}
-</main>
-
-<footer class="end">
-  <p>🎉 به پایان کتاب رسیدی — حالا وقتشه کد بزنی.</p>
-  <div class="end-cta">
-    <a class="btn primary" href="../pdf/JavaScript-Persian-Guide.pdf" download>دانلود PDF</a>
-    <a class="btn" href="../pdf/JavaScript-Persian-Guide.epub" download>دانلود EPUB</a>
-    <a class="btn" href="../">صفحهٔ کتاب</a>
-  </div>
-  <small>© ۲۰۲۶ محمدرضا رضائیان · CC BY-NC-SA 4.0 · رایگان و متن‌باز</small>
-</footer>
-
-<button id="top" class="to-top" type="button" aria-label="بازگشت به ابتدا" hidden>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
-</button>
-
-<script src="reader.js" defer></script>
-</body>
-</html>
-"""
-
-
 def copy_fonts() -> int:
     FONTS_DST.mkdir(parents=True, exist_ok=True)
     n = 0
@@ -671,41 +623,43 @@ def main() -> int:
     ap.add_argument("--check", action="store_true", help="fail if public/book is stale")
     args = ap.parse_args()
 
-    md_files = sorted(book.CH_DIR.glob("*.md"))
-    if not md_files:
-        raise SystemExit(f"no chapters in {book.CH_DIR}")
+    if not PDF.exists():
+        raise SystemExit(f"missing {PDF} — build the PDF first: python src/build.py")
 
     if args.check:
         html_path = OUT / "index.html"
         if not html_path.exists():
             print("reader: MISSING")
             return 1
-        body = html_path.read_text(encoding="utf-8")
-        missing = [f.stem[:2] for f in md_files if f'id="ch-{f.stem[:2]}"' not in body]
-        if missing:
-            print(f"reader: STALE — missing anchors: {', '.join(missing)}")
+        n = len(list(PAGES_DIR.glob("p*.webp"))) if PAGES_DIR.exists() else 0
+        want = pymupdf.open(PDF).page_count
+        if n != want:
+            print(f"reader: STALE — {n} page images, PDF has {want}")
             return 1
-        for extra in ("reader.css", "reader.js"):
-            if not (OUT / extra).exists():
-                print(f"reader: STALE — missing {extra}")
+        body = html_path.read_text(encoding="utf-8")
+        chapters = load_chapters()
+        for c in chapters:
+            if f'id="ch-{c["num"]:02d}"' not in body:
+                print(f"reader: STALE — missing anchor ch-{c['num']:02d}")
                 return 1
-        print(f"reader: OK — {len(md_files)} anchors")
+        print(f"reader: OK — {n} pages, {len(chapters)} anchors")
         return 0
 
     chapters = load_chapters()
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
-    (OUT / "index.html").write_text(build_html(chapters), encoding="utf-8")
+    dims, total = render()
+    (OUT / "index.html").write_text(build_html(dims, chapters), encoding="utf-8")
     (OUT / "reader.css").write_text(CSS, encoding="utf-8")
     (OUT / "reader.js").write_text(JS, encoding="utf-8")
     n_fonts = copy_fonts()
 
-    kb = (OUT / "index.html").stat().st_size // 1024
-    print(f"chapters: {len(chapters)}")
-    print(f"anchors : ch-01 … ch-{len(chapters):02d}")
+    print(f"pages   : {len(dims)}")
+    print(f"anchors : {len(chapters)}")
+    print(f"images  : {total/1048576:.1f} MB  (avg {total/len(dims)/1024:.0f} KB)")
     print(f"fonts   : {n_fonts} woff2 → public/fonts/")
-    print(f"written : public/book/index.html ({kb} KB) + reader.css + reader.js")
+    print(f"written : public/book/")
     return 0
 
 
