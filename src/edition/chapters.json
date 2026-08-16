@@ -1,0 +1,271 @@
+{
+  "book": {
+    "title": "مرجع فارسی JavaScript ES2025",
+    "subtitle": "از مدل ذهنی تا معماری Production",
+    "edition": "1.0.0",
+    "year": 2026,
+    "pdf": "public/pdf/JavaScript-Persian-Guide.pdf",
+    "pages": 156,
+    "paper": "A4 (595 × 842 pt)",
+    "direction": "rtl",
+    "license": "CC BY-NC-SA 4.0",
+    "author": "محمدرضا رضائیان",
+    "stack": "JavaScript ES2025 · TypeScript · Node.js 22 · V8"
+  },
+  "parts": [
+    {
+      "num": 1,
+      "name": "بنیادها و مدل ذهنی",
+      "from": 1,
+      "to": 12
+    },
+    {
+      "num": 2,
+      "name": "JavaScript مدرن و عمیق",
+      "from": 13,
+      "to": 24
+    },
+    {
+      "num": 3,
+      "name": "مهندسی و Production",
+      "from": 25,
+      "to": 32
+    },
+    {
+      "num": 4,
+      "name": "کارگاه و آمادگی شغلی",
+      "from": 33,
+      "to": 38
+    }
+  ],
+  "chapters": [
+    {
+      "num": 1,
+      "page": 4,
+      "title": "معرفی جاوااسکریپت و نقشه راه ۲۰۲۶ — از صفر تا بازار کار",
+      "subtitle": "تاریخچه، اکوسیستم، موتور V8 و چگونه این کتاب را بخوانیم"
+    },
+    {
+      "num": 2,
+      "page": 9,
+      "title": "محیط توسعه مدرن — ستاپ حرفه‌ای ۲۰۲۶",
+      "subtitle": "Bun, pnpm, ESM, Biome و VS Code که Seniorها استفاده می‌کنند"
+    },
+    {
+      "num": 3,
+      "page": 15,
+      "title": "انواع داده و سیستم نوع — جایی که ۸۰٪ باگ‌ها متولد می‌شود",
+      "subtitle": "Primitive vs Object، Coercion، Equality و مدل حافظه"
+    },
+    {
+      "num": 4,
+      "page": 21,
+      "title": "متغیرها، Scope و Hoisting — از صفر تا TDZ و Lexical",
+      "subtitle": "دلایل منسوخ شدن var و let و const چگونه کار می‌کنند، و Scope Chain چیست"
+    },
+    {
+      "num": 5,
+      "page": 27,
+      "title": "عملگرها و کنترل جریان — از if تا الگوهای مدرن ۲۰۲۵",
+      "subtitle": "Optional Chaining، Nullish Coalescing، و کد تخت"
+    },
+    {
+      "num": 6,
+      "page": 32,
+      "title": "توابع — قلب جاوااسکریپت — ۴ چهره یک مفهوم",
+      "subtitle": "Declaration، Expression، Arrow، First-Class و مدل ذهنی تابع به‌عنوان مقدار"
+    },
+    {
+      "num": 7,
+      "page": 37,
+      "title": "کلژر و زنجیره Scope — مهم‌ترین مفهوم JS",
+      "subtitle": "کوله‌پشتی تابع، ماژول خصوصی، Memoization و چرا React Hooks کلژر است"
+    },
+    {
+      "num": 8,
+      "page": 42,
+      "title": "اشیا و پروتوتایپ — راز ارث‌بری JS",
+      "subtitle": "Prototype Chain، __proto__، کلاس فقط قند است"
+    },
+    {
+      "num": 9,
+      "page": 46,
+      "title": "آرایه‌ها — فراتر از لیست — شیء خاص با ترفندها",
+      "subtitle": "Mutating vs Non-Mutating، متدهای ES2023/2024، و پرفورمنس"
+    },
+    {
+      "num": 10,
+      "page": 51,
+      "title": "رشته‌ها و Regex — از Template Literal تا Unicode",
+      "subtitle": "رشته immutable، Emoji و Regex مدرن"
+    },
+    {
+      "num": 11,
+      "page": 56,
+      "title": "this — راز بزرگ — با ۴ قانون حل می‌شود",
+      "subtitle": "Default، Implicit، Explicit، new و Arrow — و باگ گم شدن this"
+    },
+    {
+      "num": 12,
+      "page": 62,
+      "title": "مقدمه Async — از Callback Hell تا Promise — چرا JS بلاک نمی‌شود",
+      "subtitle": "تک‌نخی ولی غیربلاک، Callback، Promise و ۳ حالت آن"
+    },
+    {
+      "num": 13,
+      "page": 67,
+      "title": "Destructuring، Spread و Rest",
+      "subtitle": "الگوهای مدرن برای کد تمیز"
+    },
+    {
+      "num": 14,
+      "page": 70,
+      "title": "Iterator و Generator",
+      "subtitle": "پروتکل تکرار، yield"
+    },
+    {
+      "num": 15,
+      "page": 74,
+      "title": "Promise پیشرفته و Async/Await",
+      "subtitle": "از تئوری تا الگوهای Production"
+    },
+    {
+      "num": 16,
+      "page": 77,
+      "title": "Event Loop و مدل همزمانی",
+      "subtitle": "Call Stack، Microtask، Macrotask"
+    },
+    {
+      "num": 17,
+      "page": 80,
+      "title": "ماژول‌ها — ESM و CJS عمیق",
+      "subtitle": "Tree Shaking، Dynamic Import"
+    },
+    {
+      "num": 18,
+      "page": 83,
+      "title": "کلاس‌ها و OOP در JS",
+      "subtitle": "Private Fields، Inheritance، Mixins"
+    },
+    {
+      "num": 19,
+      "page": 86,
+      "title": "مدیریت خطا — حرفه‌ای",
+      "subtitle": "Error Types، Cause، الگوهای Production"
+    },
+    {
+      "num": 20,
+      "page": 89,
+      "title": "کالکشن‌های پیشرفته",
+      "subtitle": "Map، Set، WeakMap، WeakSet"
+    },
+    {
+      "num": 21,
+      "page": 92,
+      "title": "Proxy و Reflect — متاپروگرامینگ",
+      "subtitle": "Intercept، Validation، Reactive"
+    },
+    {
+      "num": 22,
+      "page": 95,
+      "title": "برنامه‌نویسی فانکشنال در JS",
+      "subtitle": "Pure، Immutable، Composition"
+    },
+    {
+      "num": 23,
+      "page": 98,
+      "title": "DOM و BOM — جاوااسکریپت در مرورگر",
+      "subtitle": "Virtual DOM نیست، DOM واقعی را بفهم"
+    },
+    {
+      "num": 24,
+      "page": 101,
+      "title": "Fetch، Storage و APIهای مرورگر",
+      "subtitle": "از fetch تا IndexedDB و Cache API"
+    },
+    {
+      "num": 25,
+      "page": 104,
+      "title": "پرفورمنس و بهینه‌سازی",
+      "subtitle": "V8، Deopt، Memory، Benchmark"
+    },
+    {
+      "num": 26,
+      "page": 107,
+      "title": "حافظه و Garbage Collection",
+      "subtitle": "Heap، Stack، Mark & Sweep، WeakRef"
+    },
+    {
+      "num": 27,
+      "page": 110,
+      "title": "امنیت در جاوااسکریپت",
+      "subtitle": "XSS، CSRF، Prototype Pollution، CSP"
+    },
+    {
+      "num": 28,
+      "page": 113,
+      "title": "تست‌نویسی مدرن",
+      "subtitle": "Vitest، Playwright، TDD"
+    },
+    {
+      "num": 29,
+      "page": 116,
+      "title": "ابزارها و باندلرها",
+      "subtitle": "Vite، Turbopack، Biome"
+    },
+    {
+      "num": 30,
+      "page": 119,
+      "title": "TypeScript و تعامل با JS",
+      "subtitle": "از JSDoc تا TS 6"
+    },
+    {
+      "num": 31,
+      "page": 122,
+      "title": "الگوها و معماری تمیز",
+      "subtitle": "Module، Singleton، Observer، Clean Architecture"
+    },
+    {
+      "num": 32,
+      "page": 126,
+      "title": "متاپروگرامینگ پیشرفته",
+      "subtitle": "Reflect، Proxy، Decorator، Symbol"
+    },
+    {
+      "num": 33,
+      "page": 129,
+      "title": "۳۰ نکته و ترفند طلایی",
+      "subtitle": "ترفندهایی که در Code Review می‌درخشی"
+    },
+    {
+      "num": 34,
+      "page": 135,
+      "title": "کارگاه ۸ مینی‌پروژه",
+      "subtitle": "از Debounce تا Kanban"
+    },
+    {
+      "num": 35,
+      "page": 140,
+      "title": "۲۰ اشتباه رایج و راه‌حل",
+      "subtitle": "از == تا Memory Leak"
+    },
+    {
+      "num": 36,
+      "page": 144,
+      "title": "۵۰ پرسش مصاحبه — از Junior تا Senior",
+      "subtitle": "با پاسخ‌های ۱ تا ۲ دقیقه‌ای"
+    },
+    {
+      "num": 37,
+      "page": 147,
+      "title": "واژه‌نامه فارسی-انگلیسی",
+      "subtitle": "۱۴۰ اصطلاح کلیدی JS"
+    },
+    {
+      "num": 38,
+      "page": 152,
+      "title": "نقشه راه بعد از کتاب",
+      "subtitle": "از JS به معماری و آینده"
+    }
+  ]
+}
