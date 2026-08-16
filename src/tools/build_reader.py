@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """The online edition — every page of the PDF, readable in a browser at public/book/.
 
-    python src/build_reader.py          # write public/book/
-    python src/build_reader.py --check  # fail if the shipped reader is stale
+    python src/tools/build_reader.py          # write public/book/
+    python src/tools/build_reader.py --check  # fail if the shipped reader is stale
 
 Same design as the Next.js handbook's reader: the book is a typeset 156-page
 A4 PDF, so the reader is *photography of the edition* — each page is
@@ -11,10 +11,10 @@ rasterised straight from the PDF's own vectors and shown in reading order.
 That keeps the online edition faithful to the printed layout — code windows,
 tables and figures included.
 
-Chapter anchors come from two sources joined together: the Markdown
-frontmatter (num, part, title, subtitle) gives the structure, and the PDF's
-own outline (L1 bookmarks, written by WeasyPrint) gives the first page of
-each chapter. The build refuses to run unless all 38 chapters resolve.
+Chapter anchors come from the frozen chapter table in
+src/edition/chapters.json (num, page, title, subtitle), with each chapter's
+part derived from the part ranges in the same file. The build refuses to
+run unless all 38 chapters resolve.
 
 Three numbers make that honest rather than blurry:
 
@@ -30,32 +30,27 @@ from __future__ import annotations
 
 import argparse
 import io
+import json
 import pathlib
-import re
 import shutil
 import sys
 
 import pymupdf
 from PIL import Image
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-CH_DIR = ROOT / "src" / "chapters"
-PDF = ROOT / "public" / "pdf" / "JavaScript-Persian-Guide.pdf"
-EPUB_NAME = "JavaScript-Persian-Guide.epub"
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+EDITION = json.loads((ROOT / "src" / "edition" / "chapters.json").read_text(encoding="utf-8"))
+PDF = ROOT / EDITION["book"]["pdf"]
+EPUB_NAME = pathlib.Path(EDITION["book"]["pdf"]).with_suffix(".epub").name
 OUT = ROOT / "public" / "book"
 PAGES_DIR = OUT / "pages"
 FONTS_SRC = ROOT / "src" / "fonts"
 FONTS_DST = ROOT / "public" / "fonts"
 
 SITE = "https://rezaian-dev.github.io/javascript-persian-guide"
-BOOK_TITLE = "مرجع فارسی JavaScript ES2025"
+BOOK_TITLE = EDITION["book"]["title"]
 
-PART_LABELS = {
-    "1": "بنیادها و مدل ذهنی",
-    "2": "JavaScript مدرن و عمیق",
-    "3": "مهندسی و Production",
-    "4": "کارگاه و آمادگی شغلی",
-}
+PART_LABELS = {p["num"]: p["name"] for p in EDITION["parts"]}
 
 PAINT = 820        # CSS px a page is painted at, at most
 RENDER = PAINT * 2  # px actually stored, for 2x displays
@@ -73,31 +68,23 @@ def esc(s: str) -> str:
              .replace('"', "&quot;"))
 
 
-def frontmatter(path: pathlib.Path) -> dict:
-    m = re.match(r"^---\n(.*?)\n---\n", path.read_text(encoding="utf-8"), re.S)
-    assert m, path
-    d = {}
-    for line in m.group(1).splitlines():
-        k, _, v = line.partition(":")
-        d[k.strip()] = v.strip()
-    return d
+def part_of_num(num: int) -> int:
+    for p in EDITION["parts"]:
+        if p["from"] <= num <= p["to"]:
+            return p["num"]
+    raise SystemExit(f"chapter {num} falls outside every part range")
 
 
 def load_chapters() -> list[dict]:
-    """Join Markdown frontmatter with the PDF outline's L1 chapter pages."""
-    outline = {t.strip(): p for lvl, t, p in pymupdf.open(PDF).get_toc() if lvl == 1}
+    """Read the frozen chapter table from src/edition/chapters.json."""
     chapters = []
-    for f in sorted(CH_DIR.glob("*.md")):
-        fm = frontmatter(f)
-        title = fm["title"]
-        if title not in outline:
-            raise SystemExit(f"chapter {f.stem} has no L1 bookmark in the PDF")
+    for c in EDITION["chapters"]:
         chapters.append({
-            "num": int(fm["num"]),
-            "page": outline[title],
-            "part": fm["part"],
-            "title": title,
-            "subtitle": fm.get("subtitle", ""),
+            "num": int(c["num"]),
+            "page": int(c["page"]),
+            "part": part_of_num(int(c["num"])),
+            "title": c["title"],
+            "subtitle": c.get("subtitle", ""),
         })
     chapters.sort(key=lambda c: c["num"])
     assert [c["num"] for c in chapters] == list(range(1, 39)), "expected 38 chapters"
@@ -624,7 +611,7 @@ def main() -> int:
     args = ap.parse_args()
 
     if not PDF.exists():
-        raise SystemExit(f"missing {PDF} — build the PDF first: python src/build.py")
+        raise SystemExit(f"missing {PDF} — the PDF is a committed build artifact")
 
     if args.check:
         html_path = OUT / "index.html"

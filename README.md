@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://rezaian-dev.github.io/javascript-persian-guide/"><img src="https://img.shields.io/badge/READ_ONLINE-0EA5E9?style=for-the-badge&logo=githubpages&logoColor=white" alt="مطالعه آنلاین"></a>
+  <a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><img src="https://img.shields.io/badge/READ_ONLINE-0EA5E9?style=for-the-badge&logo=githubpages&logoColor=white" alt="مطالعه آنلاین"></a>
   <a href="./docs/pdf/JavaScript-Persian-Guide.pdf"><img src="https://img.shields.io/badge/DOWNLOAD_PDF-DC2626?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="دانلود PDF"></a>
   <a href="./docs/pdf/JavaScript-Persian-Guide.epub"><img src="https://img.shields.io/badge/DOWNLOAD_EPUB-7C3AED?style=for-the-badge&logo=applebooks&logoColor=white" alt="دانلود EPUB"></a>
 </p>
@@ -82,7 +82,7 @@
 <tr><td align="center">🌐 <strong>آنلاین</strong></td><td>مطالعهٔ فوری در مرورگر با پیوند مستقیم به هر فصل</td><td align="center"><a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><strong>شروع مطالعه</strong></a></td></tr>
 <tr><td align="center">📕 <strong>PDF</strong></td><td>دانلود، جست‌وجو و چاپ — قطع A4 رنگی</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.pdf"><strong>دانلود</strong></a></td></tr>
 <tr><td align="center">📗 <strong>EPUB</strong></td><td>موبایل، تبلت و کتاب‌خوان — متن بازچینش‌پذیر</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.epub"><strong>دانلود</strong></a></td></tr>
-<tr><td align="center">🧰 <strong>سورس</strong></td><td>متن فصل‌ها، کد سایت و ابزارهای ساخت کتاب</td><td align="center"><a href="https://github.com/rezaian-dev/javascript-persian-guide"><strong>همین مخزن</strong></a></td></tr>
+<tr><td align="center">🧰 <strong>سورس</strong></td><td>کد سایت، شناسنامهٔ فصل‌ها و ابزار ساخت نسخهٔ آنلاین</td><td align="center"><a href="https://github.com/rezaian-dev/javascript-persian-guide"><strong>همین مخزن</strong></a></td></tr>
 </table>
 
 <a id="chapters"></a>
@@ -92,64 +92,65 @@
 <details>
 <summary><strong>🌱 بخش اول — بنیادها و مدل ذهنی</strong> · فصل‌های ۱ تا ۱۲</summary>
 
-1. [معرفی جاوااسکریپت و نقشه راه ۲۰۲۶ — از صفر تا بازار کار](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/01-intro.md)
-2. [محیط توسعه مدرن — ستاپ حرفه‌ای ۲۰۲۶](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/02-setup.md)
-3. [انواع داده و سیستم نوع — جایی که ۸۰٪ باگ‌ها متولد می‌شود](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/03-types-values.md)
-4. [متغیرها، Scope و Hoisting — از صفر تا TDZ و Lexical](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/04-variables-scope.md)
-5. [عملگرها و کنترل جریان — از if تا الگوهای مدرن ۲۰۲۵](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/05-operators-control.md)
-6. [توابع — قلب جاوااسکریپت — ۴ چهره یک مفهوم](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/06-functions.md)
-7. [کلژر و زنجیره Scope — مهم‌ترین مفهوم JS](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/07-closures-scope-chain.md)
-8. [اشیا و پروتوتایپ — راز ارث‌بری JS](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/08-objects-prototypes.md)
-9. [آرایه‌ها — فراتر از لیست — شیء خاص با ترفندها](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/09-arrays.md)
-10. [رشته‌ها و Regex — از Template Literal تا Unicode](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/10-strings-regex.md)
-11. [this — راز بزرگ — با ۴ قانون حل می‌شود](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/11-this-binding.md)
-12. [مقدمه Async — از Callback Hell تا Promise — چرا JS بلاک نمی‌شود](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/12-async-intro.md)
+1. [معرفی جاوااسکریپت و نقشه راه ۲۰۲۶ — از صفر تا بازار کار](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-01) — ص ۴
+2. [محیط توسعه مدرن — ستاپ حرفه‌ای ۲۰۲۶](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-02) — ص ۹
+3. [انواع داده و سیستم نوع — جایی که ۸۰٪ باگ‌ها متولد می‌شود](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-03) — ص ۱۵
+4. [متغیرها، Scope و Hoisting — از صفر تا TDZ و Lexical](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-04) — ص ۲۱
+5. [عملگرها و کنترل جریان — از if تا الگوهای مدرن ۲۰۲۵](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-05) — ص ۲۷
+6. [توابع — قلب جاوااسکریپت — ۴ چهره یک مفهوم](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-06) — ص ۳۲
+7. [کلژر و زنجیره Scope — مهم‌ترین مفهوم JS](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-07) — ص ۳۷
+8. [اشیا و پروتوتایپ — راز ارث‌بری JS](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-08) — ص ۴۲
+9. [آرایه‌ها — فراتر از لیست — شیء خاص با ترفندها](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-09) — ص ۴۶
+10. [رشته‌ها و Regex — از Template Literal تا Unicode](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-10) — ص ۵۱
+11. [this — راز بزرگ — با ۴ قانون حل می‌شود](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-11) — ص ۵۶
+12. [مقدمه Async — از Callback Hell تا Promise — چرا JS بلاک نمی‌شود](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-12) — ص ۶۲
 
 </details>
 
 <details>
 <summary><strong>🧩 بخش دوم — JavaScript مدرن و عمیق</strong> · فصل‌های ۱۳ تا ۲۴</summary>
 
-13. [Destructuring، Spread و Rest](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/13-destructuring-spread.md)
-14. [Iterator و Generator](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/14-iterators-generators.md)
-15. [Promise پیشرفته و Async/Await](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/15-promise-async-await.md)
-16. [Event Loop و مدل همزمانی](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/16-event-loop-concurrency.md)
-17. [ماژول‌ها — ESM و CJS عمیق](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/17-modules-esm-cjs.md)
-18. [کلاس‌ها و OOP در JS](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/18-classes-oop.md)
-19. [مدیریت خطا — حرفه‌ای](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/19-error-handling.md)
-20. [کالکشن‌های پیشرفته](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/20-collections-map-set.md)
-21. [Proxy و Reflect — متاپروگرامینگ](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/21-proxy-reflect.md)
-22. [برنامه‌نویسی فانکشنال در JS](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/22-functional-programming.md)
-23. [DOM و BOM — جاوااسکریپت در مرورگر](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/23-dom-bom.md)
-24. [Fetch، Storage و APIهای مرورگر](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/24-fetch-api-storage.md)
+13. [Destructuring، Spread و Rest](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-13) — ص ۶۷
+14. [Iterator و Generator](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-14) — ص ۷۰
+15. [Promise پیشرفته و Async/Await](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-15) — ص ۷۴
+16. [Event Loop و مدل همزمانی](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-16) — ص ۷۷
+17. [ماژول‌ها — ESM و CJS عمیق](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-17) — ص ۸۰
+18. [کلاس‌ها و OOP در JS](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-18) — ص ۸۳
+19. [مدیریت خطا — حرفه‌ای](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-19) — ص ۸۶
+20. [کالکشن‌های پیشرفته](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-20) — ص ۸۹
+21. [Proxy و Reflect — متاپروگرامینگ](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-21) — ص ۹۲
+22. [برنامه‌نویسی فانکشنال در JS](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-22) — ص ۹۵
+23. [DOM و BOM — جاوااسکریپت در مرورگر](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-23) — ص ۹۸
+24. [Fetch، Storage و APIهای مرورگر](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-24) — ص ۱۰۱
 
 </details>
 
 <details>
 <summary><strong>🏗️ بخش سوم — مهندسی و Production</strong> · فصل‌های ۲۵ تا ۳۲</summary>
 
-25. [پرفورمنس و بهینه‌سازی](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/25-performance-optimization.md)
-26. [حافظه و Garbage Collection](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/26-memory-gc.md)
-27. [امنیت در جاوااسکریپت](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/27-security.md)
-28. [تست‌نویسی مدرن](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/28-testing.md)
-29. [ابزارها و باندلرها](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/29-tooling-bundlers.md)
-30. [TypeScript و تعامل با JS](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/30-typescript-interop.md)
-31. [الگوها و معماری تمیز](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/31-patterns-architecture.md)
-32. [متاپروگرامینگ پیشرفته](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/32-meta-programming.md)
+25. [پرفورمنس و بهینه‌سازی](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-25) — ص ۱۰۴
+26. [حافظه و Garbage Collection](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-26) — ص ۱۰۷
+27. [امنیت در جاوااسکریپت](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-27) — ص ۱۱۰
+28. [تست‌نویسی مدرن](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-28) — ص ۱۱۳
+29. [ابزارها و باندلرها](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-29) — ص ۱۱۶
+30. [TypeScript و تعامل با JS](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-30) — ص ۱۱۹
+31. [الگوها و معماری تمیز](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-31) — ص ۱۲۲
+32. [متاپروگرامینگ پیشرفته](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-32) — ص ۱۲۶
 
 </details>
 
 <details>
 <summary><strong>🚀 بخش چهارم — کارگاه و آمادگی شغلی</strong> · فصل‌های ۳۳ تا ۳۸</summary>
 
-33. [۳۰ نکته و ترفند طلایی](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/33-tips-tricks.md)
-34. [کارگاه ۸ مینی‌پروژه](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/34-workshop.md)
-35. [۲۰ اشتباه رایج و راه‌حل](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/35-mistakes.md)
-36. [۵۰ پرسش مصاحبه — از Junior تا Senior](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/36-interview.md)
-37. [واژه‌نامه فارسی-انگلیسی](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/37-glossary.md)
-38. [نقشه راه بعد از کتاب](https://github.com/rezaian-dev/javascript-persian-guide/blob/main/src/chapters/38-roadmap-next.md)
+33. [۳۰ نکته و ترفند طلایی](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-33) — ص ۱۲۹
+34. [کارگاه ۸ مینی‌پروژه](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-34) — ص ۱۳۵
+35. [۲۰ اشتباه رایج و راه‌حل](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-35) — ص ۱۴۰
+36. [۵۰ پرسش مصاحبه — از Junior تا Senior](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-36) — ص ۱۴۴
+37. [واژه‌نامه فارسی-انگلیسی](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-37) — ص ۱۴۷
+38. [نقشه راه بعد از کتاب](https://rezaian-dev.github.io/javascript-persian-guide/book/#ch-38) — ص ۱۵۲
 
 </details>
+
 
 <a id="quickstart"></a>
 
@@ -164,29 +165,28 @@ git clone https://github.com/rezaian-dev/javascript-persian-guide.git
 cd javascript-persian-guide && npm install && npm run dev
 ```
 
-#### 🛠️ بیلد کامل: سایت (Next.js) و کتاب (Python، PDF، EPUB)
+#### 🛠️ بیلد کامل: سایت (Next.js) و نسخهٔ آنلاین (Python)
 
 ```bash
 # سایت — بیلد استاتیک برای GitHub Pages
 npm run build        # بیلد استاندارد (Vercel / Node)
 npm run build:pages  # خروجی استاتیک در out/ با basePath
 
-# کتاب — پیش‌نیاز Python 3.10+
+# نسخهٔ آنلاین — از روی PDF کامیت‌شده (پیش‌نیاز Python 3.10+)
 python -m venv .venv && source .venv/bin/activate
 python -m pip install -r src/requirements.txt
-python src/build.py          # PDF در public/pdf/
-python src/build.py --print  # نسخه مناسب چاپ
-python src/build_epub.py     # EPUB در public/pdf/
-python src/build_reader.py    # نسخهٔ آنلاین در public/book/
+python src/tools/build_reader.py         # نسخهٔ آنلاین در public/book/
+python src/tools/build_reader.py --check # بررسی به‌روزبودن نسخهٔ آنلاین
 ```
 
 ```text
 src/app/        صفحه‌ها و layout اپ Next.js
 src/components/ کامپوننت‌های رابط کاربری
 src/lib/        داده فصل‌ها و پیوندها
-src/chapters/   متن ۳۸ فصل (Markdown)
-src/fonts/      فونت‌ها (TTF برای کتاب، WOFF2 برای سایت)
-public/         دارایی‌ها، PDF و EPUB
+src/edition/    شناسنامهٔ فصل‌ها (عنوان‌ها و شمارهٔ صفحه‌ها)
+src/tools/      ابزار ساخت نسخهٔ آنلاین از روی PDF
+src/fonts/      فونت‌ها (WOFF2 برای سایت و ریدر)
+public/         دارایی‌ها، PDF/EPUB و نسخهٔ آنلاین
 docs/           خروجی منتشرشده روی GitHub Pages
 assets/         تصاویر README
 ```
