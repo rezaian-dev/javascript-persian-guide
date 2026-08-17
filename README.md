@@ -1,7 +1,7 @@
 <a id="top"></a>
 
 <p align="center">
-  <img src="./assets/readme/readme-hero-architecture.webp" alt="مرجع فارسی JavaScript ES2025" width="880">
+  <img src="./assets/readme/readme-hero.webp" alt="مرجع فارسی JavaScript ES2025" width="880">
 </p>
 
 <p align="center" dir="rtl">
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><img src="https://img.shields.io/badge/READ_ONLINE-0EA5E9?style=for-the-badge&logo=githubpages&logoColor=white" alt="مطالعه آنلاین"></a>
+  <a href="https://rezaian-dev.github.io/javascript-persian-guide/"><img src="https://img.shields.io/badge/READ_ONLINE-0EA5E9?style=for-the-badge&logo=githubpages&logoColor=white" alt="مطالعه آنلاین"></a>
   <a href="./docs/pdf/JavaScript-Persian-Guide.pdf"><img src="https://img.shields.io/badge/DOWNLOAD_PDF-DC2626?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="دانلود PDF"></a>
   <a href="./docs/pdf/JavaScript-Persian-Guide.epub"><img src="https://img.shields.io/badge/DOWNLOAD_EPUB-7C3AED?style=for-the-badge&logo=applebooks&logoColor=white" alt="دانلود EPUB"></a>
 </p>
@@ -81,7 +81,7 @@
 <tr><th align="center">قالب</th><th align="center">مناسب برای</th><th align="center">لینک</th></tr>
 <tr><td align="center">🌐 <strong>آنلاین</strong></td><td>مطالعهٔ فوری در مرورگر با پیوند مستقیم به هر فصل</td><td align="center"><a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><strong>شروع مطالعه</strong></a></td></tr>
 <tr><td align="center">📕 <strong>PDF</strong></td><td>دانلود، جست‌وجو و چاپ — قطع A4 رنگی</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.pdf"><strong>دانلود</strong></a></td></tr>
-<tr><td align="center">📗 <strong>EPUB</strong></td><td>موبایل، تبلت و کتاب‌خوان — متن بازچینش‌پذیر</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.epub"><strong>دانلود</strong></a></td></tr>
+<tr><td align="center">📗 <strong>EPUB</strong></td><td>موبایل، تبلت و کتاب‌خوان</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.epub"><strong>دانلود</strong></a></td></tr>
 <tr><td align="center">🧰 <strong>سورس</strong></td><td>کد سایت، شناسنامهٔ فصل‌ها و ابزار ساخت نسخهٔ آنلاین</td><td align="center"><a href="https://github.com/rezaian-dev/javascript-persian-guide"><strong>همین مخزن</strong></a></td></tr>
 </table>
 
@@ -151,7 +151,6 @@
 
 </details>
 
-
 <a id="quickstart"></a>
 
 ## 🚀 دو قدم تا شروع
@@ -166,6 +165,7 @@ cd javascript-persian-guide && npm install && npm run dev
 ```
 
 #### 🛠️ بیلد کامل: سایت (Next.js) و نسخهٔ آنلاین (Python)
+
 
 ```bash
 # سایت — بیلد استاتیک برای GitHub Pages
@@ -190,6 +190,7 @@ public/         دارایی‌ها، PDF/EPUB و نسخهٔ آنلاین
 docs/           خروجی منتشرشده روی GitHub Pages
 assets/         تصاویر README
 ```
+
 
 ## 🧩 مجموعهٔ کامل راهنماهای فارسی
 
