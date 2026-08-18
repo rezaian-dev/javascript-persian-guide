@@ -31,7 +31,7 @@
 
 > **مرجع فارسی، پروژه‌محور و به‌روز JavaScript ES2025** — از مدل ذهنی زبان تا کد آمادهٔ Production.
 
-جاوااسکریپت فقط یک زبان نیست؛ یک طرز فکر است: **Scope**، **Closure**، **Event Loop**، موتور **V8** و اکوسیستم مدرن. این کتاب همان‌ها را — با **زبان ساده، مدل ذهنی درست و کد واقعی** — قدم‌به‌قدم توضیح می‌دهد.
+جاوااسکریپت دنیای خودش را دارد: **Closure**، **Event Loop**، موتور **V8** و اکوسیستم مدرن ES2025. این کتاب همان‌ها را — از صفر تا سطح ارشد — با **زبان ساده، مدل ذهنی درست و کد واقعی** توضیح می‌دهد.
 
 اینجا قرار نیست فهرست متدها را حفظ کنید؛ قرار است یاد بگیرید مثل یک مهندس ارشد **رفتار زبان را پیش‌بینی کنید، باگ را ریشه‌یابی کنید و معماری تمیز بچینید**. 🧠
 
@@ -47,7 +47,7 @@
 
 ## 💎 چرا این کتاب متفاوت است؟
 
-- ⚡ **همگام با ES2025** — `using`، متدهای Set، `Promise.withResolvers`، Decorators و مرزبندی روشن با Legacy
+- ⚡ **همگام با ES2025** — `using`، متدهای جدید Set، `Promise.withResolvers`، Decorators و مرزبندی روشن با سینتکس قدیمی
 - 🧠 **تمرکز بر «چرا»** — درک رفتار موتور و Event Loop به‌جای حفظ‌کردن سینتکس
 - 💻 **کد واقعی، نه اسلایدهای تئوری** — ۱۷۳ پنجرهٔ کد JavaScript و ترمینال
 - 🛠️ **یادگیری با دست** — ۸ مینی‌پروژهٔ کارگاهی از Debounce تا معماری ماژولار
@@ -82,7 +82,7 @@
 <tr><td align="center">🌐 <strong>آنلاین</strong></td><td>مطالعهٔ فوری در مرورگر با پیوند مستقیم به هر فصل</td><td align="center"><a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><strong>شروع مطالعه</strong></a></td></tr>
 <tr><td align="center">📕 <strong>PDF</strong></td><td>دانلود، جست‌وجو و چاپ — قطع A4 رنگی</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.pdf"><strong>دانلود</strong></a></td></tr>
 <tr><td align="center">📗 <strong>EPUB</strong></td><td>موبایل، تبلت و کتاب‌خوان</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.epub"><strong>دانلود</strong></a></td></tr>
-<tr><td align="center">🧰 <strong>سورس</strong></td><td>کد سایت، شناسنامهٔ فصل‌ها و ابزار ساخت نسخهٔ آنلاین</td><td align="center"><a href="https://github.com/rezaian-dev/javascript-persian-guide"><strong>همین مخزن</strong></a></td></tr>
+<tr><td align="center">🧰 <strong>سورس</strong></td><td>کد سایت و ابزارهای ساخت نسخهٔ آنلاین</td><td align="center"><a href="https://github.com/rezaian-dev/javascript-persian-guide"><strong>همین مخزن</strong></a></td></tr>
 </table>
 
 <a id="chapters"></a>
@@ -183,10 +183,10 @@ python src/tools/build_reader.py --check # بررسی به‌روزبودن نس
 src/app/        صفحه‌ها و layout اپ Next.js
 src/components/ کامپوننت‌های رابط کاربری
 src/lib/        داده فصل‌ها و پیوندها
-src/edition/    شناسنامهٔ فصل‌ها (عنوان‌ها و شمارهٔ صفحه‌ها)
+src/edition/    شناسنامهٔ فصل‌ها (chapters.json)
 src/tools/      ابزار ساخت نسخهٔ آنلاین از روی PDF
 src/fonts/      فونت‌ها (WOFF2 برای سایت و ریدر)
-public/         دارایی‌ها، PDF/EPUB و نسخهٔ آنلاین
+public/         دارایی‌ها، PDF، EPUB و نسخهٔ آنلاین
 docs/           خروجی منتشرشده روی GitHub Pages
 assets/         تصاویر README
 ```
