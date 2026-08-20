@@ -82,7 +82,6 @@
 <tr><td align="center">🌐 <strong>آنلاین</strong></td><td>مطالعهٔ فوری در مرورگر با پیوند مستقیم به هر فصل</td><td align="center"><a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><strong>شروع مطالعه</strong></a></td></tr>
 <tr><td align="center">📕 <strong>PDF</strong></td><td>دانلود، جست‌وجو و چاپ — قطع A4 رنگی</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.pdf"><strong>دانلود</strong></a></td></tr>
 <tr><td align="center">📗 <strong>EPUB</strong></td><td>موبایل، تبلت و کتاب‌خوان</td><td align="center"><a href="./docs/pdf/JavaScript-Persian-Guide.epub"><strong>دانلود</strong></a></td></tr>
-<tr><td align="center">🧰 <strong>سورس</strong></td><td>کد سایت و ابزارهای ساخت نسخهٔ آنلاین</td><td align="center"><a href="https://github.com/rezaian-dev/javascript-persian-guide"><strong>همین مخزن</strong></a></td></tr>
 </table>
 
 <a id="chapters"></a>
@@ -151,45 +150,20 @@
 
 </details>
 
-<a id="quickstart"></a>
+<a id="how-to-read"></a>
 
-## 🚀 دو قدم تا شروع
+## 📖 چطور این کتاب را بخوانیم؟
 
-۱. **سریع‌ترین راه:** کتاب را همان [نسخهٔ آنلاین](https://rezaian-dev.github.io/javascript-persian-guide/book/) بخوانید — نصب لازم نیست. ⚡
+نسخهٔ [آنلاین](https://rezaian-dev.github.io/javascript-persian-guide/book/) نیازی به نصب ندارد — همین حالا شروع کنید. ⚡ سه مسیر پیشنهادی:
 
-۲. **اگر سورس را می‌خواهید:**
+<table dir="rtl" align="center">
+<tr><th align="center">مسیر</th><th align="center">مناسب برای</th><th align="right">پیشنهاد مطالعه</th></tr>
+<tr><td align="center">📗 <strong>مسیر کامل</strong></td><td align="center">تازه‌واردها</td><td>از فصل ۱ شروع کنید؛ هر فصل روی فصل قبلی سوار می‌شود</td></tr>
+<tr><td align="center">⚡ <strong>مسیر موضوعی</strong></td><td align="center">باتجربه‌ها</td><td>مستقیم سراغ Event Loop، ماژول‌ها، V8 و امنیت بروید</td></tr>
+<tr><td align="center">🎯 <strong>مسیر مصاحبه</strong></td><td align="center">جویندگان کار</td><td>فصل‌های Closure و this و Event Loop + فصل ۳۶ (۵۰ پرسش) و واژه‌نامه</td></tr>
+</table>
 
-```bash
-git clone https://github.com/rezaian-dev/javascript-persian-guide.git
-cd javascript-persian-guide && npm install && npm run dev
-```
-
-#### 🛠️ بیلد کامل: سایت (Next.js) و نسخهٔ آنلاین (Python)
-
-
-```bash
-# سایت — بیلد استاتیک برای GitHub Pages
-npm run build        # بیلد استاندارد (Vercel / Node)
-npm run build:pages  # خروجی استاتیک در out/ با basePath
-
-# نسخهٔ آنلاین — از روی PDF کامیت‌شده (پیش‌نیاز Python 3.10+)
-python -m venv .venv && source .venv/bin/activate
-python -m pip install -r src/requirements.txt
-python src/tools/build_reader.py         # نسخهٔ آنلاین در public/book/
-python src/tools/build_reader.py --check # بررسی به‌روزبودن نسخهٔ آنلاین
-```
-
-```text
-src/app/        صفحه‌ها و layout اپ Next.js
-src/components/ کامپوننت‌های رابط کاربری
-src/lib/        داده فصل‌ها و پیوندها
-src/edition/    شناسنامهٔ فصل‌ها (chapters.json)
-src/tools/      ابزار ساخت نسخهٔ آنلاین از روی PDF
-src/fonts/      فونت‌ها (WOFF2 برای سایت و ریدر)
-public/         دارایی‌ها، PDF، EPUB و نسخهٔ آنلاین
-docs/           خروجی منتشرشده روی GitHub Pages
-assets/         تصاویر README
-```
+<sub>💡 هر فصل با مثال‌ها و جمع‌بندی خودش کامل است؛ می‌توانید دقیقاً از همان‌جایی که نیاز دارید شروع کنید.</sub>
 
 
 ## 🧩 مجموعهٔ کامل راهنماهای فارسی
@@ -206,7 +180,7 @@ assets/         تصاویر README
 
 ## 🤝 مشارکت
 
-خطایی دیدید؟ پیشنهادی دارید؟ یک [Issue](https://github.com/rezaian-dev/javascript-persian-guide/issues) باز کنید 🐛 — PRهای کوچک و متمرکز هم همیشه خوش‌آمدند. 🙏
+غلط تایپی دیدید؟ 🙃 نکته‌ای نیاز به اصلاح یا توضیح بیشتر دارد؟ یک [Issue](https://github.com/rezaian-dev/javascript-persian-guide/issues) باز کنید — هر گزارش، نسخهٔ بعدی کتاب را بهتر می‌کند. 🙏
 
 ## ✍️ نویسنده و مجوز
 
