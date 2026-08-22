@@ -57,6 +57,9 @@
       value.classList.remove('ph');
       setOpen(false);
       trigger.focus();
+      // Reflect the jump in the URL without firing another scroll (hashchange
+      // handler would re-settle); replaceState keeps Back/Forward clean.
+      history.replaceState(null, '', it.dataset.value);
       document.querySelector(it.dataset.value)?.scrollIntoView({ block: 'start' });
     };
     trigger.addEventListener('click', () => setOpen(pop.hidden));
