@@ -19,12 +19,16 @@ run unless all 38 chapters resolve.
 Three numbers make that honest rather than blurry:
 
 *  **Width.** A page is painted at most `PAINT` CSS px wide, so the file carries `RENDER` px
-   — 2x — and stays sharp on a Retina display without the browser ever upscaling.
-*  **Format.** WebP at q=82. The pages are type and flat colour over a white ground; at this
-   width WebP holds the glyph edges while landing far under PNG, which
+   — 3x — and stays sharp on high-DPI displays without the browser ever upscaling.
+*  **Format.** Lossless WebP. The pages are type and flat colour over a white ground; at this
+   width lossless keeps every glyph edge pixel-perfect at ~200 KB a page, which
    matters when a reader loads 156 of them.
 *  **Loading.** Only the first two pages are eager; the rest carry `loading="lazy"` plus
    intrinsic `width`/`height`, so the page costs one screen of images and never reflows.
+
+The edition is *photography of a typeset book*, so page text is not selectable.
+Each page is wrapped in a link that opens the full-resolution image in a new tab
+(free zoom), announced by a short hint above the first page.
 """
 from __future__ import annotations
 
@@ -53,8 +57,8 @@ BOOK_TITLE = EDITION["book"]["title"]
 PART_LABELS = {p["num"]: p["name"] for p in EDITION["parts"]}
 
 PAINT = 820        # CSS px a page is painted at, at most
-RENDER = PAINT * 2  # px actually stored, for 2x displays
-QUALITY = 82
+RENDER = PAINT * 3  # px actually stored, for 3x displays
+LOSSLESS = True
 
 FA = "۰۱۲۳۴۵۶۷۸۹"
 
@@ -102,7 +106,7 @@ def render() -> tuple[list[tuple[int, int]], int]:
         pix = page.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), alpha=False)
         img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
         buf = io.BytesIO()
-        img.save(buf, "WEBP", quality=QUALITY, method=6)
+        img.save(buf, "WEBP", lossless=LOSSLESS, method=6)
         (PAGES_DIR / f"p{i:03d}.webp").write_bytes(buf.getvalue())
         total += buf.getbuffer().nbytes
         dims.append((pix.width, pix.height))
@@ -146,6 +150,14 @@ def build_html(dims: list[tuple[int, int]], chapters: list[dict]) -> str:
 
     # ---- the pages --------------------------------------------------------
     pages: list[str] = []
+    # Image-based edition: say so once, and show how to zoom.
+    pages.append(
+        '<p class="zoom-hint">📖 نسخهٔ آنلاین، تصویرِ صفحه‌های حروف‌چینی‌شدهٔ کتاب است و متن آن قابل انتخاب نیست. '
+        'برای بزرگ‌نمایی و زوم آزاد، روی هر صفحه کلیک کنید تا تصویرِ تمام‌اندازه در تب جدید باز شود؛ '
+        'برای متنِ قابل انتخاب و جست‌وجو، نسخهٔ '
+        '<a href="../pdf/JavaScript-Persian-Guide.pdf" download>PDF</a> یا '
+        '<a href="../pdf/JavaScript-Persian-Guide.epub" download>EPUB</a> را بردارید.</p>'
+    )
     for i, (w, h) in enumerate(dims, 1):
         ch = anchors.get(i)
         if ch:
@@ -157,11 +169,19 @@ def build_html(dims: list[tuple[int, int]], chapters: list[dict]) -> str:
                 + "</div>"
             )
         eager = i <= 2
+        lazy = "" if eager else ' loading="lazy"'
+        zoom_aria = f'صفحهٔ {fa(i)} — بازکردن تصویر در اندازهٔ کامل برای بزرگ‌نمایی'
         pages.append(
             f'<figure class="pg" id="p-{i:03d}">'
+            f'<a class="zoom" href="pages/p{i:03d}.webp" target="_blank" rel="noopener" '
+            f'title="بازکردن صفحهٔ {fa(i)} در اندازهٔ کامل" aria-label="{zoom_aria}">'
             f'<img src="pages/p{i:03d}.webp" width="{w}" height="{h}" '
-            f'alt="صفحه {fa(i)}" decoding="async" '
-            f'{" " if eager else 'loading="lazy" '}/>'
+            f'alt="صفحه {fa(i)}" decoding="async"{lazy}/>'
+            f'<span class="zoom-chip" aria-hidden="true">'
+            f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+            f'stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/>'
+            f'<path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>'
+            f'بزرگ‌نمایی</span></a>'
             f"<figcaption>{fa(i)}</figcaption></figure>"
         )
 
@@ -412,9 +432,25 @@ a{color:inherit}
   color:rgb(var(--accent));margin-bottom:6px}
 .ch-head h2{margin:0;font-size:clamp(18px,2.6vw,23px);font-weight:800;line-height:1.4}
 .ch-head p{margin:6px 0 0;font-size:13.5px;color:var(--sub);line-height:1.6}
+.zoom-hint{margin:0 0 22px;padding:12px 16px;border:1px solid var(--line-2);
+  border-radius:12px;background:rgba(32,43,72,.5);font-size:13px;line-height:2;color:var(--sub)}
+.zoom-hint a{color:rgb(var(--accent));font-weight:700;text-decoration:none;
+  border-bottom:1px dashed rgb(var(--accent))}
+.zoom-hint a:hover{opacity:.8}
+
 .pg{margin:0;position:relative}
+.pg .zoom{display:block;position:relative;border-radius:12px;
+  -webkit-tap-highlight-color:transparent}
+.pg .zoom:focus-visible{outline:2px solid rgb(var(--accent));outline-offset:3px}
 .pg img{display:block;width:100%;height:auto;border-radius:12px;
   border:1px solid var(--line-2);background:#fff;box-shadow:0 14px 40px rgba(0,0,0,.3)}
+.zoom-chip{position:absolute;inset-block-end:10px;inset-inline-end:10px;z-index:2;
+  display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:9px;
+  font-size:11px;font-weight:700;color:var(--ink);border:1px solid var(--line-2);
+  background:rgba(17,26,48,.85);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  opacity:.82;transition:opacity .2s;pointer-events:none}
+.zoom-chip svg{width:13px;height:13px;flex:none}
+.pg .zoom:hover .zoom-chip,.pg .zoom:focus-visible .zoom-chip{opacity:1}
 .pg figcaption{position:absolute;inset-block-end:9px;inset-inline-start:9px;
   font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;
   padding:3px 7px;border-radius:6px;color:var(--sub);background:rgba(17,26,48,.8);
@@ -506,6 +542,9 @@ JS = r"""(() => {
       value.classList.remove('ph');
       setOpen(false);
       trigger.focus();
+      // Reflect the jump in the URL without firing another scroll (hashchange
+      // handler would re-settle); replaceState keeps Back/Forward clean.
+      history.replaceState(null, '', it.dataset.value);
       document.querySelector(it.dataset.value)?.scrollIntoView({ block: 'start' });
     };
     trigger.addEventListener('click', () => setOpen(pop.hidden));
