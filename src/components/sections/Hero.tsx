@@ -120,7 +120,7 @@ export default function Hero() {
                 sizes="(max-width: 640px) 78vw, 360px"
                 alt="جلد مرجع فارسی JavaScript ES2025"
                 width={900}
-                height={1274}
+                height={1273}
                 fetchPriority="high"
                 decoding="async"
                 className="h-auto w-full rounded-[22px]"

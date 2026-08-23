@@ -35,10 +35,10 @@ export default function Preview() {
                 <Image
                   src={asset(p.src)}
                   alt={p.label}
-                  width={420}
-                  height={594}
+                  width={960}
+                  height={1358}
                   sizes="(max-width: 640px) 45vw, 220px"
-                  className="aspect-[1/1.41] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span className="absolute inset-x-0 bottom-0 bg-linear-to-t from-background/95 to-transparent px-2.5 pb-3 pt-7 text-center text-xs font-bold text-foreground">
                   {p.label}
