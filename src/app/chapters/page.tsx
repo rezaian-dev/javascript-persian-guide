@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 
 import Background from "@/components/layout/Background";
 import ScrollProgress from "@/components/layout/ScrollProgress";
@@ -37,8 +37,8 @@ export default function ChaptersPage() {
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button asChild>
-              <a href={BOOK_URL} target="_blank" rel="noopener">
-                <BookOpen /> مطالعهٔ کامل کتاب <ExternalLink />
+              <a href={BOOK_URL}>
+                <BookOpen /> مطالعهٔ کامل کتاب
               </a>
             </Button>
             <Button asChild variant="outline">
@@ -69,8 +69,6 @@ export default function ChaptersPage() {
                   <a
                     key={c.n}
                     href={chapterUrl(c.n)}
-                    target="_blank"
-                    rel="noopener"
                     className="flex items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 transition-colors hover:border-border hover:bg-secondary/40"
                   >
                     <span dir="ltr" className="grid size-7 shrink-0 place-items-center rounded-lg border border-primary/20 bg-primary/10 font-mono text-[11px] font-bold text-primary-soft">
