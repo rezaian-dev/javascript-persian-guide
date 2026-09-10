@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import GitHubIcon from "@/components/icons/GitHubIcon";
 import JSIcon from "@/components/icons/JSIcon";
-import { BOOK_URL, PDF_URL, REPO_URL } from "@/lib/links";
+import { BOOK_ROUTE, PDF_URL, REPO_URL } from "@/lib/links";
 
 const LINKS = [
   { href: "#features", label: "ویژگی‌ها", icon: Sparkles, hint: "چرا این کتاب" },
@@ -119,9 +119,9 @@ export default function Navbar() {
 
           <div className="ms-auto flex items-center gap-2">
             <Button asChild size="sm" className="hidden sm:inline-flex">
-              <a href={BOOK_URL} onClick={() => setOpen(false)}>
+              <Link href={BOOK_ROUTE} onClick={() => setOpen(false)}>
                 <BookOpen /> مطالعه آنلاین
-              </a>
+              </Link>
             </Button>
             <button
               type="button"
@@ -227,9 +227,9 @@ export default function Navbar() {
 
               <m.footer variants={row} className="relative grid gap-2.5 border-t border-border px-4 py-4">
                 <Button asChild size="lg" className="w-full">
-                  <a href={BOOK_URL} onClick={() => setOpen(false)}>
+                  <Link href={BOOK_ROUTE} onClick={() => setOpen(false)}>
                     <BookOpen /> مطالعه آنلاین
-                  </a>
+                  </Link>
                 </Button>
                 <div className="grid grid-cols-2 gap-2.5">
                   <Button asChild variant="outline" size="sm">

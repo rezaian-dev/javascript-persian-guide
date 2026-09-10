@@ -89,18 +89,18 @@ async function newPage(ctxOpts = {}) {
   const bookLoaded = await page.waitForURL("**/book/**", { timeout: 15000 }).then(() => true).catch(() => false);
   ok("navigated to /book/ in same tab", bookLoaded && page.url().includes("/book/"), page.url());
   ok("no popup opened", !(await popupPromise));
-  const zoomCount = await page.$$eval("a.zoom", (a) => a.length);
+  const zoomCount = await page.$$eval("[data-zoom]", (a) => a.length);
   ok("156 page zoom links", zoomCount === 156, String(zoomCount));
-  const zoomHref = await page.getAttribute("a.zoom", "href");
+  const zoomHref = await page.getAttribute("[data-zoom]", "href");
   ok("page images are versioned", zoomHref.includes("pages/p001.webp?v=2"), String(zoomHref));
-  const hintVisible = await page.isVisible(".zoom-hint");
+  const hintVisible = await page.isVisible("[data-zoom-hint]");
   ok("zoom hint visible", hintVisible);
   const imgDim = await page.$eval("figure#p-001 img", (i) => [i.naturalWidth, i.naturalHeight]);
   ok("page-01 intrinsic 2460×3480", imgDim[0] === 2460 && imgDim[1] === 3480, imgDim.join("×"));
   await page.screenshot({ path: `${SHOTS}/desktop-book.png` });
 
   // reader: chapter select keyboard
-  await page.click(".select-trigger");
+  await page.click("[data-select-trigger]");
   await page.keyboard.press("ArrowDown");
   await page.keyboard.press("ArrowDown");
   await page.keyboard.press("Enter");
@@ -116,7 +116,7 @@ async function newPage(ctxOpts = {}) {
   ok("toc closes with Escape", await page.isHidden("#toc"));
 
   // back to home via reader link
-  await page.click("a.home");
+  await page.click("[data-reader-home]");
   await page.waitForURL("**/javascript-persian-guide/");
   ok("reader → home (same tab)", page.url().endsWith("/javascript-persian-guide/"));
 
@@ -158,10 +158,20 @@ async function newPage(ctxOpts = {}) {
   console.log("\n[7] Assets");
   const P = "/javascript-persian-guide";
   for (const p of ["/pdf/JavaScript-Persian-Guide.pdf", "/pdf/JavaScript-Persian-Guide.epub",
-                   "/fonts/Vazirmatn-Regular.woff2", "/social-card.jpg", "/book/pages/p156.webp",
+                   "/social-card.jpg", "/book/pages/p156.webp",
                    "/js-logo-64.png", "/manifest.webmanifest"]) {
     const s = await page.evaluate(async (u) => (await fetch(u, { method: "HEAD" })).status, P + p);
     ok(`HEAD ${p} → 200`, s === 200, String(s));
+  }
+  // fonts ship via next/font — verify the emitted stylesheet resolves
+  const fontHref = await page.evaluate(() => {
+    const link = document.querySelector('link[rel="stylesheet"][href*="_next"]');
+    return link ? link.href : null;
+  });
+  ok("next/font stylesheet emitted", Boolean(fontHref), String(fontHref));
+  if (fontHref) {
+    const fs = await page.evaluate(async (u) => (await fetch(u, { method: "HEAD" })).status, fontHref);
+    ok("next/font stylesheet 200", fs === 200, String(fs));
   }
   const pdfLen = await page.evaluate(async (u) => (await (await fetch(u, { method: "HEAD" })).headers.get("content-length")), P + "/pdf/JavaScript-Persian-Guide.pdf");
   ok("pdf intact (~2.2MB)", Number(pdfLen) > 2000000, pdfLen);

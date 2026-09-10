@@ -9,7 +9,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PARTS, TOTAL_CHAPTERS } from "@/lib/chapters";
-import { BOOK_URL, chapterUrl } from "@/lib/links";
+import { BOOK_ROUTE, chapterRoute } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "فهرست فصل‌ها | مرجع فارسی JavaScript ES2025",
@@ -37,9 +37,9 @@ export default function ChaptersPage() {
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Button asChild>
-              <a href={BOOK_URL}>
+              <Link href={BOOK_ROUTE}>
                 <BookOpen /> مطالعهٔ کامل کتاب
-              </a>
+              </Link>
             </Button>
             <Button asChild variant="outline">
               <Link href="/">
@@ -66,9 +66,9 @@ export default function ChaptersPage() {
               </div>
               <CardContent className="grid gap-1.5 sm:grid-cols-2">
                 {part.chapters.map((c) => (
-                  <a
+                  <Link
                     key={c.n}
-                    href={chapterUrl(c.n)}
+                    href={chapterRoute(c.n)}
                     className="flex items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 transition-colors hover:border-border hover:bg-secondary/40"
                   >
                     <span dir="ltr" className="grid size-7 shrink-0 place-items-center rounded-lg border border-primary/20 bg-primary/10 font-mono text-[11px] font-bold text-primary-soft">
@@ -78,7 +78,7 @@ export default function ChaptersPage() {
                       <span className="block text-[13.5px] text-sub">{c.title}</span>
                       <span className="mt-0.5 block truncate text-[11.5px] text-muted-foreground">{c.subtitle}</span>
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </CardContent>
             </Card>

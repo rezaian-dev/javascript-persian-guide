@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { BookOpen, MessageSquare } from "lucide-react";
 
 import Reveal from "@/components/motion/Reveal";
@@ -8,7 +9,7 @@ import Magnetic from "@/components/motion/Magnetic";
 import GitHubIcon from "@/components/icons/GitHubIcon";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { asset, AUTHOR_URL, BOOK_URL, ISSUES_URL } from "@/lib/links";
+import { asset, AUTHOR_URL, BOOK_ROUTE, ISSUES_URL } from "@/lib/links";
 
 export default function Author() {
   return (
@@ -50,9 +51,9 @@ export default function Author() {
                 </Magnetic>
                 <Magnetic>
                   <Button asChild size="sm">
-                    <a href={BOOK_URL}>
+                    <Link href={BOOK_ROUTE}>
                       <BookOpen /> مطالعه آنلاین
-                    </a>
+                    </Link>
                   </Button>
                 </Magnetic>
               </div>
