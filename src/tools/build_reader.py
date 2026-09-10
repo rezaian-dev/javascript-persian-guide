@@ -60,6 +60,10 @@ PAINT = 820        # CSS px a page is painted at, at most
 RENDER = PAINT * 3  # px actually stored, for 3x displays
 LOSSLESS = True
 
+# Bump when page rendering changes: every page URL carries ?v=PAGE_VER so
+# visitors drop any older cached copy of a differently-rendered page set.
+PAGE_VER = "2"
+
 FA = "۰۱۲۳۴۵۶۷۸۹"
 
 
@@ -173,9 +177,9 @@ def build_html(dims: list[tuple[int, int]], chapters: list[dict]) -> str:
         zoom_aria = f'صفحهٔ {fa(i)} — بازکردن تصویر در اندازهٔ کامل برای بزرگ‌نمایی'
         pages.append(
             f'<figure class="pg" id="p-{i:03d}">'
-            f'<a class="zoom" href="pages/p{i:03d}.webp" target="_blank" rel="noopener" '
+            f'<a class="zoom" href="pages/p{i:03d}.webp?v={PAGE_VER}" target="_blank" rel="noopener" '
             f'title="بازکردن صفحهٔ {fa(i)} در اندازهٔ کامل" aria-label="{zoom_aria}">'
-            f'<img src="pages/p{i:03d}.webp" width="{w}" height="{h}" '
+            f'<img src="pages/p{i:03d}.webp?v={PAGE_VER}" width="{w}" height="{h}" '
             f'alt="صفحه {fa(i)}" decoding="async"{lazy}/>'
             f'<span class="zoom-chip" aria-hidden="true">'
             f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
@@ -226,7 +230,7 @@ def build_html(dims: list[tuple[int, int]], chapters: list[dict]) -> str:
 <link rel="icon" type="image/png" sizes="64x64" href="../js-logo-64.png">
 <link rel="icon" type="image/png" sizes="128x128" href="../js-logo-128.png">
 <link rel="preload" href="../fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="pages/p001.webp" as="image">
+<link rel="preload" href="pages/p001.webp?v={PAGE_VER}" as="image">
 <link rel="stylesheet" href="reader.css">
 </head>
 <body>
