@@ -112,7 +112,7 @@ const pageLo = await lo.newPage();
 await prepare(pageLo);
 const m2 = await measure(pageLo);
 must(m2.canvas.w === 1280 && m2.canvas.h === 640, "social canvas mismatch");
-await pageLo.locator("[data-banner]").screenshot({ path: JPG, quality: 92, type: "jpeg" });
+await pageLo.locator("[data-banner]").screenshot({ path: JPG, quality: 96, type: "jpeg" });
 await lo.close();
 
 await browser.close();

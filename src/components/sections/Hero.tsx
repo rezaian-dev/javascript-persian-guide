@@ -111,13 +111,14 @@ export default function Hero() {
 
           <m.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}>
             <m.div className="animate-float rounded-[22px] border border-input shadow-[0_50px_130px_-30px_rgb(6_10_24_/_0.7),0_0_90px_-30px_rgb(247_223_30_/_0.4)] motion-reduce:animate-none">
-              {/* Three pre-rendered widths ship in public/. next/image can't
-                  optimize on Pages (`images.unoptimized`), so drive the srcset
-                  directly instead of serving the 900 px master to phones. */}
+              {/* One high-resolution lossless file (~100KB). A srcset/sizes
+                  pair made browsers decode the image at the sizes-advertised
+                  CSS width (360px) and then upscale it on retina displays —
+                  visibly soft — so serve a single 900px source that always
+                  decodes full-size. ?v=2 busts copies cached from earlier
+                  render settings. */}
               <img
-                src={asset("/cover-hero.webp")}
-                srcSet={`${asset("/cover-hero-480.webp")} 480w, ${asset("/cover-hero-720.webp")} 720w, ${asset("/cover-hero.webp")} 900w`}
-                sizes="(max-width: 640px) 78vw, 360px"
+                src={asset("/cover-hero.webp?v=2")}
                 alt="جلد مرجع فارسی JavaScript ES2025"
                 width={900}
                 height={1273}

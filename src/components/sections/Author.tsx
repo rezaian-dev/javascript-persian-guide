@@ -20,8 +20,8 @@ export default function Author() {
               <Image
                 src={asset("/author.webp")}
                 alt="محمدرضا رضائیان"
-                width={640}
-                height={640}
+                width={320}
+                height={320}
                 className="size-32 rounded-full border-4 border-background object-cover"
               />
             </div>
