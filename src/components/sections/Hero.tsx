@@ -7,7 +7,9 @@ import { BookOpen, Download, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Magnetic from "@/components/motion/Magnetic";
-import { asset, BOOK_URL, PDF_URL } from "@/lib/links";
+import Link from "next/link";
+
+import { asset, BOOK_ROUTE, PDF_URL } from "@/lib/links";
 
 const container = {
   hidden: {},
@@ -65,9 +67,9 @@ export default function Hero() {
           <m.div variants={item} className="mt-8 flex flex-wrap gap-3">
             <Magnetic>
               <Button asChild size="lg">
-                <a href={BOOK_URL}>
+                <Link href={BOOK_ROUTE}>
                   <BookOpen /> مطالعه آنلاین
-                </a>
+                </Link>
               </Button>
             </Magnetic>
             <Magnetic>

@@ -25,20 +25,10 @@ const nextConfig = {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
 
-  // The online edition is a static file at public/book/index.html and its
-  // assets (reader.css, reader.js) are referenced RELATIVELY. That only
-  // resolves when the browser URL keeps its trailing slash — on /book the
-  // relative "reader.css" would resolve to /reader.css and 404.
-  //
-  // Next redirects /book/ -> /book by default, so force trailing slashes and
-  // rewrite the directory URL onto the real file.
+  // Static export + Pages: routes are emitted as directories
+  // (/book/index.html, /chapters/index.html), so links and refreshes
+  // need the trailing slash to resolve.
   trailingSlash: true,
-
-  ...(!isPages && {
-    async rewrites() {
-      return [{ source: "/book/", destination: "/book/index.html" }];
-    },
-  }),
 
   // Dev-only: allow the sandbox preview proxy origins.
   allowedDevOrigins: ["*.e2b.app", "*.e2b.dev", "localhost", "127.0.0.1"],
