@@ -1,8 +1,8 @@
 <a id="top"></a>
 
 <p align="center">
-  <a href="./assets/readme/banner-hero.png" title="مشاهدهٔ بنر در اندازهٔ کامل">
-    <img src="./assets/readme/banner-hero.png" alt="بنر معرفی مرجع فارسی JavaScript ES2025" width="880">
+  <a href="./assets/readme/banner-hero.png?v=2" title="مشاهدهٔ بنر در اندازهٔ کامل">
+    <img src="./assets/readme/banner-hero.png?v=2" alt="بنر معرفی مرجع فارسی JavaScript ES2025" width="880">
   </a>
 </p>
 

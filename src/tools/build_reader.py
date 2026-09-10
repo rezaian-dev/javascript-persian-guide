@@ -226,7 +226,7 @@ def build_html(dims: list[tuple[int, int]], chapters: list[dict]) -> str:
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{SITE}/book/">
-<meta property="og:image" content="{SITE}/social-card.jpg">
+<meta property="og:image" content="{SITE}/social-card.jpg?v=2">
 <link rel="icon" type="image/png" sizes="64x64" href="../js-logo-64.png">
 <link rel="icon" type="image/png" sizes="128x128" href="../js-logo-128.png">
 <link rel="preload" href="../fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>

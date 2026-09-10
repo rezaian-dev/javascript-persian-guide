@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       "۳۸ فصل، ۱۵۶ صفحه — از مدل ذهنی زبان تا V8، امنیت، تست و معماری Production‏.",
     url: "https://rezaian-dev.github.io/javascript-persian-guide/",
     siteName: "Persian Developer Handbook",
-    images: [{ url: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/social-card.jpg`, width: 1280, height: 640 }],
+    images: [{ url: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/social-card.jpg?v=2`, width: 1280, height: 640 }],
     locale: "fa_IR",
     type: "book",
   },
@@ -63,7 +63,7 @@ const BOOK_JSONLD = {
   bookFormat: "https://schema.org/EBook",
   datePublished: "2026",
   url: "https://rezaian-dev.github.io/javascript-persian-guide/",
-  image: "https://rezaian-dev.github.io/javascript-persian-guide/social-card.jpg",
+  image: "https://rezaian-dev.github.io/javascript-persian-guide/social-card.jpg?v=2",
   description:
     "مرجع فارسی جاوااسکریپت ES2025 در ۳۸ فصل — Scope، Closure، Event Loop، V8، امنیت، تست و معماری.",
   author: { "@type": "Person", name: "محمدرضا رضائیان", url: "https://github.com/rezaian-dev" },
