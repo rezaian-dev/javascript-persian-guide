@@ -199,16 +199,10 @@ export default function ReadmeBanner() {
             </div>
           </div>
 
-          <div className="flex flex-col items-end gap-2.5">
-            <span dir="ltr" className="font-mono text-[19px] font-bold text-[#fde047]">
-              rezaian-dev.github.io/javascript-persian-guide
-            </span>
-            <span className="flex items-center gap-3 text-[19px] font-bold text-[#dbe3f2]">
-              <span className="rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-1.5">📕 PDF</span>
-              <span className="rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-1.5">📗 EPUB</span>
-              <span className="rounded-lg border border-white/15 px-3.5 py-1.5 text-[18px] text-[#a6b2cb]">⚖️ CC BY-NC-SA 4.0</span>
-            </span>
-          </div>
+          {/* Just the author — no URL/license strip (per reader feedback). */}
+          <span dir="ltr" className="font-mono text-[19px] font-bold text-[#fde047]">
+            @rezaian-dev
+          </span>
         </div>
       </div>
     </div>

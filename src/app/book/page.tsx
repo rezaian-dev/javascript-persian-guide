@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description,
     url,
     siteName: "Persian Developer Handbook",
-    images: [{ url: `${asset("/social-card.jpg")}?v=2`, width: 1280, height: 640 }],
+    images: [{ url: `${asset("/social-card.jpg")}?v=3`, width: 1280, height: 640 }],
     locale: "fa_IR",
     type: "book",
   },

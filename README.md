@@ -1,28 +1,9 @@
 <a id="top"></a>
 
 <p align="center">
-  <a href="./assets/readme/banner-hero.png?v=2" title="مشاهدهٔ بنر در اندازهٔ کامل">
-    <img src="./assets/readme/banner-hero.png?v=2" alt="بنر معرفی مرجع فارسی JavaScript ES2025" width="880">
+  <a href="./assets/readme/banner-hero.png?v=3" title="مشاهدهٔ بنر در اندازهٔ کامل">
+    <img src="./assets/readme/banner-hero.png?v=3" alt="بنر معرفی مرجع فارسی JavaScript ES2025" width="880">
   </a>
-</p>
-
-<p align="center" dir="rtl">
-  <strong>🎉 مرجع فارسی JavaScript ES2025 — از مدل ذهنی تا معماری Production</strong><br>
-  <sub>ویرایش ۱٫۰٫۰ · ۲۰۲۶ · رایگان و متن‌باز</sub>
-</p>
-
-<p align="center">
-  <a href="https://rezaian-dev.github.io/javascript-persian-guide/book/"><img src="https://img.shields.io/badge/مطالعه_آنلاین-شروع_کن-0EA5E9?style=for-the-badge&logo=githubpages&logoColor=white" alt="مطالعه آنلاین"></a>
-  <a href="https://rezaian-dev.github.io/javascript-persian-guide/pdf/JavaScript-Persian-Guide.pdf"><img src="https://img.shields.io/badge/دانلود_PDF-DC2626?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="دانلود PDF"></a>
-  <a href="https://rezaian-dev.github.io/javascript-persian-guide/pdf/JavaScript-Persian-Guide.epub"><img src="https://img.shields.io/badge/دانلود_EPUB-7C3AED?style=for-the-badge&logo=applebooks&logoColor=white" alt="دانلود EPUB"></a>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-ES2025-F7DF1E?style=flat-square&logo=javascript&logoColor=000" alt="JavaScript ES2025">
-  <img src="https://img.shields.io/badge/فصل-۳۸-0F172A?style=flat-square" alt="۳۸ فصل">
-  <img src="https://img.shields.io/badge/صفحه-۱۵۶-0F172A?style=flat-square" alt="۱۵۶ صفحه">
-  <img src="https://img.shields.io/badge/پنجرهٔ_کد-۱۷۳-0F172A?style=flat-square" alt="۱۷۳ پنجرهٔ کد">
-  <img src="https://img.shields.io/badge/مجوز-CC_BY--NC--SA_4.0-64748B?style=flat-square" alt="مجوز CC BY-NC-SA 4.0">
 </p>
 
 ---
@@ -31,7 +12,7 @@
 
 ## ✨ این کتاب چیست؟
 
-> **مرجع فارسی، پروژه‌محور و به‌روز JavaScript ES2025** — از مدل ذهنی زبان تا کد آمادهٔ Production.
+**مرجع فارسی JavaScript ES2025** — از مدل ذهنی تا معماری Production
 
 جاوااسکریپت دنیای خودش را دارد: **Closure**، **Event Loop**، موتور **V8** و امکانات مدرن ES2025. این کتاب همان‌ها را — از صفر تا سطح ارشد — با **زبان ساده، مدل ذهنی درست و کد واقعی** توضیح می‌دهد.
 
@@ -46,7 +27,7 @@
 | دنبال سطح ارشد هستید | V8، پرفورمنس، حافظه، امنیت، تست و معماری تمیز |
 | در مسیر استخدام هستید | ۵۰ پرسش مصاحبه با پاسخ تشریحی و واژه‌نامهٔ تخصصی |
 
-**🔎 پیش‌نیاز واقعی:** آشنایی اولیه با هر زبان برنامه‌نویسی کافی است؛ کتاب خودش از مبانی شروع می‌کند و به مبانی Node.js و ابزارهای مدرن هم اشاره می‌کند.
+**🔎 پیش‌نیاز واقعی:** آشنایی اولیه با هر زبان برنامه‌نویسی کافی است؛ کتاب خودش از مبانی شروع می‌کند.
 
 ## 💎 چرا این کتاب متفاوت است؟
 
@@ -177,13 +158,9 @@
 
 غلط تایپی دیدید؟ 🙃 نکته‌ای نیاز به اصلاح یا توضیح بیشتر دارد؟ یک [Issue](https://github.com/rezaian-dev/javascript-persian-guide/issues) باز کنید — هر گزارش، نسخهٔ بعدی کتاب را بهتر می‌کند. 🙏
 
-## ✍️ نویسنده و مجوز
+## ✍️ نویسنده
 
 **محمدرضا رضائیان** — [@rezaian-dev](https://github.com/rezaian-dev)
-
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
-این اثر با مجوز <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons BY-NC-SA 4.0</a> منتشر شده است: استفاده و بازنشر <strong>غیرتجاری</strong> با ذکر منبع آزاد است و نسخهٔ اقتباسی باید با همین مجوز منتشر شود. ⚖️
-</p>
 
 </div>
 
