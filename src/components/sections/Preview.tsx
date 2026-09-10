@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import SectionHeader from "@/components/layout/SectionHeader";
 import Reveal from "@/components/motion/Reveal";
 import { asset } from "@/lib/links";
@@ -27,17 +25,21 @@ export default function Preview() {
           {PREVIEWS.map((p, i) => (
             <Reveal key={p.src} delay={i * 0.07}>
               <a
-                href={asset(p.full)}
+                href={`${asset(p.full)}?v=2`}
                 target="_blank"
                 rel="noopener"
                 className="group relative block overflow-hidden rounded-2xl border border-border shadow-[0_26px_70px_-24px_rgb(6_10_24_/_0.65)] transition-colors hover:border-primary/50"
               >
-                <Image
-                  src={asset(p.src)}
+                {/* Plain <img>: the previews ship pre-optimized lossless
+                    WebP, so next/image adds nothing here — and its localPatterns
+                    guard rejects the ?v= cache-busting query. */}
+                <img
+                  src={`${asset(p.src)}?v=2`}
                   alt={p.label}
                   width={960}
                   height={1358}
-                  sizes="(max-width: 640px) 45vw, 220px"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span className="absolute inset-x-0 bottom-0 bg-linear-to-t from-background/95 to-transparent px-2.5 pb-3 pt-7 text-center text-xs font-bold text-foreground">
