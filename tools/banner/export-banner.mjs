@@ -39,6 +39,7 @@ async function measure(page) {
     const banner = document.querySelector("[data-banner]");
     const divider = document.querySelector("[data-banner-divider]");
     const footer = document.querySelector("[data-banner-footer]");
+    const main = document.querySelector("[data-banner-main]");
     const b = banner.getBoundingClientRect();
     const d = divider.getBoundingClientRect();
     const f = footer.getBoundingClientRect();
@@ -58,6 +59,7 @@ async function measure(page) {
       dividerY: d.bottom,
       footerTop: f.top,
       gap: f.top - d.bottom,
+      mainBottom: Math.max(...[...main.querySelectorAll("*"), main].map((el) => el.getBoundingClientRect().bottom)),
       overflowX: banner.scrollWidth > Math.ceil(b.width) + 1,
       // decorative glows intentionally bleed past the canvas and are clipped
       // by overflow-hidden; only real content must stay inside:
@@ -99,6 +101,7 @@ console.log(JSON.stringify(m, null, 2));
 
 must(m.canvas.w === 1280 && m.canvas.h === 640, `canvas ${m.canvas.w}×${m.canvas.h} ≠ 1280×640`);
 must(m.gap >= 24, `footer gap ${m.gap}px < 24px`);
+must(m.mainBottom <= m.dividerY, `main content crosses the divider (main bottom ${m.mainBottom} > divider ${m.dividerY})`);
 must(m.minKidTop >= m.dividerY + 24, `footer child above divider+24 (minTop ${m.minKidTop} vs ${m.dividerY + 24})`);
 must(m.contentOutside.length === 0, `content outside canvas: ${m.contentOutside.join(", ")}`);
 

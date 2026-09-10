@@ -6,9 +6,11 @@
  *
  * Identity: the widely-recognised JavaScript "JS" mark (yellow square,
  * black glyphs) drawn from its precise vector geometry; brand colour
- * #F7DF1E on the site's deep-slate palette. All copy and figures come
- * from src/edition/chapters.json (title, subtitle, edition, chapters,
- * pages) and the counted 173 code windows of the shipped PDF.
+ * #F7DF1E on the site's deep-slate palette. Persian copy stays Persian —
+ * the subtitle carries no English jargon — while the decorative code is
+ * real, valid JavaScript: the faint background lines come from the book's
+ * own cover snippet, and the mini editor card states the book's verified
+ * figures (38 chapters, 156 pages, free forever).
  */
 
 import { asset } from "@/lib/links";
@@ -33,6 +35,17 @@ const STATS = [
   { icon: "🏷️", label: "ویرایش ۱.۰.۰" },
 ];
 
+/** Traffic-light dots for the mini editor card. */
+function Dots() {
+  return (
+    <span className="flex items-center gap-1.5" aria-hidden="true">
+      <i className="size-2.5 rounded-full bg-[#f87171]" />
+      <i className="size-2.5 rounded-full bg-[#fbbf24]" />
+      <i className="size-2.5 rounded-full bg-[#34d399]" />
+    </span>
+  );
+}
+
 /**
  * The banner. Sizes are locked to the 1280×640 design grid so the
  * exported PNG is pixel-stable; readability at GitHub's real display
@@ -46,6 +59,10 @@ export default function ReadmeBanner() {
       className="relative flex h-[640px] w-[1280px] flex-col overflow-hidden bg-[#0e1730] font-sans text-white"
     >
       {/* ---- background art ---- */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[6px] bg-linear-to-r from-[#22d3ee] via-[#fde047] to-[#f7df1e]"
+      />
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 start-[-140px] size-[560px] rounded-full bg-[radial-gradient(circle,rgb(247_223_30_/_0.16),transparent_65%)]"
@@ -62,26 +79,48 @@ export default function ReadmeBanner() {
           backgroundSize: "48px 48px",
         }}
       />
+      {/* faint, real code from the book's own cover, peeking behind the editor card */}
+      <span
+        aria-hidden="true"
+        dir="ltr"
+        className="absolute left-10 top-14 select-none font-mono text-[15px] leading-8 text-white/[0.07]"
+      >
+        const memo = (fn) =&gt; {'{'}
+        <br />
+        &nbsp;&nbsp;const cache = new Map();
+        <br />
+        &nbsp;&nbsp;return (...args) =&gt; {'{'} /* … */ {'}'}
+      </span>
+      <span
+        aria-hidden="true"
+        dir="ltr"
+        className="absolute bottom-[172px] left-16 select-none font-mono text-[15px] leading-8 text-white/[0.06]"
+      >
+        export default memo;
+      </span>
 
       {/* ---- main ---- */}
-      <div className="relative flex flex-1 items-center gap-14 px-16 pt-14">
+      <div data-banner-main className="relative z-10 flex flex-1 items-center gap-10 px-16 pb-2 pt-14">
         <div className="flex min-w-0 flex-1 flex-col items-start">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-[#f7df1e]/40 bg-[#f7df1e]/10 px-5 py-2 text-[20px] font-bold text-[#fde047]">
             📘 راهنمای فارسی · رایگان و متن‌باز
           </span>
 
-          <h1 className="mt-7 text-[58px] font-extrabold leading-[1.15] tracking-tight">
+          <h1 className="mt-6 text-[54px] font-extrabold leading-[1.14] tracking-tight">
             مرجع فارسی
-            <span dir="ltr" className="mt-1 block text-right font-mono text-[64px] font-bold leading-[1.1] text-[#f7df1e]">
+            <span
+              dir="ltr"
+              className="mt-1 block bg-linear-to-br from-[#f7df1e] via-[#fde047] to-[#fef08a] bg-clip-text text-right font-mono text-[62px] font-bold leading-[1.1] text-transparent [text-shadow:0_0_40px_rgb(247_223_30_/_0.25)]"
+            >
               JavaScript ES2025
             </span>
           </h1>
 
-          <p className="mt-6 max-w-[640px] text-[26px] font-semibold leading-[1.7] text-[#dbe3f2]">
-            از Scope و Closure تا Event Loop، موتور V8 و معماری Production
+          <p className="mt-5 max-w-[560px] text-[25px] font-semibold leading-[1.85] text-[#dbe3f2]">
+            از مبانی زبان تا معماری و کد آمادهٔ محصول — با زبان ساده و مثال‌های واقعی
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3">
             {STATS.map((s) => (
               <span
                 key={s.label}
@@ -94,20 +133,47 @@ export default function ReadmeBanner() {
           </div>
         </div>
 
-        {/* JS mark on the visual end (left in RTL) */}
-        <div className="relative shrink-0 self-center pb-6">
-          <span
-            aria-hidden="true"
-            className="absolute inset-[-42px] rounded-[38px] bg-[radial-gradient(circle,rgb(247_223_30_/_0.30),transparent_68%)] blur-xl"
-          />
-          <div className="relative">
-            <JSBadge className="block h-[264px] w-[264px] rounded-[20px] shadow-[0_40px_90px_-24px_rgb(6_10_24_/_0.9),0_0_70px_-18px_rgb(247_223_30_/_0.55)]" />
+        {/* visual column: mini editor card + the JS mark, layered for depth */}
+        <div className="relative h-[396px] w-[400px] shrink-0">
+          {/* editor card */}
+          <div
+            dir="ltr"
+            className="absolute right-0 top-0 w-[320px] overflow-hidden rounded-2xl border border-white/10 bg-[#111b36] shadow-[0_36px_80px_-24px_rgb(0_0_0_/_0.8)]"
+          >
+            <div className="flex items-center gap-3 border-b border-white/[0.07] bg-white/[0.04] px-4 py-2.5">
+              <Dots />
+              <span className="font-mono text-[12.5px] font-bold text-white/45">guide.js</span>
+            </div>
+            <pre className="px-4 py-3.5 text-start font-mono text-[15px] leading-7 text-[#dbe3f2]">
+              <code>
+                <span className="text-[#b6a1fb]">const</span> <span className="text-[#22d3ee]">book</span> = {'{'}
+                <br />
+                &nbsp;&nbsp;chapters: <span className="text-[#fde047]">38</span>,
+                <br />
+                &nbsp;&nbsp;pages: <span className="text-[#fde047]">156</span>,
+                <br />
+                &nbsp;&nbsp;free: <span className="text-[#34d399]">true</span>,
+                <br />
+                {'}'};
+              </code>
+            </pre>
+          </div>
+
+          {/* JS mark overlapping the card corner */}
+          <div className="absolute bottom-6 left-0 z-10">
             <span
-              dir="ltr"
-              className="absolute -bottom-9 left-1/2 -translate-x-1/2 rounded-lg border border-[#f7df1e]/35 bg-[#111a30]/90 px-3.5 py-1.5 font-mono text-[16px] font-bold text-[#fde047] backdrop-blur"
-            >
-              ES2025
-            </span>
+              aria-hidden="true"
+              className="absolute inset-[-40px] rounded-full bg-[radial-gradient(circle,rgb(247_223_30_/_0.32),transparent_66%)] blur-xl"
+            />
+            <div className="relative">
+              <JSBadge className="block h-[212px] w-[212px] rounded-[18px] shadow-[0_40px_90px_-24px_rgb(6_10_24_/_0.9),0_0_70px_-18px_rgb(247_223_30_/_0.55)]" />
+              <span
+                dir="ltr"
+                className="absolute -bottom-9 left-1/2 -translate-x-1/2 rounded-lg border border-[#f7df1e]/35 bg-[#111a30]/90 px-3.5 py-1.5 font-mono text-[16px] font-bold text-[#fde047] backdrop-blur"
+              >
+                ES2025
+              </span>
+            </div>
           </div>
         </div>
       </div>
