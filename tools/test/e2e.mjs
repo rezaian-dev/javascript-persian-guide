@@ -53,19 +53,19 @@ async function newPage(ctxOpts = {}) {
   );
   ok("no internal link opens a new tab", blankInternal.length === 0, JSON.stringify(blankInternal));
 
-  // cover srcset resolves
-  const src = await page.getAttribute("img[alt='جلد مرجع فارسی JavaScript ES2025']", "src");
-  const covers = await page.$$eval("img[alt='جلد مرجع فارسی JavaScript ES2025']", ([img]) => {
-    const urls = [img.currentSrc];
-    for (const s of img.srcset.split(",")) urls.push(s.trim().split(" ")[0]);
-    return urls.map((u) => new URL(u, location.origin).href);
-  });
-  const coverStatuses = [];
-  for (const u of covers) {
-    const s = await page.evaluate(async (url) => (await fetch(url, { method: "HEAD" })).status, u);
-    coverStatuses.push(s);
-  }
-  ok("cover srcset all 200", coverStatuses.every((s) => s === 200), coverStatuses.join(","));
+  // cover: one high-resolution lossless source, decoded at full size
+  const coverSel = "img[alt='جلد مرجع فارسی JavaScript ES2025']";
+  const coverSrc = await page.getAttribute(coverSel, "src");
+  const coverSrcSet = await page.getAttribute(coverSel, "srcset");
+  ok("cover is a single versioned source (no srcset)", coverSrc.includes("cover-hero.webp?v=2") && coverSrcSet === null, String(coverSrc));
+  const coverStatus = await page.evaluate(async (u) => (await fetch(u, { method: "HEAD" })).status, coverSrc);
+  ok("cover HEAD 200", coverStatus === 200, String(coverStatus));
+  const coverNat = await page.$eval(coverSel, (i) => [i.naturalWidth, i.naturalHeight]);
+  ok("cover decodes at full 900×1273", coverNat[0] === 900 && coverNat[1] === 1273, coverNat.join("×"));
+
+  // preview thumbnails are versioned too
+  const prevSrc = await page.getAttribute("img[alt='نمونهٔ کد']", "src");
+  ok("preview images are versioned", prevSrc.includes("?v=2"), String(prevSrc));
 
   await page.screenshot({ path: `${SHOTS}/desktop-home.png`, fullPage: false });
   await page.screenshot({ path: `${SHOTS}/desktop-home-full.png`, fullPage: true });
@@ -91,6 +91,8 @@ async function newPage(ctxOpts = {}) {
   ok("no popup opened", !(await popupPromise));
   const zoomCount = await page.$$eval("a.zoom", (a) => a.length);
   ok("156 page zoom links", zoomCount === 156, String(zoomCount));
+  const zoomHref = await page.getAttribute("a.zoom", "href");
+  ok("page images are versioned", zoomHref.includes("pages/p001.webp?v=2"), String(zoomHref));
   const hintVisible = await page.isVisible(".zoom-hint");
   ok("zoom hint visible", hintVisible);
   const imgDim = await page.$eval("figure#p-001 img", (i) => [i.naturalWidth, i.naturalHeight]);
